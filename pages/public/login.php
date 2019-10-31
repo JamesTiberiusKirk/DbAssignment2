@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col"></div>
         <div class="col-sm">
-            <form>
+            <form action="../../includes/login.inc.php" method="post">
                 <div class="form-group">
                     <label for="exampleInputEmail1">User Name</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">

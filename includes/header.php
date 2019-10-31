@@ -38,24 +38,34 @@
                             Products
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="./products_desktops.php">Desktops</a>
-                            <a class="dropdown-item" href="./products_laptops.php">Laptops</a>
+                            <a class="dropdown-item" href="#">Desktops</a>
+                            <a class="dropdown-item" href="#">Laptops</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="./products_peripherals.php">Peripherals</a>
+                            <a class="dropdown-item" href="#">Peripherals</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./contact.php">Contact</a>
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
+
+                    <!-- Should only be displayed if a member of the site -->
                     <li class="nav-item">
-                        <a class="nav-link" href="./cart.php">
+                        <a class="nav-link" href="#">
                             Cart
                             <img src="./img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
                         </a>
                     </li>
+
+                    <!-- If logged out display this -->
                     <li class="nav-item">
                         <a class="nav-link" href="./pages/public/login.php">Login</a>
                     </li>
+
+                    <!-- If logged out display this -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="./pages/public/logout.php">Logout</a>
+                    </li>
+
                 </ul>
             </div>
         </nav>
