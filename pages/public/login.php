@@ -1,4 +1,4 @@
-<?php include "header.php" ?>
+<?php include "../../includes/header.php" ?>
 
 <div class="jumbotron">
     <div class="row">
@@ -20,4 +20,4 @@
     </div>
 </div>
 
-<?php include "footer.php" ?>
+<?php include "../../includes/footer.php" ?>

@@ -2,7 +2,7 @@
 
 <div class="jumbotron">
     <?php
-    include_once("db.php");
+    include_once("./includes/db.inc.php");
     echo "<br>Connected successfully<br>";
 
     $sql = "SELECT uID, uname FROM testapp.users";
