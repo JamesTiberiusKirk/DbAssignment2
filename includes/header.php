@@ -21,6 +21,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand nav-link" href="../../index.php">ETWORLD</a>
 
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -28,7 +29,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
+
                         <a class="nav-link" href="../../index.php">Home</a>
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./pages/public/about.php">About</a>
@@ -39,7 +42,7 @@
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Desktops</a>
-                            <a class="dropdown-item" href="#">Laptops</a>
+                            <a class="dropdown-item" href="./pages/public/product_Laptop.php">Laptops</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Peripherals</a>
                         </div>
