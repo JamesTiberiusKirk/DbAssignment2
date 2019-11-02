@@ -5,6 +5,7 @@
         <div class="col"></div>
         <div class="col-sm">
             <form action="../../includes/login.inc.php" method="post">
+                <h1>Log in</h1>
                 <div class="form-group">
                     <label for="uname">User Name</label>
                     <input type="name" name="uname" class="form-control" id="uname" 
