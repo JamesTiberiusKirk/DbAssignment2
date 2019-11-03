@@ -6,6 +6,7 @@ if (isset($_POST['signup-submit'])){
   $password = $_POST['upass'];
   $password_repeat = $_POST['repeatupass'];
 
+  //Validation
   if(empty($uname) || empty($email) ||  empty($password) || empty($password_repeat)){
     header("Location: ../pages/public/signup.php?error=emptyFileds&uname=".$uname."&uemail=".$email);
     exit();
@@ -21,6 +22,8 @@ if (isset($_POST['signup-submit'])){
   }
  
   require './db.inc.php';
+
+  //Checking for existing user
   $sql = "SELECT uID FROM users WHERE uID=?";
   $stmt = mysqli_stmt_init($conn);
 
@@ -36,6 +39,7 @@ if (isset($_POST['signup-submit'])){
       header("Location: ../pages/public/signup.php?error=userTaken"."&uname=".$uname."&uemail=".$email);
       exit();   
     } else {
+      //Inserting into the database
       $sql = "INSERT INTO users (uname, email, upass) VALUES (?,?,?)";
       $stmt = mysqli_stmt_init($conn);
 
