@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <label for="exampleInputPassword1">User Password</label>
                     <input type="password" name="upass" class="form-control" 
-                        id="exampleInputPassword1" placeholder="Password">
+                        id="upass" placeholder="Password">
                 </div>
                 <button type="submit" name="login-submit" class="btn btn-primary">Login</button>
             </form>

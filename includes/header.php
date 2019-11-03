@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -50,25 +54,27 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
-
-                    <!-- Should only be displayed if a member of the site -->
+                    
+                    <?php
+                    
+                      if(isset($_SESSION['uID'])){
+                        echo '<li class="nav-item">
+                                  <a class="nav-link" href="#">Cart
+                                    <img src="./img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
+                                  </a>
+                              </li>';
+                      }
+                    ?>
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Cart
-                            <img src="./img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
-                        </a>
+                    <?php
+                      if(isset($_SESSION['uID'])){
+                        echo '<a class="nav-link" href="../../includes/logout.inc.php">Logout</a>';
+                      } else {
+                        echo '<a class="nav-link" href="./pages/public/login.php">Login</a>';
+                      }
+                    ?>
                     </li>
-
-                    <!-- If logged out display this -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="./pages/public/login.php">Login</a>
-                    </li>
-
-                    <!-- If logged out display this -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="./pages/public/logout.php">Logout</a>
-                    </li>
-
                 </ul>
             </div>
         </nav>
