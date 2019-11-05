@@ -7,7 +7,7 @@ USE `ETWorld`;
 # Dump of table SUPPLIER
 # ------------------------------------------------------------
 
-CREATE TABLE `testapp`.`SUPPLIER`(
+CREATE TABLE `SUPPLIER`(
 `SupplierID`int(5) NOT NULL,
 `SupplierAddress` varchar(30) DEFAULT NULL,
 `UnitPrice` float(25,5) DEFAULT NULL,
@@ -223,8 +223,60 @@ VALUES
 (98545,45312,"Supplier","BASELTD","something" ),
 ();
 
-DROP TABLE IF EXISTS `BankAccounts`
+DROP TABLE IF EXISTS `BankAccount`;
 
+CREATE TABLE `BankAccount`(
+`AccountID` int(12) DEFAULT NULL,
+`BankAccountID` int(10) NOT NULL,
+`CardNUmber` int(16) DEFAULT NULL, 
+`CVC` int(3) DEFAULT NULL, 
+`AcountNUmber` int(10) DEFAULT NULL,
+`SortCode` int(6) DEFAULT NULL,
+`ExpiryDate` int(8) DEFAULT NULL,
+`FullName` varchar(25) DEFAULT NULL,
+`CardType` varchar(15) DEFAULT NULL,
+KEY `fk_Account_BankAccount` (`AccountID`),
+CONSTRAINT `fk_Account_BankAccount` FOREIGN KEY (`AccountID`) REFERENCES `Account` (`AccountID`) ON DELETE SET NULL ON UPDATE CASCADE,
+
+PRIMARY KEY(`BankAccount`)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+LOCK TABLES `BankAccount` WRITE;
+
+INSERT INTO `BankACcount` (`AccountID` , `BankAccountID`,`CardNUmber`,`CVC`,`AcountNUmber`,`SortCode`,`ExpiryDate`,`FullName`,`CardType`)
+VALUES
+(45451,4646,8888557457,325,125478,215478,1025, "Johny Bravo","Visa"),
+(45981,4746,5666557457,325,125478,215478,1025, "Johny Mckenna ","Visa");
+
+
+DROP TABLE IF EXISTS `Staff`;
+
+
+CREATE TABLE `Staff`(
+`BranchID` varchar(15) DEFAULT NULL, 
+`AccountID` int(12) DEFAULT NULL, 
+`StaffID` varchar(10) NOT NULL, 
+`FullName` varchar(40) NOT NULL, 
+`Salary` integer(9) DEFAULT NULL,
+`Role` varchar(15) DEFAULT NULL,
+`Address` varchar(15) DEFAULT NULL,
+`Phone` integer(11) DEFAULT NULL,
+
+KEY `fk_Account_Staff` (`AccountID`),
+CONSTRAINT `fk_Account_Staff` FOREIGN KEY (`AccountID`) REFERENCES `Account` (`AccountID`) ON DELETE SET NULL ON UPDATE CASCADE,
+KEY `fk_BRANCH_Staff` (`BranchID`),
+CONSTRAINT `fk_BRANCH_Staff` FOREIGN KEY (`BranchID`) REFERENCES `BRANCH` (`BranchID`) ON DELETE SET NULL ON UPDATE CASCADE,
+PRIMARY KEY(`StaffID`)
+
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `Staff` WRITE; 
+
+INSERT INTO `Staff` (`BranchID`, `AccountID`, `StaffID`,`FullName`,`Salary`, `Role`,`Address`,`Phone`)
+VALUES 
+(),
+();
 
 
 
