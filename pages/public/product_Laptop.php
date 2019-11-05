@@ -1,9 +1,8 @@
 <?php include "../../includes/header.php" ?>
-
+<!--- Put php code here to check if login is admin then add button in order to insert products --->
 <div class="jumbotron">
     <div class="row">
-        <!--<div class="col"></div>
-        <div class="col-sm"> -->
+        
             <form action="../../includes/product_Laptop.inc.php" method="post">
                 <div class="container">
                     <div class="row">
@@ -49,6 +48,6 @@
             </form>
         </div>
         <div class="col"></div>
-        
+        ^
     </div>
 </div>
