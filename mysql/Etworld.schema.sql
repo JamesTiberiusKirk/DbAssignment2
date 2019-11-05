@@ -8,15 +8,15 @@ USE `ETWorld`;
 # ------------------------------------------------------------
 
 CREATE TABLE `SUPPLIER`(
-`SupplierID`int(5) NOT NULL,
+`SupplierID`int(5) NOT NULL AUTO_INCREMENT,
 `SupplierAddress` varchar(30) DEFAULT NULL,
 `UnitPrice` float(25,5) DEFAULT NULL,
 PRIMARY KEY(`SupplierID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `testapp`.`SUPPLIER` WRITE;
+LOCK TABLES `SUPPLIER` WRITE;
 
-INSERT INTO `testapp`.`SUPPLIER`(`SupplierID`,`SupplierAddress`,`UnitPrice`)
+INSERT INTO `SUPPLIER`(`SupplierID`,`SupplierAddress`,`UnitPrice`)
 VALUES
 (12874,'DundeeStock',5784.36),
 (45131,'DundeeStock',78451.5),
@@ -125,7 +125,7 @@ DROP TABLE IF EXISTS `BRANCH`;
 
 CREATE TABLE `BRANCH` (
   `SupplierID` int(5) DEFAULT NULL ,
-  `BranchID` varchar(15) NOT NULL,  
+  `BranchID` varchar(15) DEFAULT 'Branch' AUTO_INCREMENT ,  
   `BranchType` varchar(10) NOT NULL,
   `BranchAddress` varchar(30) DEFAULT NULL,
   `ContactNumber` varchar(11)DEFAULT NULL,
@@ -150,7 +150,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `PRODUCT`;
 CREATE TABLE `PRODUCT`(
-`ProductID`int(12) NOT NULL,
+`ProductID`int(12) NOT NULL AUTO_INCREMENT,
 `Name` varchar(20) DEFAULT NULL,
 `Type` varchar(20)DEFAULT NULL,
 `CurrentPrice` int(10) DEFAULT NULL,
@@ -204,7 +204,7 @@ DROP TABLE IF EXISTS `Account`;
 
 CREATE TABLE `Account`(
 `CustomerID` int(10) DEFAULT NULL,
-`AccountID` int(12) NOT NULL,
+`AccountID` int(12) NOT NULL AUTO_INCREMENT,
 `AccountType` varchar(10) DEFAULT NULL, 
 `Username` varchar(15) DEFAULT NULL, 
 `Password` varchar(25) DEFAULT NULL, 
@@ -254,9 +254,9 @@ DROP TABLE IF EXISTS `Staff`;
 
 
 CREATE TABLE `Staff`(
-`BranchID` varchar(15) DEFAULT NULL, 
+`BranchID` varchar(15) DEFAULT 'Branch' AUTO_INCREMENT, 
 `AccountID` int(12) DEFAULT NULL, 
-`StaffID` varchar(10) NOT NULL, 
+`StaffID` varchar(10) DEFAULT 'STAFF' AUTO_INCREMENT, 
 `FullName` varchar(40) NOT NULL, 
 `Salary` integer(9) DEFAULT NULL,
 `Role` varchar(15) DEFAULT NULL,
@@ -275,7 +275,32 @@ LOCK TABLES `Staff` WRITE;
 
 INSERT INTO `Staff` (`BranchID`, `AccountID`, `StaffID`,`FullName`,`Salary`, `Role`,`Address`,`Phone`)
 VALUES 
-(),
+("",3232,"","",32223,"","",08854574),
+("",3232,"","",32223,"","",08854574);
+
+DROP TABLE IF EXISTS `Payroll`; 
+
+CREATE TABLE `Payrol`(
+`StaffID` varchar(10) DEFAULT NULL, 
+`FullName` varchar(40) DEFAULT NULL,
+`PayrollID` integer(12) NOT NULL AUTO_INCREMENT, 
+`Deductions` varchar(25) DEFAULT NULL, 
+`GrossPay` float(10) DEFAULT NULL, 
+`NetPay` float(10) DEFAULT NULL, 
+`Ni` varchar(10) DEFAULT NULL,
+
+KEY `fk_Staff_Payroll` (`StaffID`),
+CONSTRAINT `fk_Staff_Payroll` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`AccountID`) ON DELETE SET NULL ON UPDATE CASCADE,
+PRIMARY KEY(`PayrollID`)
+
+);
+
+LOCK TABLES `Payroll` WRITE;
+
+
+INSERT INTO `Payroll`(`StaffID`,`FullName`,`PayrollID`,`Deductions`,`GrossPay`,`NetPay`,`Ni`)
+VALUES
+("Staff1","Simon STill",0,"-something","Some ammount wihtout taxes","After taxes", "SB6548746D"),
 ();
 
 
