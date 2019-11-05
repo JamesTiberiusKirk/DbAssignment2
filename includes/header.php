@@ -19,6 +19,7 @@
 <body class="bg-secondary">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <img src="Logo.png" alt="test" style="width:80px;height:70px;">
             <a class="navbar-brand nav-link" href="../../index.php">ETWORLD</a>
 
 
