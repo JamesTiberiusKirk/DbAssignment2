@@ -23,7 +23,7 @@ if(isset($_POST['login-submit'])){
       if($row){
         
         $hashedpwd = $row['upass'];
-        if (!$hashedpwd === shell_exec('./bin/sha '.$upass)){
+        if (!password_verify($upass, $hashedpwd)){
           header('Location: ../pages/public/login.php?error=WrongPass&uname='.$pcheck);
           exit();
         } else {

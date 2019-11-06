@@ -47,7 +47,7 @@ if (isset($_POST['signup-submit'])){
         header("Location: ../pages/public/signup.php?error=sqlError"."&uname=".$uname."&uemail=".$email);
         exit();   
       } else {
-        $hashedpwd = shell_exec('./bin/sha '.$upass); //this uses sha256 to hash it
+        $hashedpwd = password_hash($upass, PASSWORD_BCRYPT); //this uses bcrypt to hash it
         mysqli_stmt_bind_param($stmt,"sss",$uname,$email,$hashedpwd);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_store_result($stmt);
