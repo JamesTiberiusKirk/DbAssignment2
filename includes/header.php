@@ -33,7 +33,7 @@ session_start();
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
 
-                        <a class="nav-link" href="../../index.php">Home</a>
+                        <a class="nav-link" href="/index.php">Home</a>
 
                     </li>
                     <li class="nav-item">
@@ -59,7 +59,7 @@ session_start();
                     if (isset($_SESSION['uID'])) {
                         echo '<li class="nav-item">
                                   <a class="nav-link" href="#">Cart
-                                    <img src="./img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
+                                    <img src="/img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
                                   </a>
                               </li>';
                     }
@@ -77,13 +77,13 @@ session_start();
                     
                         <?php
                         if (isset($_SESSION['uID'])) {
-                            include_once("/includes/db.inc.php");
+                            include_once($_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php');
 
                             $role_sql = "SELECT uID FROM users WHERE uID=? AND role = 'admin' ";
                             $stmt = mysqli_stmt_init($conn);
 
                             if (!mysqli_stmt_prepare($stmt, $role_sql)) {
-                                header("Location: /pages/public/signup.php?error=sqlError" . "&uname=" . $uname . "&uemail=" . $email);
+                                header('Location: /pages/public/signup.php?error=sqlError'.'&uname='.$uname.'&uemail='. $email);
                                 exit();
                             } else {
                                 mysqli_stmt_bind_param($stmt, "s", $_SESSION['uID']);

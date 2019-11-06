@@ -1,4 +1,4 @@
-<?php include "/includes/header.php" ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
 
 <?php include "/includes/db.inc.php" ?>
 
@@ -41,4 +41,4 @@
     </table>
 </div>
 
-<?php include "/includes/footer.php" ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php' ?>
