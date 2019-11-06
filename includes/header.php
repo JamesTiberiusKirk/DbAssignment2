@@ -12,8 +12,7 @@ session_start();
 
     <link rel="stylesheet" href="css/main.css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -54,27 +53,52 @@ session_start();
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
-                    
+
                     <?php
-                    
-                      if(isset($_SESSION['uID'])){
+
+                    if (isset($_SESSION['uID'])) {
                         echo '<li class="nav-item">
                                   <a class="nav-link" href="#">Cart
                                     <img src="./img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
                                   </a>
                               </li>';
-                      }
+                    }
                     ?>
-                    
+
                     <li class="nav-item">
-                    <?php
-                      if(isset($_SESSION['uID'])){
-                        echo '<a class="nav-link" href="../../includes/logout.inc.php">Logout</a>';
-                      } else {
-                        echo '<a class="nav-link" href="./pages/public/login.php">Login</a>';
-                      }
-                    ?>
+                        <?php
+                        if (isset($_SESSION['uID'])) {
+                            echo '<a class="nav-link" href="../../includes/logout.inc.php">Logout</a>';
+                        } else {
+                            echo '<a class="nav-link" href="./pages/public/login.php">Login</a>';
+                        }
+                        ?>
                     </li>
+                    
+                        <?php
+                        if (isset($_SESSION['uID'])) {
+                            include_once("../../includes/db.inc.php");
+
+                            $sql = "SELECT uID, role FROM users WHERE uID=? AND role = 'admin' ";
+                            $stmt = mysqli_stmt_init($conn);
+
+                            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                header("Location: ../pages/public/signup.php?error=sqlError" . "&uname=" . $uname . "&uemail=" . $email);
+                                exit();
+                            } else {
+                                mysqli_stmt_bind_param($stmt, "s", $_SESSION['uID']);
+                                mysqli_stmt_execute($stmt);
+                                mysqli_stmt_store_result($stmt);
+                                $resultCheck = mysqli_stmt_num_rows($stmt);
+                                if ($resultCheck == 1) {
+                                    echo '<li class="nav-item">';
+                                    echo '<a class="nav-link" href="../../pages/admin/index.php">Logout</a>';
+                                    echo '</li>';
+                                } 
+                            }
+                        }
+                        ?>
+                    
                 </ul>
             </div>
         </nav>
