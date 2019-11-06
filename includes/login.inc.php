@@ -23,8 +23,9 @@ if(isset($_POST['login-submit'])){
       if($row){
         
         $hashedpwd = $row['upass'];
-        if (!hash_equals($hashedpwd, crypt($upass, $hashedpwd))){
-          header('Location:  /pages/public/login.php?error=WrongPass&uname='.$pcheck);
+
+        if (!password_verify($upass, $hashedpwd)){
+          header('Location: ../pages/public/login.php?error=WrongPass&uname='.$pcheck);
           exit();
         } else {
           session_start();

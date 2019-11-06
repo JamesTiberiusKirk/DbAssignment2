@@ -1,10 +1,5 @@
 <?php
 
-$options = [
-  'salt' => 'aqwertyuiopasdfghjklzxc',
-  'cost' => 12
-];
-
 if (isset($_POST['signup-submit'])){
   $uname = $_POST['uname'];
   $email =  $_POST['uemail'];
@@ -52,15 +47,14 @@ if (isset($_POST['signup-submit'])){
         header('Location: /pages/public/signup.php?error=sqlError&uname='.$uname.'&uemail='.$email);
         exit();   
       } else {
-        $hashedpwd = crypt($upass, '$2a$07$ewmfioffdasd$'); //this uses bcrypt to hash it
-        mysqli_stmt_bind_param($stmt,'sss',$uname,$email,$hashedpwd);
+        $hashedpwd = password_hash($upass, PASSWORD_BCRYPT); //this uses bcrypt to hash it
+        mysqli_stmt_bind_param($stmt,"sss",$uname,$email,$hashedpwd);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_store_result($stmt);
         header('Location: /pages/public/signup.php?signup=success');
-        exit();          
-    	}
   	}
-	}
+  }
+}
   mysqli_stmt_close($stmt);
   mysqli_close($conn);
 } else {
