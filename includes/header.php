@@ -23,8 +23,7 @@ session_start();
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand nav-link" href="/index.php">ETWORLD</a>
-
-
+            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -79,26 +78,23 @@ session_start();
                         if (isset($_SESSION['uID'])) {
                             include_once($_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php');
 
-                            $role_sql = "SELECT uID FROM users WHERE uID=? AND role = 'admin' ";
+                            $role_sql = 'SELECT uID FROM users WHERE uID=? AND urole = "admin"';
                             $stmt = mysqli_stmt_init($conn);
 
-                            if (!mysqli_stmt_prepare($stmt, $role_sql)) {
-                                header('Location: /pages/public/signup.php?error=sqlError'.'&uname='.$uname.'&uemail='. $email);
-                                exit();
-                            } else {
+                            if (mysqli_stmt_prepare($stmt, $role_sql)) {
+                            
                                 mysqli_stmt_bind_param($stmt, "s", $_SESSION['uID']);
                                 mysqli_stmt_execute($stmt);
                                 mysqli_stmt_store_result($stmt);
                                 $role_res = mysqli_stmt_num_rows($stmt);
-                                if ($role_res == 1) {
+                                if ($role_res > 0) {
                                     echo '<li class="nav-item">';
-                                    echo '<a class="nav-link" href="/pages/admin/index.php">Logout</a>';
+                                    echo '<a class="nav-link" href="/pages/admin/index.php">Admin</a>';
                                     echo '</li>';
                                 } 
                             }
                         }
                         ?>
-                    
                 </ul>
             </div>
         </nav>
