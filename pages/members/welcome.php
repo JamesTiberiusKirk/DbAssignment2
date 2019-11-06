@@ -1,4 +1,13 @@
-<?php include "header.php" ?>
+<?php include "/includes/header.php" ?>
+<div class="jumbotron">
+    <?php
 
+    if (!isset($_SESSION['uID'])) {
+        Location('/index.php');
+        exit();
+    }
 
-<?php include "footer.php" ?>
+    echo 'Welcome member';
+    ?>
+</div>
+<?php include "/includes/footer.php" ?>

@@ -1,6 +1,6 @@
-<?php include "../../includes/header.php" ?>
+<?php include "/includes/header.php" ?>
 
-<?php include "../../includes/db.inc.php" ?>
+<?php include "/includes/db.inc.php" ?>
 
 <div class="jumbotron">
     <h1>Users Table</h1>
@@ -41,4 +41,4 @@
     </table>
 </div>
 
-<?php include "../../includes/footer.php" ?>
+<?php include "/includes/footer.php" ?>

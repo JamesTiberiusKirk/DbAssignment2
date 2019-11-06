@@ -1,10 +1,10 @@
-<?php include "../../includes/header.php" ?>
+<?php include "/includes/header.php" ?>
 
 <div class="jumbotron">
     <div class="row">
         <div class="col"></div>
         <div class="col-sm">
-            <form action="../../includes/signup.inc.php" method="post">
+            <form action="/includes/signup.inc.php" method="post">
                 <h1>Sign up</h1>
                 <div class="form-group">
                     <label for="uname">User Name</label>
@@ -35,4 +35,4 @@
     </div>
 </div>
 
-<?php include "../../includes/footer.php" ?>
+<?php include "/includes/footer.php" ?>
