@@ -8,11 +8,11 @@ $options = [
 if (isset($_POST['signup-submit'])){
   $uname = $_POST['uname'];
   $email =  $_POST['uemail'];
-  $password = $_POST['upass'];
-  $password_repeat = $_POST['repeatupass'];
+  $upass = $_POST['upass'];
+  $upass_repeat = $_POST['repeatupass'];
 
   //Validation
-  if(empty($uname) || empty($email) ||  empty($password) || empty($password_repeat)){
+  if(empty($uname) || empty($email) ||  empty($upass) || empty($upass_repeat)){
     header("Location: ../pages/public/signup.php?error=emptyFileds&uname=".$uname."&uemail=".$email);
     exit();
   } else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -21,7 +21,7 @@ if (isset($_POST['signup-submit'])){
   } else if(!preg_match("/^[a-zA-Z0-9]*$/", $uname)){
     header("Location: ../pages/public/signup.php?error=invalidUsername&uemail=".$email);
     exit();
-  } else if($password !== $password_repeat){
+  } else if($upass !== $upass_repeat){
     header("Location: ../pages/public/signup.php?error=invalidUsername"."&uname=".$uname."&uemail=".$email);
     exit();
   }
@@ -52,7 +52,7 @@ if (isset($_POST['signup-submit'])){
         header("Location: ../pages/public/signup.php?error=sqlError"."&uname=".$uname."&uemail=".$email);
         exit();   
       } else {
-        $hashedpwd = crypt($password, '$2a$07$ewmfioffdasd$'); //this uses bcrypt to hash it
+        $hashedpwd = crypt($upass, '$2a$07$ewmfioffdasd$'); //this uses bcrypt to hash it
         mysqli_stmt_bind_param($stmt,"sss",$uname,$email,$hashedpwd);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_store_result($stmt);

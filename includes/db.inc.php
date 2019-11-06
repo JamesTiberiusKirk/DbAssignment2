@@ -1,8 +1,8 @@
 <?php
-$servername = "mariadb";
-$username = "root";
-$password = "rootpwd";
-$dbName = "testapp";
+$servername_db = "mariadb";
+$username_db = "root";
+$password_db = "rootpwd";
+$name_db = "testapp";
 
 //for the uni database
 //$servername = "";
@@ -12,7 +12,7 @@ $dbName = "testapp";
 
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbName);
+$conn = new mysqli($servername_db, $username_db, $password_db, $name_db);
 
 // Check connection
 if ($conn->connect_error) {
