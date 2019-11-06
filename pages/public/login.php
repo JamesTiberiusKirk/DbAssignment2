@@ -1,10 +1,10 @@
-<?php include "../../includes/header.php" ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
 
 <div class="jumbotron">
     <div class="row">
         <div class="col"></div>
         <div class="col-sm">
-            <form action="../../includes/login.inc.php" method="post">
+            <form action="/includes/login.inc.php" method="post">
                 <h1>Log in</h1>
                 <div class="form-group">
                     <label for="uname">User Name</label>
@@ -27,4 +27,4 @@
     </div>
 </div>
 
-<?php include "../../includes/footer.php" ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php' ?>

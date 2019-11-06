@@ -1,10 +1,10 @@
-<?php include "../../includes/header.php" ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
 
 <div class="jumbotron">
     <div class="row">
         <!--<div class="col"></div>
         <div class="col-sm"> -->
-            <form action="../../includes/product_Laptop.inc.php" method="post">
+            <form action="/includes/product_Laptop.inc.php" method="post">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
@@ -52,3 +52,5 @@
         
     </div>
 </div>
+
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php' ?>
