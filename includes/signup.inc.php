@@ -22,7 +22,6 @@ if (isset($_POST['signup-submit'])){
   }
  
   require $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php';
-
   //Checking for existing user
   $sql = 'SELECT uID FROM users WHERE uID=?';
   $stmt = mysqli_stmt_init($conn);
