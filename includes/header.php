@@ -92,7 +92,7 @@ session_start();
                                 $role_res = mysqli_stmt_num_rows($stmt);
                                 if ($role_res == 1) {
                                     echo '<li class="nav-item">';
-                                    echo '<a class="nav-link" href="/pages/admin/users.php">Admin</a>';
+                                    echo '<a class="nav-link" href="/pages/admin/index.php">Admin</a>';
                                     echo '</li>';
                                 }
                             }

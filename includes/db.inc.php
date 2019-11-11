@@ -2,7 +2,7 @@
 $servername_db = "mariadb";
 $username_db = "root";
 $password_db = "rootpwd";
-$name_db = "testapp";
+$name_db = "ETWorld";
 
 //for the uni database
 //$servername = "silva.computing.dundee.ac.uk";
