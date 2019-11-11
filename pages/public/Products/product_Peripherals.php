@@ -1,4 +1,4 @@
-<?php include "../../includes/header.php" ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
 <!--- Put php code here to check if login is admin then add button in order to insert products --->
 <div class="jumbotron">
     <div class="row">
@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="card">
-                                <img class="card-img-top" src="test.jpg" alt="Card image cap">
+                                <img class="card-img-top" src="../../../img/products/test.jpg" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">
                                         <a href="#" class="text-dark">SpaceWare</a>
@@ -27,7 +27,7 @@
                         
                         <div class="col-md-3">
                             <div class="card">
-                                <img class="card-img-top" src="test.jpg" alt="Card image cap">
+                                <img class="card-img-top" src="../../../img/products/test.jpg" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">
                                         <a href="#" class="text-dark">SpaceWare</a>
@@ -49,3 +49,5 @@
         <div class="col"></div>
     </div>
 </div>
+
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php' ?>

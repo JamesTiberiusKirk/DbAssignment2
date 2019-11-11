@@ -46,10 +46,10 @@ session_start();
                             </a>
                             <div class="dropdown-menu">
 
-                                <a class="dropdown-item" href="/pages/public/product_Desktops.php">Desktops</a>
-                                <a class="dropdown-item" href="/pages/public/product_Laptops.php.php">Laptops</a>
+                                <a class="dropdown-item" href="/pages/public/products/product_Desktops.php">Desktops</a>
+                                <a class="dropdown-item" href="/pages/public/products/product_Laptops.php.php">Laptops</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="./pages/public/product_Peripherals.php">Peripherals</a>
+                                <a class="dropdown-item" href="./pages/public/products/product_Peripherals.php">Peripherals</a>
                             </div>
                         </li>
                         <li class="nav-item">
