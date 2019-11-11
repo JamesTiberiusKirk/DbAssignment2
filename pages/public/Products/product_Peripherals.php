@@ -1,4 +1,5 @@
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
+<?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
 <!--- Put php code here to check if login is admin then add button in order to insert products --->
 
 
@@ -10,7 +11,12 @@
                 <div class="container">
                     <div class="row">
                         <?php
-                        $sql = "SELECT * FROM testapp.users WHERE uname='$table_inp'";
+                        $product = "SELECT * FROM PRODUCT";
+                        $productResult = mysqli_query($conn, $product);
+                        
+                        while($row = $productResult->fetch_assoc()){
+                            echo $row['ProductID'];
+                        }
                         ?>
                         <!---- ---->
                         <div class="col-md-3">
