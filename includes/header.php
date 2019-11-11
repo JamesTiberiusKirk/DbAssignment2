@@ -16,6 +16,8 @@
     </head>
 </head>
 
+
+
 <body class="bg-secondary">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -42,10 +44,10 @@
                             Products
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Desktops</a>
-                            <a class="dropdown-item" href="./pages/public/product_Laptop.php">Laptops</a>
+                            <a class="dropdown-item" href="./pages/public/product_Desktops.php">Desktops</a>
+                            <a class="dropdown-item" href="./pages/public/product_Laptops.php">Laptops</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Peripherals</a>
+                            <a class="dropdown-item" href="./pages/public/product_Peripherals.php">Peripherals</a>
                         </div>
                     </li>
                     <li class="nav-item">

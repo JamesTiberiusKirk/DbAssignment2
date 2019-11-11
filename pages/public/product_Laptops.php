@@ -3,7 +3,7 @@
 <div class="jumbotron">
     <div class="row">
         
-            <form action="../../includes/product_Laptop.inc.php" method="post">
+            <form action="../../includes/product_Laptops.inc.php" method="post">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
