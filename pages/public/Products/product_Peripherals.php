@@ -1,11 +1,18 @@
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
 <!--- Put php code here to check if login is admin then add button in order to insert products --->
+
+
+
 <div class="jumbotron">
     <div class="row">
         
             <form action="#" method="post">
                 <div class="container">
                     <div class="row">
+                        <?php
+                        $sql = "SELECT * FROM testapp.users WHERE uname='$table_inp'";
+                        ?>
+                        <!---- ---->
                         <div class="col-md-3">
                             <div class="card">
                                 <img class="card-img-top" src="../../../img/products/test.jpg" alt="Card image cap">
@@ -24,7 +31,9 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        <!---  --->
+
+
                         <div class="col-md-3">
                             <div class="card">
                                 <img class="card-img-top" src="../../../img/products/test.jpg" alt="Card image cap">
@@ -43,6 +52,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!--- ---->
                 </div>
             </form>
         </div>
