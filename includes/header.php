@@ -13,14 +13,21 @@ session_start();
     <link rel="stylesheet" href="css/main.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    </head>
 </head>
 
 <body class="bg-secondary">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <div class="container">
+        <!-- <script>
+            var root = document.location.hostname;
+            function overwite_db(editableObj, col, id) {
+                $.ajax({
+                    url: root + ""
+                    type: "POST"
+                });
+            } 
+        
+        </script> -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand nav-link" href="/index.php">ETWORLD</a>
             
@@ -72,8 +79,7 @@ session_start();
                             echo '<a class="nav-link" href="/pages/public/login.php">Login</a>';
                         }
                         ?>
-                    </li>
-                    
+                    </li>    
                         <?php
                         if (isset($_SESSION['uID'])) {
                             include_once($_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php');
