@@ -2,8 +2,7 @@
 <!--- Put php code here to check if login is admin then add button in order to insert products --->
 <div class="jumbotron">
     <div class="row">
-        
-            <form action="../../includes/product_Peripherals.inc.php" method="post">
+            <form action="#" method="post">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
@@ -24,7 +23,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="col-md-3">
                             <div class="card">
                                 <img class="card-img-top" src="test.jpg" alt="Card image cap">
@@ -44,10 +42,8 @@
                             </div>
                         </div>
                 </div>
-                
             </form>
         </div>
         <div class="col"></div>
-        ^
     </div>
 </div>
