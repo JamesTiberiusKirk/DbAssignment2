@@ -24,7 +24,7 @@
         
         $uID = $_SESSION['uID'];
         if (!empty($new_role_inp)) {
-            $sql = "UPDATE $name_db.users SET urole='$new_role_inp' WHERE uID='$uID'";
+            $sql = "UPDATE users SET urole='$new_role_inp' WHERE uID='$uID'";
             $result = $conn->query($sql);
             if ($result === TRUE) {
                 echo $new_role_inp;
