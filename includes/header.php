@@ -24,14 +24,8 @@ session_start();
 <body class="bg-secondary">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <<<<<<< HEAD <img src="Logo.png" alt="test" style="width:80px;height:70px;">
-                <a class="navbar-brand nav-link" href="../../index.php">ETWORLD</a>
-
-
-                =======
                 <a class="navbar-brand nav-link" href="/index.php">ETWORLD</a>
 
-                >>>>>>> master
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
