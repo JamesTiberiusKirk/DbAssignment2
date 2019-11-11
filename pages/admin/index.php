@@ -1,0 +1,10 @@
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php' ?>
+
+<div class="jumbotron">
+    <h1>Admin Console</h1>
+    <form action="/pages/admin/users.php">
+        <button type="submit" class="btn btn-primary">Users</button>
+    </form>
+</div>
+
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php' ?>
