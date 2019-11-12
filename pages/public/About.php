@@ -1,5 +1,5 @@
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/Projects/includes/header.php' ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
 <div class="jumbotron">
 	<?php
 	echo "<p> 
