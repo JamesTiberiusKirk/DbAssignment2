@@ -21,8 +21,8 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand nav-link" href="/index.php">ETWORLD</a>
 
+                <a class="navbar-brand nav-link" href="/index.php">ETWORLD<img src="/img/logo/Logo.png" alt="logo" width="80" height="80"></a>           
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -30,9 +30,7 @@ session_start();
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-
                         <a class="nav-link" href="/index.php">Home</a>
-
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/pages/public/about.php">About</a>
@@ -43,10 +41,10 @@ session_start();
                         </a>
                         <div class="dropdown-menu">
 
-                            <a class="dropdown-item" href="/pages/public/product_Desktops.php">Desktops</a>
-                            <a class="dropdown-item" href="/pages/public/product_Laptops.php.php">Laptops</a>
+                            <a class="dropdown-item" href="/pages/public/Products/product_Desktops.php">Desktops</a>
+                            <a class="dropdown-item" href="/pages/public/Products/product_Laptops.php">Laptops</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="./pages/public/product_Peripherals.php">Peripherals</a>
+                            <a class="dropdown-item" href=" /pages/public/Products/product_Peripherals.php">Peripherals</a>
                         </div>
                     </li>
                     <li class="nav-item">
