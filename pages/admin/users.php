@@ -17,7 +17,7 @@
         $table_inp = $_POST['table_inp'];
         $search_btn = $_POST['search_btn'];
         $show_table = $_POST['show_tbl'];
-        $sql = "SELECT * FROM testapp.users WHERE uname='$table_inp'";
+        $sql = "SELECT * FROM users WHERE uname='$table_inp'";
         // when a search is made show only 1 result
         if (isset($search_btn)) {
             $search_result = mysqli_query($conn, $sql);
@@ -31,13 +31,13 @@
         }
         else {
             // when the page first loads show full table
-            $sql = "SELECT * FROM testapp.users";
+            $sql = "SELECT * FROM users";
             $search_result = mysqli_query($conn, $sql);
         }
         
         // when Show Table button is pressed show full table
         if (isset($show_table)) {
-            $sql = "SELECT * FROM testapp.users";
+            $sql = "SELECT * FROM users";
             $search_result = mysqli_query($conn, $sql);
         }
 

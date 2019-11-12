@@ -100,8 +100,6 @@ PRIMARY KEY(`ProductID`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-
-
 DROP TABLE IF EXISTS `BankAccount`;
 CREATE TABLE `BankAccount`(
 `AccountID` int(12) DEFAULT NULL,
