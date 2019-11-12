@@ -74,12 +74,12 @@ session_start();
                         <?php
                         if (isset($_SESSION['uID'])) {
                             include_once($_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php');
-                            $role_sql = 'SELECT uID FROM users WHERE uID=? AND urole = "admin"';
+                            $role_sql = 'SELECT uID FROM users WHERE uID=? AND urole =?';
                             $stmt = mysqli_stmt_init($conn);
 
                             if (mysqli_stmt_prepare($stmt, $role_sql)) {
                             
-                                mysqli_stmt_bind_param($stmt, "s", $_SESSION['uID']);
+                                mysqli_stmt_bind_param($stmt, "ss", $_SESSION['uID']);
                                 mysqli_stmt_execute($stmt);
                                 mysqli_stmt_store_result($stmt);
                                 $role_res = mysqli_stmt_num_rows($stmt);
@@ -90,7 +90,13 @@ session_start();
                                 } 
                             }
                         }
+
+                        if (isset($_SESSION['uID'])) {
+                            include once($_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php');
+
+                        }
                         ?>
+
                 </ul>
             </div>
         </nav>
