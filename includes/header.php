@@ -18,25 +18,6 @@ session_start();
 <body class="bg-secondary">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <div class="container">
-        <script>
-            var root = document.location.hostname;
-            function overwrite_db(editableObj, col, id) {
-                $.ajax({
-                    url: root + "pages/admin/update.php",
-                    type: "POST",
-                    datatype: "json",
-                    data:'column='+column+'&value'+editableObj.innerHTML+'&uID='id,
-                    success:function(response) {
-                        $(editableObj).attr('data-old_value', editableObj.innerHTML);   
-                    }
-                },
-                error: function() {
-                    console.log("err");
-                }
-            });
-            } 
-        
-        </script>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand nav-link" href="/index.php">ETWORLD</a>
             

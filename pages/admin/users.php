@@ -4,6 +4,25 @@
 
 <div class="jumbotron">
     <h1>Users Table</h1>
+    <!-- <script>
+            var root = document.location.hostname;
+            function overwrite_db(editableObj, col, id) {
+                $.ajax({
+                    url: root + "pages/admin/update.php",
+                    type: "POST",
+                    datatype: "json",
+                    data:'column='+column+'&value'+editableObj.innerHTML+'&uID='id,
+                    success:function(response) {
+                        $(editableObj).attr('data-old_value', editableObj.innerHTML);   
+                    }
+                },
+                error: function() {
+                    console.log("err");
+                }
+            });
+            } 
+        ignore for now
+    </script> -->
     
     <form class="input-group mb-3" method="post">
         <input class="form-control" name="table_inp" type="text" placeholder="Username" method="post">
@@ -46,10 +65,10 @@
                 // output data of each row
                     while ($row = $search_result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<th scope='col'>" . $row["uID"]   . "</td>";
-                        echo "<td>" . $row["uname"] . "</td>";
+                        echo '<th scope="col">' . $row["uID"]   . "</td>";
+                        echo '<td>' . $row["uname"] . "</td>";
                         echo "<td>" . $row["email"] . "</td>";
-                        echo "<td>" . $row["urole"] . "</td>";
+                        echo '<td>' . $row["urole"] . "</td>";
                         if ($search_result->num_rows == 1) {
                             echo "<form action='edit.php' class='input-group mb-3' method='post'>";
                             echo "<td> <button class='btn btn-outline-secondary' name='edit_btn'>Edit</button> </td>";
@@ -77,7 +96,7 @@
         </thead>
         <tbody>
             <?php
-            display_table('false', $search_result);
+            display_table('true', $search_result);
             ?>
         </tbody>
     </table>
