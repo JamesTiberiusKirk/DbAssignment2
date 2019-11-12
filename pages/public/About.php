@@ -12,4 +12,4 @@
 	?>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/Projects/includes/footer.php' ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php' ?>
