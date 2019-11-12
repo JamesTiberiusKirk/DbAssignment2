@@ -74,15 +74,17 @@
                             echo "<td> <button class='btn btn-outline-secondary' name='edit_btn'>Edit</button> </td>";
                             echo "</form>";
                             session_start();
-                            $_SESSION['uname'] = $row['uname'];
-                            $_SESSION['urole'] = $row['urole'];
-                            $_SESSION['uID'] = $row['uID'];
+                            $_SESSION['s_uname'] = $row['uname'];
+                            $_SESSION['s_urole'] = $row['urole'];
+                            $_SESSION['s_uID'] = $row['uID'];
                         }
                         echo "</tr>";
                     }
                 } else {
                 echo "0 results";
                 }
+
+                //ob_end_flush();
         }
     ?>
     <table class="table">
@@ -97,6 +99,7 @@
         <tbody>
             <?php
             display_table('true', $search_result);
+            
             ?>
         </tbody>
     </table>

@@ -1,13 +1,12 @@
-<?php
-ob_start();
-?>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php'?>
 
 <?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
 
-
 <div class="jumbotron">
-    <h2>Editing User <?php echo $_SESSION['uname'];?></h2>
+    <?php
+    session_start();
+    ?>
+    <h2>Editing User <?php echo $_SESSION['s_uname'];?></h2>
 
     <!-- <form class="input-group mb-3" method="post">
         
@@ -34,7 +33,7 @@ ob_start();
     </table>
 
 
-    <?php 
+    <?php
         $submit_btn = $_POST['submit_btn'];
         $cancel_btn = $_POST['cancel_btn'];
         $new_role_inp = $_POST['new_role_inp'];
@@ -42,41 +41,51 @@ ob_start();
         $new_usrn_inp = $_POST['new_usrn_inp'];
         $new_email_inp = $_POST['new_email_inp'];
         
-        $uID = $_SESSION['uID'];
+        $s_uID = $_SESSION['s_uID'];
 
-        echo $uID;
+        echo $s_uID;
         
         if (isset($submit_btn)) {
             if (!empty($new_role_inp)) {
-                $sql = 'UPDATE testapp.users SET urole="$new_role_inp" WHERE uID="$uID"';
+                $sql = 'UPDATE testapp.users SET urole="$new_role_inp", uname="$new_usrn_inp", email="$new_email_inp" WHERE uID="$s_uID"';
                 $result = $conn->query($sql);
+                if ($result === TRUE) {
+                    echo "<br>Role successfully updated<br>";
+                }
             }
     
             if (!empty($new_id_inp)) {
-                $sql = 'UPDATE testapp.users SET uID="$new_id_inp" WHERE uID="$uID"';
+                $sql = 'UPDATE testapp.users SET uID="$new_id_inp" WHERE uID="$s_uID"';
                 $result = $conn->query($sql);
+                if ($result === TRUE) {
+                    echo "<br>ID successfully updated<br>";
+                }
             }
     
             if (!empty($new_usrn_inp)) {
-                $sql = 'UPDATE testapp.users SET uname="$new_usrn_inp" WHERE uID="$uID"';
+                $sql = 'UPDATE testapp.users SET uname="$new_usrn_inp" WHERE uID="$s_uID"';
                 $result = $conn->query($sql);
+                if ($result === TRUE) {
+                    echo "<br>Username successfully updated<br>";
+                }
+                
             }
     
             if (!empty($new_email_inp)) {
-                $sql = 'UPDATE testapp.users SET uemail="$new_email_inp" WHERE uID="$uID"';
+                $sql = 'UPDATE testapp.users SET email="$new_email_inp" WHERE uID="$s_uID"';
                 $result = $conn->query($sql);
+                if ($result === TRUE) {
+                    echo "<br>Email successfully updated<br>";
+                }
             }
-            header('Location:  /pages/admin/users.php');
+            //header('Location:  /pages/admin/users.php?&new_usr_inp='.$new_usrn_inp);
             exit();
         }
         else if (isset($cancel_btn)) {
-            header('Location:  /pages/admin/users.php');
+            //header('Location:  /pages/admin/users.php');
             exit();
         }
     ?>
 </div>
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php'?>
-<?php
-ob_end_flush();
-?>

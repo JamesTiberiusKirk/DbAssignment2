@@ -58,6 +58,7 @@ session_start();
                                     <img src="/img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
                                   </a>
                               </li>';
+
                     }
                     ?>
 
@@ -73,7 +74,6 @@ session_start();
                         <?php
                         if (isset($_SESSION['uID'])) {
                             include_once($_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php');
-
                             $role_sql = 'SELECT uID FROM users WHERE uID=? AND urole = "admin"';
                             $stmt = mysqli_stmt_init($conn);
 
