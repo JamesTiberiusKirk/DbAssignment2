@@ -17,15 +17,31 @@ PRIMARY KEY(`SupplierID`)
 
 
 
+DROP TABLE IF EXISTS `Account`; 
+
+CREATE TABLE `Account`(
+`AccountID` int(15) NOT NULL AUTO_INCREMENT,
+`AccountType` varchar(10) DEFAULT NULL, 
+`Username` varchar(15) DEFAULT NULL, 
+`Password` varchar(25) DEFAULT NULL, 
+PRIMARY KEY(`AccountID`)
+
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 DROP TABLE IF EXISTS `Customer`;
 
 CREATE TABLE `Customer` (
+  `AccountID` int(15) DEFAULT NULL, 
   `CustomerID` int(10) NOT NULL AUTO_INCREMENT,
   `CustomerFirstName` varchar(10) DEFAULT NULL,
   `CustomerLastName` varchar(10) DEFAULT NULL,
   `CustomerAddress` varchar(50) DEFAULT NULL,
   `Phone` varchar(12) DEFAULT NULL,
-  PRIMARY KEY (`CustomerID`)
+  PRIMARY KEY (`CustomerID`),
+  KEY `fk_Customer_Account` (`AccountID`),
+CONSTRAINT `fk_Customer_Account` FOREIGN KEY (`AccountID`) REFERENCES `Account` (`AccountID`) ON DELETE SET NULL ON UPDATE CASCADE
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -82,22 +98,6 @@ KEY `fk_Product_CustomerOrder` (`CustomerOrderID`),
 CONSTRAINT `fk_Product_CustomerOrder` FOREIGN KEY (`CustomerOrderID`) REFERENCES `CustomerOrder` (`CustomerOrderID`) ON DELETE SET NULL ON UPDATE CASCADE,
 PRIMARY KEY(`ProductID`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-DROP TABLE IF EXISTS `Account`; 
-
-CREATE TABLE `Account`(
-`CustomerID` int(12) DEFAULT NULL,
-`AccountID` int(15) NOT NULL AUTO_INCREMENT,
-`AccountType` varchar(10) DEFAULT NULL, 
-`Username` varchar(15) DEFAULT NULL, 
-`Password` varchar(25) DEFAULT NULL, 
-PRIMARY KEY(`AccountID`),
-KEY `fk_Account_Customer` (`CustomerID`),
-CONSTRAINT `fk_Account_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customer` (`CustomerID`) ON DELETE SET NULL ON UPDATE CASCADE
-
-)ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 
 DROP TABLE IF EXISTS `BankAccount`;
