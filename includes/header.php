@@ -13,15 +13,12 @@ session_start();
     <link rel="stylesheet" href="css/main.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    </head>
 </head>
 
 
 
 <body class="bg-secondary">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand nav-link" href="/index.php">ETWORLD</a>
@@ -64,23 +61,22 @@ session_start();
                                     <img src="/img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
                                   </a>
                               </li>';
-                        }
-                        ?>
 
-                        <li class="nav-item">
-                            <?php
-                            if (isset($_SESSION['uID'])) {
-                                echo '<a class="nav-link" href="/includes/logout.inc.php">Logout</a>';
-                            } else {
-                                echo '<a class="nav-link" href="/pages/public/login.php">Login</a>';
-                            }
-                            ?>
-                        </li>
+                    }
+                    ?>
 
+                    <li class="nav-item">
                         <?php
                         if (isset($_SESSION['uID'])) {
-                            include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
-
+                            echo '<a class="nav-link" href="/includes/logout.inc.php">Logout</a>';
+                        } else {
+                            echo '<a class="nav-link" href="/pages/public/login.php">Login</a>';
+                        }
+                        ?>
+                    </li>    
+                        <?php
+                        if (isset($_SESSION['uID'])) {
+                            include_once($_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php');
                             $role_sql = 'SELECT uID FROM users WHERE uID=? AND urole = "admin"';
                             $stmt = mysqli_stmt_init($conn);
 
@@ -101,3 +97,4 @@ session_start();
                     </ul>
                 </div>
         </nav>
+
