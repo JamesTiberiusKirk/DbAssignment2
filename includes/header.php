@@ -58,7 +58,7 @@ session_start();
 
                         <?php
 
-                        if (isset($_SESSION['uID'])) {
+                        if (isset($_SESSION['AccountID'])) {
                             echo '<li class="nav-item">
                                   <a class="nav-link" href="#">Cart
                                     <img src="/img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
@@ -69,7 +69,7 @@ session_start();
 
                         <li class="nav-item">
                             <?php
-                            if (isset($_SESSION['uID'])) {
+                            if (isset($_SESSION['AccountID'])) {
                                 echo '<a class="nav-link" href="/includes/logout.inc.php">Logout</a>';
                             } else {
                                 echo '<a class="nav-link" href="/pages/public/login.php">Login</a>';
@@ -78,15 +78,15 @@ session_start();
                         </li>
 
                         <?php
-                        if (isset($_SESSION['uID'])) {
+                        if (isset($_SESSION['AccountID'])) {
                             include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
 
-                            $role_sql = 'SELECT uID FROM users WHERE uID=? AND urole = "admin"';
+                            $role_sql = 'SELECT uID FROM Account WHERE AccountID=? AND AccountRole = "admin"';
                             $stmt = mysqli_stmt_init($conn);
 
                             if (mysqli_stmt_prepare($stmt, $role_sql)) {
 
-                                mysqli_stmt_bind_param($stmt, "s", $_SESSION['uID']);
+                                mysqli_stmt_bind_param($stmt, "s", $_SESSION['AccountID']);
                                 mysqli_stmt_execute($stmt);
                                 mysqli_stmt_store_result($stmt);
                                 $role_res = mysqli_stmt_num_rows($stmt);
