@@ -1,46 +1,57 @@
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
+<?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
 <!--- Put php code here to check if login is admin then add button in order to insert products --->
+
+
+
 <div class="jumbotron">
     <div class="row">
+        
             <form action="#" method="post">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <img class="card-img-top" src="../../../img/products/test.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <a href="#" class="text-dark">SpaceWare</a>
-                                    </h5>
-                               </div>
-                                <div class="card-footer">
-                                    <div class="badge badge-danger float-right">30%</div>
-                                    <div class="float-left">
-                                        <a href="#" class="text-danger">199 USD</a>
-                                       <br>
-                                       <small class="text-muted"><del>Stuff</del></small>
-                                   </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <img class="card-img-top" src="../../../img/products/test.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <a href="#" class="text-dark">SpaceWare</a>
-                                    </h5>
-                               </div>
-                                <div class="card-footer">
-                                    <div class="badge badge-danger float-right">30%</div>
-                                    <div class="float-left">
-                                        <a href="#" class="text-danger">199 USD</a>
-                                       <br>
-                                       <small class="text-muted"><del>Stuff</del></small>
-                                   </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php
+                            $count = 1;
+                            $sql = "SELECT * FROM testapp.products WHERE ProductID BETWEEN 10000 AND 19999";
+                            $result = $conn->query($sql);
+                            
+                            if ($result->num_rows > 0) {
+                                // output data of each row
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<div class="col-md-3">';
+                                    echo '<div class="card">';
+                                    echo '<img class="card-img-top" src="../../../img/products/test.jpg" alt="Card image cap">'; //Will take path of image per product
+                                    echo '<div class="card-body">';
+                                    echo '<h5 class="card-title">';
+                                    echo '<a href="#" class="text-dark">' . $row["Name"] . '</a>';
+                                    echo '</h5>';
+                                    echo '</div>';
+                                    echo '<div class="card-footer">';
+                                    echo '<div class="badge badge-secondary float-right">30%</div>';
+                                    echo '<div class="float-left">';
+                                    echo '<a href="#" class="text-danger">' . $row["CurrentPrice"] . '</a>';
+                                    echo '<medium class="text-muted"> £ </medium>';
+                                    echo '</div>';
+                                    echo '</div>';
+                                    echo '</div>';
+                                    echo '</div>';
+
+                                    if($count==4){
+                                        $count = 1;
+                                        echo '</div>';
+                                        echo '<br>' . '</br>';
+                                        echo '<div class="row">';
+                                    } else {
+                                        $count++;
+                                    }
+
+                                }
+                            } else {
+                                echo "0 results";
+                            }
+                            $conn->close();
+                        ?>
+                        
                 </div>
             </form>
         </div>

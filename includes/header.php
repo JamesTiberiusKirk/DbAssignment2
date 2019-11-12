@@ -24,7 +24,8 @@ session_start();
 <body class="bg-secondary">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand nav-link" href="/index.php">ETWORLD</a>
+                <a class="navbar-brand nav-link" href="/index.php">ETWORLD<img src="/img/logo/Logo.png" alt="logo" width="80" height="80"></a>
+                
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                     <span class="navbar-toggler-icon"></span>
@@ -47,7 +48,7 @@ session_start();
                             <div class="dropdown-menu">
 
                                 <a class="dropdown-item" href="/pages/public/Products/product_Desktops.php">Desktops</a>
-                                <a class="dropdown-item" href="/pages/public/Products/product_Laptops.php.php">Laptops</a>
+                                <a class="dropdown-item" href="/pages/public/Products/product_Laptops.php">Laptops</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href=" /pages/public/Products/product_Peripherals.php">Peripherals</a>
                             </div>
