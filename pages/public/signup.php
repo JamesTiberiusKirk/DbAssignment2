@@ -7,15 +7,17 @@
             <form action="/includes/signup.inc.php" method="post">
                 <h1>Sign up</h1>
                 <div class="form-group">
-                    <label for="uname">User Name</label>
+                    <label for="uname">UserName</label>
                     <input type="name" name="uname" class="form-control" id="uname" 
                         placeholder="Username">
-                </div>
-                <div class="form-group">
+                </div>                
+
+                <!-- <div class="form-group">
                     <label for="uemail">User Email</label>
                     <input type="email" name="uemail" class="form-control" id="uemail" 
                         placeholder="Email">
-                </div>
+                </div> -->
+
                 <div class="form-group">
                     <label for="upass">New User Password</label>
                     <input type="password" name="upass" class="form-control" 
