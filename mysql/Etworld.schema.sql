@@ -68,7 +68,7 @@ DROP TABLE IF EXISTS `Branch`;
 
 CREATE TABLE `Branch` (
   `SupplierID` int(5) DEFAULT NULL  ,
-  `BranchID` int(15) AUTO_INCREMENT NOT NULL ,  
+  `BranchID` int(15) NOT NULL AUTO_INCREMENT  ,  
   `BranchType` varchar(10) NOT NULL,
   `BranchAddress` varchar(30) DEFAULT NULL,
   `ContactNumber` varchar(11)DEFAULT NULL,
@@ -98,6 +98,8 @@ KEY `fk_Product_CustomerOrder` (`CustomerOrderID`),
 CONSTRAINT `fk_Product_CustomerOrder` FOREIGN KEY (`CustomerOrderID`) REFERENCES `CustomerOrder` (`CustomerOrderID`) ON DELETE SET NULL ON UPDATE CASCADE,
 PRIMARY KEY(`ProductID`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 
 
 DROP TABLE IF EXISTS `BankAccount`;
