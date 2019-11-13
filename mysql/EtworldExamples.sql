@@ -110,6 +110,7 @@ VALUES
 /*!40000 ALTER TABLE `Payroll` ENABLE KEYS */;
 UNLOCK TABLES;
 
+<<<<<<< HEAD
 DROP TABLE IF EXISTS `CustomerOrder`;
 
 CREATE TABLE `CustomerOrder` (
@@ -223,3 +224,5 @@ CONSTRAINT `fk_Payroll_Staff` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`Staff
 PRIMARY KEY(`PayrollID`)
 
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+=======
+>>>>>>> 02e13d53fdc2a9914887581c5e3a160041beb731
