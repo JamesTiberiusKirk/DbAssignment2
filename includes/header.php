@@ -61,10 +61,10 @@ session_start();
 
                         if (isset($_SESSION['uID'])) {
                             echo '<li class="nav-item">
-                                  <a class="nav-link" href="#">Cart
+                                    <a class="nav-link" href="#">Cart
                                     <img src="/img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
-                                  </a>
-                              </li>';
+                                    </a>
+                                    </li>';
                         }
                         ?>
 

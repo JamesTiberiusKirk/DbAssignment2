@@ -21,14 +21,12 @@
                             <th scope="col">CurrentPrice</th>
                             <th scope="col">StockQuantity</th>
                             <th scope="col"></th>
-
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                             $sql = "SELECT * FROM testapp.products WHERE ProductID";
                             $result = $conn->query($sql);
-
                             if($result->num_rows > 0){
                                 while($row = $result->fetch_assoc()){
                                     echo '<tr>';
