@@ -21,13 +21,9 @@ DROP TABLE IF EXISTS `Account`;
 
 CREATE TABLE `Account`(
 `AccountID` int(15) NOT NULL AUTO_INCREMENT,
-<<<<<<< HEAD
-`AccountType` varchar(10) DEFAULT NULL, 
-=======
 `AccountType` varchar(10) DEFAULT 'customer', 
->>>>>>> 02e13d53fdc2a9914887581c5e3a160041beb731
 `Username` varchar(15) DEFAULT NULL, 
-`Password` varchar(25) DEFAULT NULL, 
+`Password` varchar(255) DEFAULT NULL, 
 PRIMARY KEY(`AccountID`)
 
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -72,11 +68,7 @@ DROP TABLE IF EXISTS `Branch`;
 
 CREATE TABLE `Branch` (
   `SupplierID` int(5) DEFAULT NULL  ,
-<<<<<<< HEAD
-  `BranchID` int(15) NOT NULL AUTO_INCREMENT  ,  
-=======
   `BranchID` int(15) AUTO_INCREMENT NOT NULL ,  
->>>>>>> 02e13d53fdc2a9914887581c5e3a160041beb731
   `BranchType` varchar(10) NOT NULL,
   `BranchAddress` varchar(30) DEFAULT NULL,
   `ContactNumber` varchar(11)DEFAULT NULL,
@@ -107,11 +99,6 @@ CONSTRAINT `fk_Product_CustomerOrder` FOREIGN KEY (`CustomerOrderID`) REFERENCES
 PRIMARY KEY(`ProductID`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 02e13d53fdc2a9914887581c5e3a160041beb731
 
 DROP TABLE IF EXISTS `BankAccount`;
 CREATE TABLE `BankAccount`(
@@ -172,12 +159,8 @@ CONSTRAINT `fk_Payroll_Staff` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`Staff
 PRIMARY KEY(`PayrollID`)
 
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
-<<<<<<< HEAD
-=======
 
 
-
->>>>>>> 02e13d53fdc2a9914887581c5e3a160041beb731
 
 
 
