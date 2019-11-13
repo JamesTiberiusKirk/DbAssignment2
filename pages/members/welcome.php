@@ -2,7 +2,7 @@
 <div class="jumbotron">
     <?php
 
-    if (!isset($_SESSION['uID'])) {
+    if (!isset($_SESSION['AccountID'])) {
         Location('/index.php');
         exit();
     }
