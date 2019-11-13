@@ -15,7 +15,7 @@ CREATE TABLE `Supplier`(
 PRIMARY KEY(`SupplierID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+ALTER TABLE `Supplier` AUTO_INCREMENT = 82;
 
 DROP TABLE IF EXISTS `Account`; 
 
@@ -28,6 +28,7 @@ PRIMARY KEY(`AccountID`)
 
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+ALTER TABLE `Account` AUTO_INCREMENT = 50 ;
 
 DROP TABLE IF EXISTS `Customer`;
 
@@ -44,6 +45,7 @@ CONSTRAINT `fk_Customer_Account` FOREIGN KEY (`AccountID`) REFERENCES `Account` 
   
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+ALTER TABLE `Customer` AUTO_INCREMENT = 5481 ;
 
 
 DROP TABLE IF EXISTS `CustomerOrder`;
@@ -60,15 +62,15 @@ CREATE TABLE `CustomerOrder` (
   CONSTRAINT `fk_Customer_CustomerOrder` FOREIGN KEY (`CustomerID`) REFERENCES `Customer` (`CustomerID`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+ALTER TABLE `CustomerOrder` AUTO_INCREMENT = 5231 ;
 # Dump of table BRANCH
 # ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `Branch`;
 
 CREATE TABLE `Branch` (
-  `SupplierID` int(5) DEFAULT NULL  ,
-  `BranchID` int(15) NOT NULL AUTO_INCREMENT  ,  
+  `SupplierID` int(5) DEFAULT NULL ,
+  `BranchID` int(15) NOT NULL AUTO_INCREMENT,  
   `BranchType` varchar(10) NOT NULL,
   `BranchAddress` varchar(30) DEFAULT NULL,
   `ContactNumber` varchar(11)DEFAULT NULL,
@@ -78,7 +80,7 @@ CREATE TABLE `Branch` (
    CONSTRAINT `fk_Supplier_Branch` FOREIGN KEY (`SupplierID`) REFERENCES `Supplier` (`SupplierID`) ON DELETE SET NULL ON UPDATE CASCADE
  ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+ALTER TABLE `Branch` AUTO_INCREMENT = 100;
 
 # Dump of table PRODUCT
 # ------------------------------------------------------------
@@ -89,6 +91,7 @@ CREATE TABLE `Product`(
 `ProductID`int(12) NOT NULL AUTO_INCREMENT,
 `Name` varchar(20) DEFAULT NULL,
 `Type` varchar(20)DEFAULT NULL,
+`Description` varchar(10000) DEFAULT NULL,
 `CurrentPrice` int(10) DEFAULT NULL,
 `BranchID` int(15) DEFAULT NULL,
 `CustomerOrderID` integer(12) DEFAULT NULL,
@@ -99,7 +102,7 @@ CONSTRAINT `fk_Product_CustomerOrder` FOREIGN KEY (`CustomerOrderID`) REFERENCES
 PRIMARY KEY(`ProductID`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+ALTER TABLE `Product` AUTO_INCREMENT = 687;
 
 
 DROP TABLE IF EXISTS `BankAccount`;
@@ -118,7 +121,7 @@ KEY `fk_Account_BankAccount` (`AccountID`),
 CONSTRAINT `fk_Account_BankAccount` FOREIGN KEY (`AccountID`) REFERENCES `Account` (`AccountID`) ON DELETE SET NULL ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+ALTER TABLE `BankAccount` AUTO_INCREMENT = 256;
 
 
 
@@ -143,7 +146,7 @@ PRIMARY KEY(`StaffID`)
 
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+ALTER TABLE `Staff` AUTO_INCREMENT = 578;
 
 DROP TABLE IF EXISTS `Payroll`; 
 
@@ -162,7 +165,7 @@ PRIMARY KEY(`PayrollID`)
 
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+ALTER TABLE `Payroll` AUTO_INCREMENT = 2658;
 
 
 
