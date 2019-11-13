@@ -69,6 +69,7 @@ session_start();
                             echo '<a class="nav-link" href="/pages/public/login.php">Login</a>';
                         }
                         ?>
+                    
                     </li>
 
                     <?php
@@ -90,6 +91,7 @@ session_start();
                         }
                     }
                     ?>
+                    </li>    
                 </ul>
             </div>
         </nav>
