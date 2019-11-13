@@ -25,7 +25,7 @@ if (isset($_POST['signup-submit'])){
  
   require $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php';
   //Checking for existing user
-  $sql = 'SELECT Username FROM Account WHERE Username=?';
+  $sql = 'SELECT `Username` FROM `Account` WHERE `Username`=?';
   $stmt = mysqli_stmt_init($conn);
 
   if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -41,7 +41,7 @@ if (isset($_POST['signup-submit'])){
       exit();   
     } else {
       //Inserting into the database
-      $sql = 'INSERT INTO Account ("Username", "Password") VALUES (?,?)';
+      $sql = 'INSERT INTO `Account` (`Username`, `Password`) VALUES (?,?)';
       $stmt = mysqli_stmt_init($conn);
 
       if(!mysqli_stmt_prepare($stmt, $sql)){
