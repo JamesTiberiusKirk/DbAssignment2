@@ -23,7 +23,7 @@ CREATE TABLE `Account`(
 `AccountID` int(15) NOT NULL AUTO_INCREMENT,
 `AccountType` varchar(10) DEFAULT 'customer', 
 `Username` varchar(15) DEFAULT NULL, 
-`Password` varchar(25) DEFAULT NULL, 
+`Password` varchar(255) DEFAULT NULL, 
 PRIMARY KEY(`AccountID`)
 
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
