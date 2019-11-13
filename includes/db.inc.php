@@ -2,13 +2,13 @@
 $servername_db = "mariadb";
 $username_db = "root";
 $password_db = "rootpwd";
-$name_db = "testapp";
+$name_db = "ETWorld";
 
 //for the uni database
-//$servername = "";
+//$servername = "silva.computing.dundee.ac.uk";
 //$username = "19ac3d02";
 //$password = "ac31b2";
-//$dbName = "19ac3d02";
+//$name_db = "19ac3d02";
 
 
 // Create connection
