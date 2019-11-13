@@ -45,7 +45,7 @@ if (isset($_POST['signup-submit'])){
       $stmt = mysqli_stmt_init($conn);
 
       if(!mysqli_stmt_prepare($stmt, $sql)){
-        header('Location: /pages/public/signup.php?error=sqlError&uname='.$uname);
+        header('Location: /pages/public/signup.php?error=sqlError2&uname='.$uname);
         exit();   
       } else {
         $hashedpwd = password_hash($upass, PASSWORD_BCRYPT); //this uses bcrypt to hash it
