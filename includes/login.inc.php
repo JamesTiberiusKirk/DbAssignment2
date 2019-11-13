@@ -21,7 +21,6 @@ if(isset($_POST['login-submit'])){
       $result = mysqli_stmt_get_result($stmt);
       $row = mysqli_fetch_assoc($result);
       if($row){
-        
         $hashedpwd = $row['Password'];
         if (!password_verify($upass, $hashedpwd)){
           header('Location: ../pages/public/login.php?error=WrongPass&uname='.$uname);

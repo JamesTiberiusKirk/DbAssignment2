@@ -114,4 +114,3 @@ VALUES
 ("Simon STill","-something","Some ammount wihtout taxes","After taxes", "SB6548746D");
 /*!40000 ALTER TABLE `Payroll` ENABLE KEYS */;
 UNLOCK TABLES;
-

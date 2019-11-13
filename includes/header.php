@@ -69,15 +69,13 @@ session_start();
                             echo '<a class="nav-link" href="/pages/public/login.php">Login</a>';
                         }
                         ?>
-                    
                     </li>
 
                     <?php
                     if (isset($_SESSION['AccountID'])) {
                         include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
-                        $role_sql = 'SELECT uID FROM Account WHERE AccountID=? AND AccountRole = "admin"';
+                        $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountRole` = "admin"';
                         $stmt = mysqli_stmt_init($conn);
-
                         if (mysqli_stmt_prepare($stmt, $role_sql)) {
                             mysqli_stmt_bind_param($stmt, "s", $_SESSION['AccountID']);
                             mysqli_stmt_execute($stmt);
@@ -91,7 +89,6 @@ session_start();
                         }
                     }
                     ?>
-                    </li>    
                 </ul>
             </div>
         </nav>
