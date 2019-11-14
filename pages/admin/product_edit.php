@@ -90,7 +90,7 @@ if (isset($_GET['prodid'])) {
             </div>
         </div>
 
-        <button type="submit" name="signup-submit" class="btn btn-secondary">
+        <button type="submit" name="prod_submit" class="btn btn-secondary">
             <?php if (isset($_GET['prodid'])) {
                 echo 'Update';
             } else {
