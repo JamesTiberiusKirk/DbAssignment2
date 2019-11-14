@@ -72,9 +72,32 @@ session_start();
                     </li>
 
                     <?php
+                    
+                    // function set_account_view($acc_role) {
+                    //     if (isset($_SESSION['AccountID'])) {
+                    //         include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
+                    //         $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountRole` ='.$acc_role;
+                    //         $stmt = mysqli_stmt_init($conn);
+                    //         if (mysqli_stmt_prepare($stmt, $role_sql)) {
+                    //             mysqli_stmt_bind_param($stmt, "s", $_SESSION['AccountID']);
+                    //             mysqli_stmt_execute($stmt);
+                    //             mysqli_stmt_store_result($stmt);
+                    //             $role_res = mysqli_stmt_num_rows($stmt);
+                    //             if ($role_res == 1) {
+                    //                 echo '<li class="nav-item">';
+                    //                 echo '<a class="nav-link" href="/pages/"'.$acc_role.'"/index.php">Admin</a>';
+                    //                 echo '</li>';
+                    //             }
+                    //         }
+                    //     }
+                    // }
+
+                    // set_account_view('admin');
+                    // set_account_view('staff');
+                    // set_account_view('customer');
                     if (isset($_SESSION['AccountID'])) {
                         include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
-                        $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountRole` = "admin"';
+                        $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountType` = "admin"';
                         $stmt = mysqli_stmt_init($conn);
                         if (mysqli_stmt_prepare($stmt, $role_sql)) {
                             mysqli_stmt_bind_param($stmt, "s", $_SESSION['AccountID']);
@@ -83,7 +106,24 @@ session_start();
                             $role_res = mysqli_stmt_num_rows($stmt);
                             if ($role_res == 1) {
                                 echo '<li class="nav-item">';
-                                echo '<a class="nav-link" href="/pages/admin/index.php">Admin</a>';
+                                echo '<a class="nav-link" href="/pages/admin/index.php">Admin Portal</a>';
+                                echo '</li>';
+                            }
+                        }
+                    }
+
+                    if (isset($_SESSION['AccountID'])) {
+                        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
+                        $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountType` = "staff"';
+                        $stmt = mysqli_stmt_init($conn);
+                        if (mysqli_stmt_prepare($stmt, $role_sql)) {
+                            mysqli_stmt_bind_param($stmt, "s", $_SESSION['AccountID']);
+                            mysqli_stmt_execute($stmt);
+                            mysqli_stmt_store_result($stmt);
+                            $role_res = mysqli_stmt_num_rows($stmt);
+                            if ($role_res == 1) {
+                                echo '<li class="nav-item">';
+                                echo '<a class="nav-link" href="/pages/staff/index.php">Staff Portal</a>';
                                 echo '</li>';
                             }
                         }

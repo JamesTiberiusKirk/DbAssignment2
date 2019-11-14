@@ -10,7 +10,6 @@ echo '<h2>Staff ID: '.$_SESSION['uID'].'</h2>';
                 <th scope="col">Date</th>
                 <th scope="col">Time</th>
                 <th scope="col">Payroll ID</th>
-                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
