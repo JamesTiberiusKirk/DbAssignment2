@@ -2,7 +2,7 @@
 
 
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/Projects/includes/header.php' ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
 <div class="jumbotron">
 <p 
  style="font-size:200%;">Contact Us
@@ -38,4 +38,4 @@
 </form>
 </div>
 </div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/Projects/includes/footer.php' ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php' ?>
