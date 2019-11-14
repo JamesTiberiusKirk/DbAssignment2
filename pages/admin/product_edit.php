@@ -58,7 +58,7 @@ if (isset($_GET['prodid'])) {
                         <span class="input-group-text">£</span>
                     </div>
                     <input type="text" class="form-control" value="<?php echo $prod_current_price; ?>" aria-label="Amount (to the nearest dollar)">
-                    
+
                 </div>
 
                 <div class="form-group">
@@ -89,6 +89,14 @@ if (isset($_GET['prodid'])) {
                 <img class="img-responsive" style="width:90%" id="prod_img_display" src="<?php echo $prod_img_path; ?>" alt="Product">
             </div>
         </div>
+
+        <button type="submit" name="signup-submit" class="btn btn-secondary">
+            <?php if (isset($_GET['prodid'])) {
+                echo 'Update';
+            } else {
+                echo 'Add';
+            } ?>
+        </button>
     </form>
 </div>
 
