@@ -12,7 +12,7 @@
                     <div class="row">
                         <?php
                             $count = 1;
-                            $sql = "SELECT * FROM testapp.products WHERE ProductID BETWEEN 20000 AND 29999";
+                            $sql = "SELECT * FROM Product WHERE ProductID BETWEEN 1 AND 10000";
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
