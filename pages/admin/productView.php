@@ -35,7 +35,7 @@
                                     echo '<td>' . $row["Type"] . '</td>';
                                     echo '<td>' . $row["CurrentPrice"] . '£' . '</td>';
                                     echo '<td> # </td>';
-                                    echo '<td> <button type="button" class="btn btn-secondary">edit</button> </td>';
+                                    echo '<td> <button type="button" name="' . $row["ProductID"] . '" class="btn btn-secondary">edit</button> </td>';
                                     echo '</tr>';
                                 }
                             } else {
