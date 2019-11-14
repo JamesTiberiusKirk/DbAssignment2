@@ -20,7 +20,7 @@
                 <th scope="col">Role</th>
             </tr>
         </thead>
-        <form method="post">
+        <form method="pate_staff" type="buttoost">
             <tr> 
                 <th scope="col"> <input class="form-control" name="new_id_inp" type="text">
                 <th> <input class="form-control" name="new_usrn_inp" type="text"> </th>
