@@ -1,5 +1,11 @@
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
 
+<?php
+if (isset($_GET['error'])) {
+    echo '<script type="text/javascript">alert("' . $_GET['error'] . '");</script>';
+}
+?>
+
 <div class="jumbotron">
     <div class="row">
         <div class="col"></div>
@@ -7,15 +13,24 @@
             <form action="/includes/signup.inc.php" method="post">
                 <h1>Sign up</h1>
                 <div class="form-group">
-                    <label for="uname">User Name</label>
-                    <input type="name" name="uname" class="form-control" id="uname" 
-                        placeholder="Username">
-                </div>
-                <div class="form-group">
+                    <label for="uname">UserName</label>
+                    <?php
+                    if (isset($_GET['uname'])) {
+                        echo '<input type="name" name="uname" class="form-control" id="uname" 
+                            value="' . $_GET['uname'] . '">';
+                    } else {
+                        echo '<input type="name" name="uname" class="form-control" id="uname" 
+                            placeholder="Username">';
+                    }
+                    ?>
+                </div>                
+
+                <!-- <div class="form-group">
                     <label for="uemail">User Email</label>
                     <input type="email" name="uemail" class="form-control" id="uemail" 
                         placeholder="Email">
-                </div>
+                </div> -->
+
                 <div class="form-group">
                     <label for="upass">New User Password</label>
                     <input type="password" name="upass" class="form-control" 
