@@ -1,5 +1,5 @@
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
-<?php include_once $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php'?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php' ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php' ?>
 
 <div class="jumbotron">
     <div class="col">
@@ -10,8 +10,9 @@
                     <input class="form-control" name="table_inp" type="text" placeholder="Search Product name" method="post">
                     <button class="btn btn-outline-secondary" name="search_btn" type="submit">Search</button>
                     <!-- <button class="btn btn-outline-secondary" name="show_tbl">Show Table</button> -->
-                    <button type="button" class="btn btn-outline-secondary">Add</button>
-                </form> <!--- I dont know how to do this part i will attempt it later --->
+                    <a href="./product_edit.php" class="btn btn-outline-secondary">Add</a>
+                </form>
+                <!--- I dont know how to do this part i will attempt it later --->
                 <table class="table table-dark">
                     <thead>
                         <tr>
@@ -26,26 +27,27 @@
                     </thead>
                     <tbody>
                         <?php
-                            $sql = "SELECT * FROM Product WHERE ProductID BETWEEN 1 AND 10000";
-                            $result = $conn->query($sql);
+                        $sql = "SELECT * FROM Product WHERE ProductID BETWEEN 1 AND 10000";
+                        $result = $conn->query($sql);
 
-                            if($result->num_rows > 0){
-                                while($row = $result->fetch_assoc()){
-                                    echo '<tr>';
-                                    echo '<th scope="row">' . $row["ProductID"] . '</th>';
-                                    echo '<td>' . $row["Name"] . '</td>';
-                                    echo '<td>' . $row["Type"] . '</td>';
-                                    echo '<td>' . $row["CurrentPrice"] . '£' . '</td>';
-                                    echo '<td> # </td>';
-                                    echo '<td> <button type="button" class="btn btn-secondary">edit</button> </td>';
-                                    echo '</tr>';
-                                }
-                            } else {
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
                                 echo '<tr>';
-                                echo "Zero results";
+                                echo '<th scope="row">' . $row["ProductID"] . '</th>';
+                                echo '<td>' . $row["Name"] . '</td>';
+                                echo '<td>' . $row["Type"] . '</td>';
+                                echo '<td>' . $row["CurrentPrice"] . '£' . '</td>';
+                                echo '<td> # </td>';
+                                echo '<td> <a href="./product_edit.php?prodid='.$row['ProductID'];
+                                echo '" class="btn btn-secondary">edit</a> </td>';
                                 echo '</tr>';
                             }
-                            $conn->close();
+                        } else {
+                            echo '<tr>';
+                            echo "Zero results";
+                            echo '</tr>';
+                        }
+                        $conn->close();
                         ?>
                     </tbody>
                 </table>
@@ -55,4 +57,4 @@
     <div class="col"></div>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php' ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php' ?>
