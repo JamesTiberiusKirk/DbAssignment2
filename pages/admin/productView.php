@@ -1,5 +1,5 @@
-<?php include "../../includes/header.php" ?>
-<?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php'?>
 
 <div class="jumbotron">
     <div class="col">
@@ -26,7 +26,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            $sql = "SELECT * FROM testapp.products WHERE ProductID";
+                            $sql = "SELECT * FROM Product WHERE ProductID BETWEEN 1 AND 10000";
                             $result = $conn->query($sql);
 
                             if($result->num_rows > 0){

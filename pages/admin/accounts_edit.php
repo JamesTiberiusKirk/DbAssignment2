@@ -47,7 +47,7 @@
         
         if (isset($submit_btn)) {
             if (!empty($new_role_inp)) {
-                $sql = 'UPDATE testapp.users SET urole="$new_role_inp", uname="$new_usrn_inp", email="$new_email_inp" WHERE uID="$s_uID"';
+                $sql = 'UPDATE Account SET AccountType=$new_role_inp Username=$new_usrn_inp WHERE uID=$s_uID';
                 $result = $conn->query($sql);
                 if ($result === TRUE) {
                     echo "<br>Role successfully updated<br>";
@@ -55,7 +55,7 @@
             }
     
             if (!empty($new_id_inp)) {
-                $sql = 'UPDATE testapp.users SET uID="$new_id_inp" WHERE uID="$s_uID"';
+                $sql = 'UPDATE testapp.users SET AccountID=$new_id_inp WHERE uID="$s_uID"';
                 $result = $conn->query($sql);
                 if ($result === TRUE) {
                     echo "<br>ID successfully updated<br>";

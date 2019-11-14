@@ -1,5 +1,11 @@
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
 
+<?php
+if (isset($_GET['error'])) {
+    echo '<script type="text/javascript">alert("' . $_GET['error'] . '");</script>';
+}
+?>
+
 <div class="jumbotron">
     <div class="row">
         <div class="col"></div>
@@ -8,8 +14,15 @@
                 <h1>Sign up</h1>
                 <div class="form-group">
                     <label for="uname">UserName</label>
-                    <input type="name" name="uname" class="form-control" id="uname" 
-                        placeholder="Username">
+                    <?php
+                    if (isset($_GET['uname'])) {
+                        echo '<input type="name" name="uname" class="form-control" id="uname" 
+                            value="' . $_GET['uname'] . '">';
+                    } else {
+                        echo '<input type="name" name="uname" class="form-control" id="uname" 
+                            placeholder="Username">';
+                    }
+                    ?>
                 </div>                
 
                 <!-- <div class="form-group">
