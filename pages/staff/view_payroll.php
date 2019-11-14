@@ -4,7 +4,7 @@
 <?php 
 echo '<h2>Staff ID: '.$_SESSION['uID'].'</h2>';
 ?>
-<table class="table">
+    <table class="table">
         <thead>
             <tr>
                 <th scope="col">Date</th>
