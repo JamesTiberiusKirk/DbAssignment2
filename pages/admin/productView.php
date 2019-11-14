@@ -26,7 +26,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            $sql = "SELECT * FROM testapp.products WHERE ProductID";
+                            $sql = "SELECT * FROM Product WHERE ProductID BETWEEN 1 AND 10000";
                             $result = $conn->query($sql);
 
                             if($result->num_rows > 0){
