@@ -1,5 +1,31 @@
 
-select * from CustomerOrder;
-select * from Product;
-select * from Customer;
-select * from Account; 
+SELECT 
+    *
+FROM
+    CustomerOrder;
+SELECT 
+    *
+FROM
+    Product;
+SELECT 
+    *
+FROM
+    Customer;
+SELECT 
+    *
+FROM
+    Account;
+
+SELECT 
+    *
+FROM
+    Staff;
+
+
+SELECT 
+    *
+FROM
+    StaffSchedule; 
+
+
+

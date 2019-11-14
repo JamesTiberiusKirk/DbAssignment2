@@ -76,23 +76,23 @@ UNLOCK TABLES;
 LOCK TABLES `Product` WRITE;
 /*!40000 ALTER TABLE `Product` DISABLE KEYS */;
 /*10000-Laptop 20000-DesktopPc 30000-GammingLp 40000-GamingDp*/
-INSERT INTO `Product`(`Name`,`Type`,`Description`,`CurrentPrice`)
+INSERT INTO `Product`(`Name`,`Type`,`Description`,`CurrentPrice`,`ImagePath`)
 VALUES
 /*10000-Laptop*/
-('ETlight1','Laptop','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper',1100),
-('ETlight2','Laptop','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper',1500),
+('ETlight1','Laptop','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper',1100,'C://home/image1'),
+('ETlight2','Laptop','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper',1500,'C://home/image4'),
 
 /*20000-DesktopPc*/
-('ETtank1','DesktopPc','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi',1000),
-('ETtank1','DesktopPc','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit,',1350),
+('ETtank1','DesktopPc','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi',1000,'C://home/image1'),
+('ETtank1','DesktopPc','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit,',1350,'C://home/image1'),
 
 /*30000-GammingLp*/
-('ETgen1','GammingLp','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar',2350),
-('ETgen2','GammingLp','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar',2750),
+('ETgen1','GammingLp','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar',2350,'C://home/image1'),
+('ETgen2','GammingLp','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar',2750,'C://home/image1'),
 
 /*40000-GamingDp*/
-('ETbasic','GammingDp','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar quam posuere eget. Fusce ',1800),
-('ETAdvanced','GammingDp','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, ',2200);
+('ETbasic','GammingDp','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar quam posuere eget. Fusce ',1800,'C://home/image1'),
+('ETAdvanced','GammingDp','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, ',2200,'C://home/image1');
 /*!40000 ALTER TABLE `Product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,3 +114,15 @@ VALUES
 ("Simon STill","-something","Some ammount wihtout taxes","After taxes", "SB6548746D");
 /*!40000 ALTER TABLE `Payroll` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+LOCK TABLES `StaffSchedule` WRITE; 
+/*!40000 ALTER TABLE `StaffSchedule` DISABLE KEYS */;
+INSERT INTO `StaffSchedule`(`Date`,`Start_at`,`Finish_at`)
+VALUES 
+('2019-08-23','09:10:00','20:26:00'),
+('2019-09-15','10:25:00','17:39:00'),
+('2019-10-9','09:00:00','12:15:00');
+
+/*!40000 ALTER TABLE `StaffSchedule` ENABLE KEYS */;
+UNLOCK TABLES; 
