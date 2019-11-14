@@ -99,10 +99,10 @@ CREATE TABLE `Product` (
     `CurrentPrice` INT(10) DEFAULT NULL,
     `BranchID` INT(15) DEFAULT NULL,
    `ImagePath` varchar(256) DEFAULT NULL,
-    KEY `fk_Product_Branch` (`BranchID`),
+    /*KEY `fk_Product_Branch` (`BranchID`),
     CONSTRAINT `fk_Product_Branch` FOREIGN KEY (`BranchID`)
         REFERENCES `Branch` (`BranchID`)
-        ON DELETE SET NULL ON UPDATE CASCADE,
+        ON DELETE SET NULL ON UPDATE CASCADE,*/
     PRIMARY KEY (`ProductID`)
 )  ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
