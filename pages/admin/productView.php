@@ -11,7 +11,7 @@
                     <button class="btn btn-outline-secondary" name="search_btn" type="submit">Search</button>
                     <button class="btn btn-outline-secondary" name="show_tbl">Show Table</button>
                     <button type="button" class="btn btn-outline-secondary">Add</button>
-                </form> <!--- I dont know how to do this part i will attempt it later --->
+                </form> 
                 <?php 
                         $table_inp = $_POST['table_inp'];
                         $search_btn = $_POST['search_btn'];
