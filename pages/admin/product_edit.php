@@ -35,7 +35,7 @@ if (isset($_GET['prodid'])) {
 ?>
 
 <div class="jumbotron">
-    <form action="/includes/products_edit.inc.php" method="POST" enctype="multipart/form-data">
+    <form action="/includes/products_edit.inc.php" method="post" enctype="multipart/form-data">
         <?php
         if (isset($_GET['prodid'])) {
             echo '<h1>Edit Products</h1> <br>';
