@@ -2,12 +2,26 @@
 
 <div class="jumbotron">
     <h1>Admin Console</h1>
-    <form action="/pages/admin/users.php">
-        <button type="submit" class="btn btn-primary">Users</button>
-    </form>
-    <form action="/pages/admin/products.php">
-        <button type="submit" class="btn btn-primary">Products</button>
-    </form>
+    <div class="card">
+        <div class="card">
+            <div class="card-body text-center">
+                <h3 class="card-title">View/Edit Users</h3>
+                <a href="users.php" class="btn btn-primary stretched-link">View</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
+                <h3 class="card-title">View/Edit Products</h3>
+                <a href="product_view.php" class="btn btn-primary stretched-link">View</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
+                <h3 class="card-title">Staff Scheduler</h3>
+                <a href="staff_scheduler.php" class="btn btn-primary stretched-link">View</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php' ?>
