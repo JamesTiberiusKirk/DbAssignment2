@@ -35,6 +35,8 @@
                             $result = $conn->query($sql);
                         }
 
+                        
+
                         function display_product($searchResult){
                             if($searchResult->num_rows > 0){
                                 while($row = $searchResult->fetch_assoc()){
@@ -44,7 +46,10 @@
                                     echo '<td>' . $row["Type"] . '</td>';
                                     echo '<td>' . $row["CurrentPrice"] . '£' . '</td>';
                                     echo '<td> # </td>';
-                                    echo '<td> <button type="button" name="' . $row["ProductID"] . '" class="btn btn-secondary">edit</button> </td>';
+                                    echo '<td> ';
+                                    echo '<button type="button" name="' . $row["ProductID"] . '" class="btn btn-secondary">edit</button> ';
+                                    echo '<button type="button" name="' . $row["ProductID"] . '" class="btn btn-secondary">delete</button>';
+                                    echo '</td>';
                                     echo '</tr>';
                                 }
                             } else {
@@ -68,29 +73,6 @@
                     </thead>
                     <tbody>
                         <?php 
-                            
-                            /*
-                            $sql = "SELECT * FROM testapp.products WHERE ProductID";
-                            $result = $conn->query($sql);
-                            if($result->num_rows > 0){
-                                while($row = $result->fetch_assoc()){
-                                    echo '<tr>';
-                                    echo '<th scope="row">' . $row["ProductID"] . '</th>';
-                                    echo '<td>' . $row["Name"] . '</td>';
-                                    echo '<td>' . $row["Type"] . '</td>';
-                                    echo '<td>' . $row["CurrentPrice"] . '£' . '</td>';
-                                    echo '<td> # </td>';
-                                    echo '<td> <button type="button" name="' . $row["ProductID"] . '" class="btn btn-secondary">edit</button> </td>';
-                                    echo '</tr>';
-                                }
-                            } else {
-                                echo '<tr>';
-                                echo "Zero results";
-                                echo '</tr>';
-                            }
-                            $conn->close();
-                            */ 
-                            
                             display_product($result);
                         ?>
 

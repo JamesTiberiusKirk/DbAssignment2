@@ -4,7 +4,7 @@
 <div class="jumbotron">
     <div class="col">
         <div class="container">
-            
+        
         </div>
     </div>
     <div class="col"></div>
