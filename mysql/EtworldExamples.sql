@@ -91,8 +91,8 @@ VALUES
 ('ET Monitor NTZ3000','Peripherals','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar',2750,'C://home/image1'),
 
 /*40000-GamingDp*/
-('Gaming Headset TX1500','Accessories','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar quam posuere eget. Fusce ',1800,'C://home/image1'),
-('Gaming Mouse ZX2000','Accessories','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, ',2200,'C://home/image1');
+('Gaming Headset TX1500','Peripherals','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar quam posuere eget. Fusce ',1800,'C://home/image1'),
+('Gaming Mouse ZX2000','Peripherals','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, ',2200,'C://home/image1');
 /*!40000 ALTER TABLE `Product` ENABLE KEYS */;
 UNLOCK TABLES;
 
