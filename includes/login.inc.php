@@ -10,7 +10,7 @@ if(isset($_POST['login-submit'])){
     header('Location:  /pages/public/login.php?error=emptyCreds');
     exit();
   } else {
-    $sql = 'SELECT * FROM users WHERE uname=?';
+    $sql = 'SELECT * FROM `Account` WHERE `Username`=?';
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)){
       header('Location:  /pages/public/login.php?error=sqlError');
@@ -21,16 +21,14 @@ if(isset($_POST['login-submit'])){
       $result = mysqli_stmt_get_result($stmt);
       $row = mysqli_fetch_assoc($result);
       if($row){
-        
-        $hashedpwd = $row['upass'];
-
+        $hashedpwd = $row['Password'];
         if (!password_verify($upass, $hashedpwd)){
-          header('Location: ../pages/public/login.php?error=WrongPass&uname='.$pcheck);
+          header('Location: ../pages/public/login.php?error=WrongPass&uname='.$uname);
           exit();
         } else {
           session_start();
-          $_SESSION['uID'] = $row['uID'];
-          $_SESSION['uname'] = $row['uname']; 
+          $_SESSION['AccountID'] = $row['AccountID'];
+          $_SESSION['Username'] = $row['Username']; 
 
           header('Location:  /pages/members/welcome.php?login=success');
           exit();

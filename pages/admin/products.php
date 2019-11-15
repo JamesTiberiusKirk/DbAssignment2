@@ -3,26 +3,7 @@
 <?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
 
 <div class="jumbotron">
-    <h1>Users Table</h1>
-    <!-- <script>
-            var root = document.location.hostname;
-            function overwrite_db(editableObj, col, id) {
-                $.ajax({
-                    url: root + "pages/admin/update.php",
-                    type: "POST",
-                    datatype: "json",
-                    data:'column='+column+'&value'+editableObj.innerHTML+'&uID='id,
-                    success:function(response) {
-                        $(editableObj).attr('data-old_value', editableObj.innerHTML);   
-                    }
-                },
-                error: function() {
-                    console.log("err");
-                }
-            });
-            } 
-        ignore for now
-    </script> -->
+    <h1>Products Table</h1>
     
     <form class="input-group mb-3" method="post">
         <input class="form-control" name="table_inp" type="text" placeholder="Username" method="post">
@@ -36,10 +17,10 @@
         $table_inp = $_POST['table_inp'];
         $search_btn = $_POST['search_btn'];
         $show_table = $_POST['show_tbl'];
-        $sql = 'SELECT * FROM Account WHERE Username = "'.$table_inp.'"';
+        $sql = "SELECT * FROM products WHERE uname='$table_inp'";
         // when a search is made show only 1 result
         if (isset($search_btn)) {
-            $search_result = mysqli_query($conn, $sql) or die("dberr:". mysqli_error($conn));
+            $search_result = mysqli_query($conn, $sql);
             $row = $search_result->num_rows;
             if ($row) {
                 echo "User found, ".$row." result";
@@ -50,13 +31,13 @@
         }
         else {
             // when the page first loads show full table
-            $sql = 'SELECT * FROM Account';
+            $sql = "SELECT * FROM users";
             $search_result = mysqli_query($conn, $sql);
         }
         
         // when Show Table button is pressed show full table
         if (isset($show_table)) {
-            $sql = "SELECT * FROM Account";
+            $sql = "SELECT * FROM users";
             $search_result = mysqli_query($conn, $sql);
         }
 
@@ -65,26 +46,24 @@
                 // output data of each row
                     while ($row = $search_result->fetch_assoc()) {
                         echo "<tr>";
-                        echo '<th scope="col">' . $row["AccountID"]   . "</td>";
-                        echo '<td>' . $row["Username"] . "</td>";
-                        echo "<td>" . $row["Password"] . "</td>";
-                        echo '<td>' . $row["AccountType"] . "</td>";
+                        echo "<th scope='col'>" . $row["uID"]   . "</td>";
+                        echo "<td>" . $row["uname"] . "</td>";
+                        echo "<td>" . $row["email"] . "</td>";
+                        echo "<td>" . $row["urole"] . "</td>";
                         if ($search_result->num_rows == 1) {
-                            echo "<form action='accounts_edit.php' class='input-group mb-3' method='post'>";
+                            echo "<form action='edit.php' class='input-group mb-3' method='post'>";
                             echo "<td> <button class='btn btn-outline-secondary' name='edit_btn'>Edit</button> </td>";
                             echo "</form>";
                             session_start();
-                            $_SESSION['s_uname'] = $row['Username'];
-                            $_SESSION['s_urole'] = $row['AccountType'];
-                            $_SESSION['s_uID'] = $row['AccountID'];
+                            $_SESSION['uname'] = $row['uname'];
+                            $_SESSION['urole'] = $row['urole'];
+                            $_SESSION['uID'] = $row['uID'];
                         }
                         echo "</tr>";
                     }
                 } else {
                 echo "0 results";
                 }
-
-                //ob_end_flush();
         }
     ?>
     <table class="table">
@@ -92,14 +71,13 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">User Name</th>
-                <th scope="col">Password</th>
+                <th scope="col">Email</th>
                 <th scope="col">Role</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            display_table('true', $search_result);
-            
+            display_table('false', $search_result);
             ?>
         </tbody>
     </table>

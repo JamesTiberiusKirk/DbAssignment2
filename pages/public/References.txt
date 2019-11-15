@@ -1,0 +1,6 @@
+References - 
+
+https://1stwebdesigner.com/php-contact-form-html/
+https://code.tutsplus.com/tutorials/create-a-contact-form-in-php--cms-32314
+https://www.w3schools.com/Bootstrap/bootstrap_forms.asp
+https://www.phpflow.com/php/how-to-send-email-from-localhost-using-php/
