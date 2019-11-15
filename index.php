@@ -1,26 +1,15 @@
-<?php include "./includes/header.php" ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
 
 <div class="jumbotron">
     <?php
-    include_once("./includes/db.inc.php");
-    echo "<br>Connected successfully<br>";
 
-    $sql = "SELECT uID, uname FROM testapp.users";
-
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while ($row = $result->fetch_assoc()) {
-            echo "id: " . $row["uID"] . " - username: " . $row["uname"] . "<br>";
-        }
+    if(isset($_SESSION['uID'])){
+        echo "<br>Logged in<br>";
     } else {
-        echo "0 results";
+        echo "<br>Logged out<br>";
     }
 
-
-    $conn->close();
     ?>
 </div>
 
-<?php include "./includes/footer.php" ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php' ?>

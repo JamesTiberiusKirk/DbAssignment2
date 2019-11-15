@@ -1,4 +1,14 @@
-<?php include "header.php" ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
+<div class="jumbotron">
+    <?php
 
+    if (!isset($_SESSION['uID'])) {
+        Location('/index.php');
+        exit();
+    }
 
-<?php include "footer.php" ?>
+    echo 'Welcome member';
+    ?>
+</div>
+
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php' ?>
