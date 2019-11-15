@@ -128,6 +128,22 @@ session_start();
                             }
                         }
                     }
+                    if (isset($_SESSION['AccountID'])) {
+                        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
+                        $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountType` = "customer"';
+                        $stmt = mysqli_stmt_init($conn);
+                        if (mysqli_stmt_prepare($stmt, $role_sql)) {
+                            mysqli_stmt_bind_param($stmt, "s", $_SESSION['AccountID']);
+                            mysqli_stmt_execute($stmt);
+                            mysqli_stmt_store_result($stmt);
+                            $role_res = mysqli_stmt_num_rows($stmt);
+                            if ($role_res == 1) {
+                                echo '<li class="nav-item">';
+                                echo '<a class="nav-link" href="/pages/customer/index.php">Customer Portal</a>';
+                                echo '</li>';
+                            }
+                        }
+                    }
                     ?>
                 </ul>
             </div>
