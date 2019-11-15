@@ -1,8 +1,17 @@
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php' ?>
 <div class="jumbotron">
-<?php 
-echo '<h2>Staff ID: '.$_SESSION['uID'].'</h2>';
+<?php
+$sql = 'SELECT * FROM Staff WHERE AccountID="'.$_SESSION['AccountID'].'"';
+$result = mysqli_query($conn, $sql);
+$staff_id = '';
+$branch_id = '';
+while ($row = $result->fetch_assoc()) {
+    $staff_id = $row['StaffID'];
+    $branch_id = $row['BranchID'];
+}
+echo '<h2>Staff ID: '.$staff_id.'</h2>';
+mysqli_free_result($result);
 ?>
 <table class="table">
         <thead>
@@ -14,6 +23,19 @@ echo '<h2>Staff ID: '.$_SESSION['uID'].'</h2>';
             </tr>
         </thead>
         <tbody>
+        <?php
+        $sql = 'SELECT * FROM StaffSchedule WHERE StaffID="'.$staff_id.'"';
+        $result = mysqli_query($conn, $sql);
+        while ($row = $result->fetch_assoc()) {
+            echo '<tr>';
+            echo '<th scope="col">'.$row['Date'].'</td>';
+            echo '<td>'.$row['Start_at'].'</td>';
+            echo '<td>'.$row['Finish_at'].'</td>';
+            echo '<td>'.$branch_id.'</td>';
+            echo '</tr>';
+        }
+        while ($row)
+        ?>
         </tbody>
     </table>
 </div>

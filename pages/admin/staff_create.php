@@ -63,8 +63,10 @@
                         header('Location: /pages/admin/staff_manager.php?success');
                     }
                 }
-                else
-                    header('Location: /pages/admin/staff_create.php?error=user%not%staff');
+                else {
+                    echo "Account is not a staff";
+                }
+                    
             }
             else
                 header('Location: /pages/admin/staff_create.php?error=no%such%user');  
@@ -79,5 +81,5 @@
 
 <?php ob_end_flush()?>
 
-
+<?php include $_SERVER['DOCUMENT_ROOT']."/pages/admin/users.php"?>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php'?>

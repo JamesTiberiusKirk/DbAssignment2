@@ -47,12 +47,16 @@ ob_start();
                 mysqli_stmt_execute($stmt) or die("dberr:".mysqli_stmt_error($stmt));
                 mysqli_store_result($conn);
                 mysqli_stmt_close($stmt);
-                //header('Location: /pages/admin/staff_manager.php?schedule%success');
+                header('Location: /pages/admin/staff_manager.php?schedule%success');
             }            
         }
-        // else {
-        //     header('Location: /pages/admin/staff_manager.php?schedule%unsuccessful');
-        // }
+        else {
+            header('Location: /pages/admin/staff_manager.php?schedule%unsuccessful');
+        }
+    }
+
+    if (isset($_POST['schdl_cancel'])) {
+        header('Location: /pages/admin/staff_manager.php');
     }
     ?>
 </div>

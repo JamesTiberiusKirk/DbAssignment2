@@ -1,29 +1,13 @@
+<?php
+ob_start();
+?>
+
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php'?>
 
 <?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
 
 <div class="jumbotron">
     <h1>Users Table</h1>
-    <!-- <script>
-            var root = document.location.hostname;
-            function overwrite_db(editableObj, col, id) {
-                $.ajax({
-                    url: root + "pages/admin/update.php",
-                    type: "POST",
-                    datatype: "json",
-                    data:'column='+column+'&value'+editableObj.innerHTML+'&uID='id,
-                    success:function(response) {
-                        $(editableObj).attr('data-old_value', editableObj.innerHTML);   
-                    }
-                },
-                error: function() {
-                    console.log("err");
-                }
-            });
-            } 
-        ignore for now
-    </script> -->
-    
     <form class="input-group mb-3" method="post">
         <input class="form-control" name="table_inp" type="text" placeholder="Username" method="post">
         <button class="btn btn-outline-secondary" name="search_btn" type="submit">Search</button>
@@ -60,7 +44,7 @@
             $search_result = mysqli_query($conn, $sql);
         }
 
-        function display_table($editable, $search_result) {
+        function display_table($search_result) {
             if ($search_result->num_rows > 0) {
                 // output data of each row
                     while ($row = $search_result->fetch_assoc()) {
@@ -69,22 +53,32 @@
                         echo '<td>' . $row["Username"] . "</td>";
                         echo "<td>" . $row["Password"] . "</td>";
                         echo '<td>' . $row["AccountType"] . "</td>";
-                        if ($search_result->num_rows == 1) {
-                            echo "<form action='accounts_edit.php' class='input-group mb-3' method='post'>";
-                            echo "<td> <button class='btn btn-outline-secondary' name='edit_btn'>Edit</button> </td>";
-                            echo "</form>";
-                            session_start();
-                            $_SESSION['s_uname'] = $row['Username'];
-                            $_SESSION['s_urole'] = $row['AccountType'];
-                            $_SESSION['s_uID'] = $row['AccountID'];
-                        }
+                        echo '<form class="input-group mb-3" method="get">';
+                        echo '<td> <a href="accounts_edit.php?edit_btn='.$row['AccountID'].'"class="btn btn-outline-secondary" >Edit</button> </td>';
+                        echo '</form>';
+                        echo '<form class="input-group mb-3" method="get">';
+                        echo '<td> <a href="users.php?delete_btn='.$row['AccountID'].'"class="btn btn-outline-danger" >Delete</button> </td>';
+                        echo '</form>';
                         echo "</tr>";
                     }
                 } else {
                 echo "0 results";
                 }
+        }
 
-                //ob_end_flush();
+        if (isset($_GET['delete_btn'])) {
+            $sql = 'DELETE Account FROM Account WHERE AccountID=?';
+            $stmt = mysqli_stmt_init($conn);
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                die ("dberr:".mysqli_error($stmt));
+            }
+            else {
+                mysqli_stmt_bind_param($stmt, 'i', $_GET['delete_btn']);
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_store_result($Stmt);
+
+                header('Location: /pages/admin/users.php?delete%success');
+            }
         }
     ?>
     <table class="table">
@@ -98,11 +92,12 @@
         </thead>
         <tbody>
             <?php
-            display_table('true', $search_result);
-            
+            display_table($search_result);
             ?>
         </tbody>
     </table>
 </div>
-
+<?php
+ob_end_flush();
+?>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php'?>
