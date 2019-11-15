@@ -80,6 +80,4 @@
 </div>
 
 <?php ob_end_flush()?>
-
-<?php include $_SERVER['DOCUMENT_ROOT']."/pages/admin/users.php"?>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php'?>
