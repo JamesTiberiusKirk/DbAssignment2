@@ -35,12 +35,14 @@ if (isset($_GET['prodid'])) {
 ?>
 
 <div class="jumbotron">
-    <form action="/includes/products_edit.inc.php" method="post" enctype="multipart/form-data">
+    
         <?php
         if (isset($_GET['prodid'])) {
+            echo '<form action="/includes/products_edit.inc.php?prodid='.$prod_id.'" method="post" enctype="multipart/form-data">';
             echo '<h1>Edit Products</h1> <br>';
             echo  '<h3> Product ID: ' . $prod_id . '</h3>';
         } else {
+            echo '<form action="/includes/products_edit.inc.php" method="post" enctype="multipart/form-data">';
             echo '<h1>New Prduct</h1>';
         }
         ?>
@@ -50,20 +52,20 @@ if (isset($_GET['prodid'])) {
 
                 <div class="form-group">
                     <label for="prod_name">Product Name</label>
-                    <input type="text" class="form-control" id="prod_name_inp" value="<?php echo $prod_name; ?>">
+                    <input type="text" class="form-control" id="prod_name_inp" name="prod_name_inp" value="<?php echo $prod_name; ?>">
                 </div>
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">£</span>
                     </div>
-                    <input type="text" class="form-control" value="<?php echo $prod_current_price; ?>" aria-label="Amount (to the nearest dollar)">
+                    <input type="text" class="form-control" name="prod_price_inp" value="<?php echo $prod_current_price; ?>">
 
                 </div>
 
                 <div class="form-group">
                     <label for="prod_type_inp">Select type</label>
-                    <select class="form-control" value="<?php echo $prod_type; ?>" id="prod_type_inp">
+                    <select class="form-control" name="prod_type_inp" value="<?php echo $prod_type; ?>" id="prod_type_inp">
                         <option value="Desktop">Desktop</option>
                         <option value="Laptop">Laptop</option>
                         <option value="Peripheral/Accessory">Peripheral/Accessory</option>
@@ -72,7 +74,7 @@ if (isset($_GET['prodid'])) {
 
                 <div class="form-group">
                     <label for="prod_description_inp">Description</label>
-                    <textarea class="form-control" id="prod_description_inp" rows="3"><?php echo $prod_description;
+                    <textarea class="form-control" name="prod_description_inp" id="prod_description_inp" rows="3"><?php echo $prod_description;
                                                                                         ?></textarea>
                 </div>
 
@@ -82,7 +84,7 @@ if (isset($_GET['prodid'])) {
                 <br>
 
                 <div class="prod_img_inp_data form-group" data-provides="prod_img_inp_data">
-                    <input type="file" class="form-control-file" id="prod_img_inp">
+                    <input type="file" class="form-control-file" name="prod_img_inp" value="<?php if(isset($_GET['prodid'])){echo $prod_img_path;} ?>" id="prod_img_inp">
                     <label for="prod_img_inp">Choose file</label>
                 </div>
 
