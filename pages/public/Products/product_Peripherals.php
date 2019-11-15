@@ -12,11 +12,7 @@
                     <div class="row">
                         <?php
                             $count = 1;
-<<<<<<< HEAD
                             $sql = "SELECT * FROM testapp.products WHERE ProductID BETWEEN 40000 AND 49999";//Change for new DB for type
-=======
-                            $sql = "SELECT * FROM Product WHERE ProductID BETWEEN 1 AND 10000";
->>>>>>> a46c7f9114adbf65b4261d65e7f90d93aae2b57f
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
