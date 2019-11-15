@@ -25,7 +25,7 @@
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo '<th scope="col">' . $row["StaffID"]   . "</td>";
-                echo '<td>' . $row["AccountID"] . '</td>';
+                echo '<td>' . $row["A5ccountID"] . '</td>';
                 echo '<td>' . $row["FullName"] . "</td>";
                 echo "<td>" . $row["BranchID"] . "</td>";
                 echo '<td>' . $row["Role"] . "</td>";
@@ -56,7 +56,7 @@
                     header('Location: /pages/admin/staff_manager.php?success');
                 }
             }
-
+                
             if (isset($_POST['create_staff'])) {
                 header('Location: /pages/admin/staff_create.php');
             }

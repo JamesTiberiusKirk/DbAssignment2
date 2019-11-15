@@ -13,7 +13,7 @@
         <input class="form-control" id="jti" name="job_title_inp" type="text">
         <label for="bii">Branch ID</label>
         <select class="mdb-select md-form" name='branch_id_inp' id='bii'>
-            <option value="" disabled selected>Choose branch ID</option>
+            <option value="" >Choose branch ID</option>
                 <?php
                 $sql = 'SELECT * FROM Branch';
                 $result = mysqli_query($conn, $sql);
