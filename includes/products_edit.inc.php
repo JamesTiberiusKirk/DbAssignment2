@@ -2,13 +2,7 @@
 
 if (isset($_POST['prod_submit'])) {
 
-    $rtn_vars = 'prod_name=' . $prod_name . '&prod_price=' . $prod_price .
-        '&prod_type=' . $prod_type . '&prod_description=' . $prod_description;
-
-    if(isset($_GET['prodid'])){
-        $rtn_vars = 'prdod='.$_GET['prodod'].'&'.$rtn_vars;
-    }
-
+    
     //image uplaod folder
     $img_folder = '/img/uploads/';
 
@@ -20,9 +14,19 @@ if (isset($_POST['prod_submit'])) {
     $prod_img_location;
 
     if (empty($prod_name) || empty($prod_price) || empty($prod_description)) {
-        header('Location: /pages/admin/product_edit.php?error=EmptyFields&' . $rtn_vars;
+        header('Location: /pages/admin/product_edit.php?error=EmptyFields&' . $rtn_vars);
         exit();
     }
+
+    $rtn_vars = 'prod_name=' . $prod_name . '&prod_price=' . $prod_price .
+        '&prod_type=' . $prod_type . '&prod_description=' . $prod_description;
+
+    if(isset($_GET['prodid'])){
+        $rtn_vars = 'prdod='.$_GET['prodod'].'&'.$rtn_vars;
+    }
+
+    //TODO: need to find a way not to try and upload another file if the user 
+    //      did not try to change the image
 
     //File upload
     $file = $_FILES['prod_img_inp'];
@@ -46,6 +50,7 @@ if (isset($_POST['prod_submit'])) {
                 $serv_file_path = $_SERVER['DOCUMENT_ROOT'] . $img_folder . $new_file_name;
                 $prod_img_location = $img_folder . $new_file_name;
                 move_uploaded_file($file_tmp_name, $serv_file_path);
+                $rtn_vars .= '&prod_img_path='.$prod_img_location;
             } else {
                 header('Location: /pages/admin/product_edit.php?error=FileTooBig&' .$rtn_vars);
                 exit();
@@ -55,7 +60,7 @@ if (isset($_POST['prod_submit'])) {
             exit();
         }
     } else {
-        header('Location: /pages/admin/product_edit.php?error=WrongFileType&' .$rtn_vars;
+        header('Location: /pages/admin/product_edit.php?error=WrongFileType&' .$rtn_vars);
         exit();
     }
 

@@ -11,7 +11,16 @@ $prod_current_price = '';
 $prod_img_path = 'https://via.placeholder.com/500x500?text=Product+Image';
 
 
-if (isset($_GET['prodid'])) {
+if (isset($_GET['prodid']) && isset($_GET['prod_name'])){
+    $prod_id = $_GET['prodid'];
+    $prod_name = $_GET['prod_name'];
+    $prod_type =  $_GET['prod_type'];
+    $prod_description = $_GET['prod_description'];
+    $prod_current_price = $_GET['prod_price'];
+    $prod_img_path = $_GET['prod_description'];
+    $prod_img_path = $_GET['prod_img_path'];
+
+} else if(isset($_GET['prodid'])) {
     $sql = 'SELECT * FROM `Product` WHERE `ProductID`=?';
     $stmt = mysqli_stmt_init($conn);
 
@@ -26,7 +35,7 @@ if (isset($_GET['prodid'])) {
     while ($row = mysqli_fetch_assoc($result)) {
         $prod_id = $row['ProductID'];
         $prod_name = $row['Name'];
-        $prod_type =  $row['Tyoe'];
+        $prod_type =  $row['Type'];
         $prod_description = $row['Description'];
         $prod_current_price = $row['CurrentPrice'];
         $prod_img_path = $row['ImagePath'];
