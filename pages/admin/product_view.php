@@ -1,5 +1,5 @@
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
-<?php include_once $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php'?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php' ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php' ?>
 
 <div class="jumbotron">
     <div class="col">
@@ -54,7 +54,13 @@
                                 }
                             } else {
                                 echo '<tr>';
-                                echo "Zero results";
+                                echo '<th scope="row">' . $row["ProductID"] . '</th>' ;
+                                echo '<td>' . $row["Name"] . '</td>';
+                                echo '<td>' . $row["Type"] . '</td>';
+                                echo '<td>' . $row["CurrentPrice"] . '£' . '</td>';
+                                echo '<td> # </td>';
+                                echo '<td> <a href="./product_edit.php?prodid='.$row['ProductID'];
+                                echo '" class="btn btn-secondary">edit</a> </td>';
                                 echo '</tr>';
                             }
                         }
