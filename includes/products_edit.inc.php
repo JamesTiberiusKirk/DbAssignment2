@@ -2,7 +2,7 @@
 
 if (isset($_POST['prod_submit'])) {
 
-    
+
     //image uplaod folder
     $img_folder = '/img/uploads/';
 
@@ -21,12 +21,9 @@ if (isset($_POST['prod_submit'])) {
     $rtn_vars = 'prod_name=' . $prod_name . '&prod_price=' . $prod_price .
         '&prod_type=' . $prod_type . '&prod_description=' . $prod_description;
 
-    if(isset($_GET['prodid'])){
-        $rtn_vars = 'prdod='.$_GET['prodod'].'&'.$rtn_vars;
+    if (isset($_GET['prodid'])) {
+        $rtn_vars = 'prodid=' . $_GET['prodid'] . '&' . $rtn_vars;
     }
-
-    //TODO: need to find a way not to try and upload another file if the user 
-    //      did not try to change the image
 
     //File upload
     $file = $_FILES['prod_img_inp'];
@@ -43,38 +40,64 @@ if (isset($_POST['prod_submit'])) {
 
     $allowed = array('jpg', 'jpeg', 'png');
 
-    if (in_array($file_ext, $allowed)) {
+    if (!empty($file_type) && in_array($file_ext, $allowed)) {
         if ($file_error == 0) {
-            if ($file_size < 10000000) {
+            if ($file_size < 1.9*1048576) {
                 $new_file_name = uniqid('', true) . '.' . $file_ext;
                 $serv_file_path = $_SERVER['DOCUMENT_ROOT'] . $img_folder . $new_file_name;
                 $prod_img_location = $img_folder . $new_file_name;
                 move_uploaded_file($file_tmp_name, $serv_file_path);
-                $rtn_vars .= '&prod_img_path='.$prod_img_location;
+                $rtn_vars .= '&prod_img_path=' . $prod_img_location;
             } else {
-                header('Location: /pages/admin/product_edit.php?error=FileTooBig&' .$rtn_vars);
+                header('Location: /pages/admin/product_edit.php?error=FileTooBig&' . $rtn_vars);
                 exit();
             }
         } else {
-            header('Location: /pages/admin/product_edit.php?error=UploadError&' .$rtn_vars);
+            header('Location: /pages/admin/product_edit.php?error=UploadError&'  . 'file=' . $_FILE['name'] . '&' . $rtn_vars);
             exit();
         }
-    } else {
-        header('Location: /pages/admin/product_edit.php?error=WrongFileType&' .$rtn_vars);
+    } else if (!empty($file_type) && !in_array($file_ext, $allowed)) {
+        header('Location: /pages/admin/product_edit.php?error=WrongFileType&' . 'file=' . $file_type . '&' . $rtn_vars);
         exit();
     }
 
     //Db stuff
     include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
 
-    if (isset($_GET['prodid'])) {
-        $sql = 'UPDATE `Product`'
-            . 'SET `Name`=?, `Type`=?, `Description`=?, `CurrentPrice`=?, `ImagePath`=?'
+    if (isset($_GET['prodid']) && empty($prod_img_location)) {
+        // In case the user did not update the image
+
+        $sql = 'UPDATE `Product` '
+            . 'SET `Name`=?, `Type`=?, `Description`=?, `CurrentPrice`=?'
+            . ' WHERE `ProductID`=?';
+        $stmt = mysqli_stmt_init($conn);
+
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header('Location: /pages/admin/product_edit.php?error=SQLErr&' . $rtn_vars);
+            exit();
+        } else {
+            mysqli_stmt_bind_param(
+                $stmt,
+                'ssssss',
+                $prod_name,
+                $prod_type,
+                $prod_description,
+                $prod_price,
+                $_GET['prodid']
+            );
+            mysqli_stmt_execute($stmt);
+            header('Location: /pages/admin/product_view.php?message=succsess');
+        }
+    } else if (isset($_GET['prodid'])) {
+        // In case the user updated the image
+
+        $sql = 'UPDATE `Product` '
+            . 'SET `Name`=?, `Type`=?, `Description`=?, `CurrentPrice`=?, `ImagePath`=? '
             . 'WHERE `ProductID`=?';
         $stmt = mysqli_stmt_init($conn);
 
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header('Location: /pages/admin/product_edit.php?error=SQLErr&' .$rtn_vars);
+            header('Location: /pages/admin/product_edit.php?error=SQLErr&' . $rtn_vars);
             exit();
         } else {
             mysqli_stmt_bind_param(
@@ -88,9 +111,11 @@ if (isset($_POST['prod_submit'])) {
                 $_GET['prodid']
             );
             mysqli_stmt_execute($stmt);
-            header('Location: /pages/admin/product_edit.php?message=succsess');
+            header('Location: /pages/admin/product_view.php?message=succsess');
         }
     } else {
+        // In case the user is adding a new record
+
         $sql = 'INSERT INTO `Product` '
             . '(`Name`, `Type`, `Description`, `CurrentPrice`, `ImagePath`) '
             . 'VALUES (?,?,?,?,?)';
@@ -110,7 +135,7 @@ if (isset($_POST['prod_submit'])) {
                 $prod_img_location
             );
             mysqli_stmt_execute($stmt);
-            header('Location: /pages/admin/product_edit.php?message=succsess');
+            header('Location: /pages/admin/product_view.php?message=succsess');
         }
     }
 } else {
