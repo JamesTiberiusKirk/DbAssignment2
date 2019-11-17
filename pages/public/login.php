@@ -23,7 +23,6 @@ if (isset($_GET['error'])) {
                             placeholder="Username">';
                     }
                     ?>
-
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">User Password</label>

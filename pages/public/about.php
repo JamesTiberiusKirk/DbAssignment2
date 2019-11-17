@@ -1,27 +1,13 @@
-<?php include "../../includes/header.php" ?>
-
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
 <div class="jumbotron">
-    <!---<div class="d-flex justify-content-center">
-        <h1>About</h1>
-    </div> --->
-    <div class="row">
-        <form action="../../includes/about.inc.php" method="post">
-                <!---<div class="d-flex justify-content-center">
-                    <img class="card-img-top" src="president.jpg" alt="Card image cap" style="width:300px;height:300px;">
-                    <span style="opacity:0;">---</span>
-                    <h5> 
-                        Aylien Ibryamov has built this company from the bottom up. Our company president started when he was in 
-                        University by selling cheap technology to his friends and peer, slowly he builds up his reputation and
-                        started building a small business. Now he has 3 warehouses all over Scotland and multiple branches loc
-                        ated all over the UK. He is proud to share tech from the cosmos to everyone on earth.
-                    </h5>
-                </div> --->
+	<?php
+	echo "<p> 
+			E.T world is a national computer technology company that focuses on producing high end laptops and desktops that are out of this world while still being affordable. In order to achieve that, we design the laptop through parts outsourced by different suppliers. The company receives high end parts from various popular suppliers(Such as AMD, Intel, Corsair etc) and we also get our raw materials from various suppliers all over the world. We have multiple branches all across Scotland and we currently have 2 warehouses located in Dundee and Edinburgh. 
+		</p>
+		<p>
+			ET world CEO and founder is Aylin Ibryamov. The name ET World was inspired by a popular nickname used by his peers - Alien. Struggling to earn a good living, he decided to open up a 2nd hand peripherals shop, selling to friends and family. Eventually, he developed a good set of contacts which brought his business to the next step. With a team of 5, ET World was ready for branding and manufacturing. Starting small with only peripherals to finally becoming one of the top companies in the market selling high quality OEM laptops and pre-built desktops for gamers around the UK, competing with huge brands such as alienware and msi.
 
-                <div class="col-lg-12" style="opacity:2;" style="background-color-:black;">
-                    <img class="card-img-top" src="Logo.png" alt="Card image cap">
-
-                </div>
-        </form>
-    </div>
-    <div class="col"></div>
+		</p>";
+	?>
 </div>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php' ?>

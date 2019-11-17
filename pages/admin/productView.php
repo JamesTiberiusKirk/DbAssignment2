@@ -1,5 +1,5 @@
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
-<?php include_once $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php'?>
+<?php include "../../includes/header.php" ?>
+<?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
 
 <div class="jumbotron">
     <div class="col">
@@ -16,9 +16,9 @@
                         $table_inp = $_POST['table_inp'];
                         $search_btn = $_POST['search_btn'];
                         $show_table = $_POST['show_tbl'];
+
                         if(isset($search_btn)){
                             $sql = "SELECT * FROM testapp.products WHERE Name='$table_inp'";
-                            $sql = "SELECT * FROM Product WHERE ProductID BETWEEN 1 AND 10000";
                             $result = $conn->query($sql);
                             if($result->num_rows > 0){
                                 echo "Product Found, " . $result->num_rows . " results:";

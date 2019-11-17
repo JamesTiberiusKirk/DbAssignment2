@@ -12,7 +12,7 @@
                     <div class="row">
                         <?php
                             $count = 1;
-                            $sql = "SELECT * FROM Product WHERE ProductID BETWEEN 1 AND 10000";
+                            $sql = "SELECT * FROM testapp.products WHERE ProductID BETWEEN 20000 AND 29999"; //Change for new DB for type
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
@@ -35,7 +35,6 @@
                                     echo '</div>';
                                     echo '</div>';
                                     echo '</div>';
-
                                     if($count==4){
                                         $count = 1;
                                         echo '</div>';
@@ -44,7 +43,6 @@
                                     } else {
                                         $count++;
                                     }
-
                                 }
                             } else {
                                 echo "0 results";
