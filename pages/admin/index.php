@@ -17,8 +17,8 @@
         </div>
         <div class="card">
             <div class="card-body text-center">
-                <h3 class="card-title">Staff Scheduler</h3>
-                <a href="staff_scheduler.php" class="btn btn-primary stretched-link">View</a>
+                <h3 class="card-title">Staff Manager</h3>
+                <a href="staff_manager.php" class="btn btn-primary stretched-link">View</a>
             </div>
         </div>
     </div>
