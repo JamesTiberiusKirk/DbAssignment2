@@ -1,6 +1,6 @@
 <?php
-function bind_query($conn, $stmt, $sql, $bind_str, array $vars) {
-    $result = NULL;
+function bind_query($conn, $sql, $bind_str, array $vars) {
+    $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         echo mysqli_error($conn);
     }

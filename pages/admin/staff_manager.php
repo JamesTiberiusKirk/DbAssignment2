@@ -45,20 +45,20 @@
                 $new_role = "customer";
                 $id = $_GET['delete_btn'];
 
-                $stmt = mysqli_stmt_init($conn);
                 $sql = 'UPDATE Account SET AccountType=? WHERE AccountID=?';
                 $vars = array($new_role, $id);
-                bind_query($conn, $stmt, $sql, 'si', $vars);
+                bind_query($conn, $sql, 'si', $vars);
+                mysqli_stmt_close($stmt);
 
-                $stmt = mysqli_stmt_init($conn);
                 $sql = 'DELETE FROM Staff WHERE AccountID=?';
                 $vars = array($id);
-                bind_query($conn, $stmt, $sql ,'i', $vars);
+                bind_query($conn, $sql ,'i', $vars);
+                mysqli_stmt_close($stmt);
                 
-                $stmt = mysqli_stmt_init($conn);
                 $sql = 'DELETE FROM StaffSchedule WHERE StaffID=?';
                 $vars = array($_GET['staff_id']);
-                bind_query($conn, $stmt, $sql ,'i', $vars);
+                bind_query($conn ,$sql ,'i', $vars);
+                mysqli_stmt_close($stmt);
 
                 header('Location: /pages/admin/staff_manager.php?success');
                 
