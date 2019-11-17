@@ -11,15 +11,14 @@
                 <th scope="col">Branch ID</th>
                 <th scope="col">Job Title</th>
                 <th scope="col">Schedule</th>
-                <th scope="col">Edit</th>
+                <!--<th scope="col">Edit</th>-->
                 <th scope="col">Delete</th>
             </tr>
         </thead>
         <tbody>
             <?php
+            include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/query.inc.php';
             $sql = 'SELECT * FROM Staff';
-            // $stmt = mysqli_stmt_init($conn);
-            // mysqli_stmt_prepare()
             $result = mysqli_query($conn,$sql) 
             or die("dberr:".mysqli_error($conn));
             while ($row = $result->fetch_assoc()) {
@@ -32,31 +31,39 @@
                 echo '<form method="get">';
                 echo '<td> <a href="staff_create_schedule.php?schedule_btn='.$row['StaffID'].'" class="btn btn-outline-primary">Schedule</a> </td>';
                 echo '</form>';
-                echo '<form class="input-group mb-3">';
-                echo '<td> <button class="btn btn-outline-secondary" name="edit_btn" action="staff_create.php" method="post">Edit</button> </td>';
-                echo '</form>';
+                // echo '<form class="input-group mb-3">';
+                // echo '<td> <button class="btn btn-outline-secondary" name="edit_btn" action="staff_create.php" method="post">Edit</button> </td>';
+                // echo '</form>';
                 echo '<form method="get">';
-                echo '<td> <a href="staff_manager.php?delete_btn='.$row['StaffID'].'" class="btn btn-outline-danger">Delete</a> </td>';
+                echo '<td> <a href="staff_manager.php?delete_btn='.$row['AccountID'].'&staff_id='.$row['StaffID'].'" class="btn btn-outline-danger">Delete</a> </td>';
                 echo '</form>';
             }
             mysqli_free_result($result);
 
             if(isset($_GET['delete_btn'])) {
+                echo $_GET['staff_id'];
+                $new_role = "customer";
                 $id = $_GET['delete_btn'];
-                $sql = 'DELETE FROM Staff WHERE StaffID=?';
+
                 $stmt = mysqli_stmt_init($conn);
-                if (!mysqli_stmt_prepare($stmt, $sql)) {
-                    echo mysqli_error($conn);
-                }
-                else {
-                    mysqli_stmt_bind_param($stmt, 'i', $id);
-                    mysqli_stmt_execute($stmt) or die("dberr:".mysqli_error($sql));
-                    mysqli_stmt_store_result($stmt);
-                    $stmt->free_result();
-                    header('Location: /pages/admin/staff_manager.php?success');
-                }
-            }
+                $sql = 'UPDATE Account SET AccountType=? WHERE AccountID=?';
+                $vars = array($new_role, $id);
+                bind_query($conn, $stmt, $sql, 'si', $vars);
+
+                $stmt = mysqli_stmt_init($conn);
+                $sql = 'DELETE FROM Staff WHERE AccountID=?';
+                $vars = array($id);
+                bind_query($conn, $stmt, $sql ,'i', $vars);
                 
+                $stmt = mysqli_stmt_init($conn);
+                $sql = 'DELETE FROM StaffSchedule WHERE StaffID=?';
+                $vars = array($_GET['staff_id']);
+                bind_query($conn, $stmt, $sql ,'i', $vars);
+
+                header('Location: /pages/admin/staff_manager.php?success');
+                
+            }
+            
             if (isset($_POST['create_staff'])) {
                 header('Location: /pages/admin/staff_create.php');
             }

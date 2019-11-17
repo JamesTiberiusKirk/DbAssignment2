@@ -1,7 +1,7 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php' ?>
 
 <div class="jumbotron">
-    <h1>Admin Console</h1>
+    <h1>Admin Portal</h1>
     <div class="card">
         <div class="card">
             <div class="card-body text-center">
@@ -21,6 +21,7 @@
                 <a href="staff_manager.php" class="btn btn-primary stretched-link">View</a>
             </div>
         </div>
+        
     </div>
 </div>
 
