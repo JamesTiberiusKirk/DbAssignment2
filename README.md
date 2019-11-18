@@ -24,7 +24,6 @@
   - [ ] product_Peripherals.php
     - [ ] buy button
     - [ ] path to img
-  - [ ] shopping_cart.php
   
   - [ ] account_view_information.php
   
@@ -37,7 +36,7 @@
     - [ ] slideshow / row of products
   
  ## Member
- 
+ - [ ] shopping_cart.php
  # TODO
  - [ ] Port to silva
  - [ ] Port to views
