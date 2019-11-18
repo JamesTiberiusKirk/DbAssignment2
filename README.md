@@ -1,7 +1,7 @@
 # DbAssignemnt2
 
  # Staff
- 
+ - [ ] view_payroll.php
  
  # Admin
  - [x] product_edit.php (add and edit products)
@@ -37,4 +37,9 @@
     - [ ] slideshow / row of products
   
  ## Member
+ 
+ # TODO
+ - [ ] Port to silva
+ - [ ] Port to views
+ 
  
