@@ -23,7 +23,7 @@
                                     echo '<img class="card-img-top" src=" ' . $row['ImagePath'] . '" alt="Card image cap">'; //Will take path of image per product
                                     echo '<div class="card-body">';
                                     echo '<h5 class="card-title">';
-                                    echo '<a href="#" class="text-dark">' . $row["Name"] . '</a>';
+                                    echo '<a href="product.php?prodID= '. $row['ProductID'] .'" class="text-dark">' . $row["Name"] . '</a>';
                                     echo '</h5>';
                                     echo '</div>';
                                     echo '<div class="card-footer">';
