@@ -12,7 +12,7 @@
                     <div class="row">
                         <?php
                             $count = 1;
-                            $sql = "SELECT * FROM Product WHERE Type='Desktop' "; //Change for new DB for type
+                            $sql = "SELECT * FROM Product WHERE Type='Desktop'"; //Change for new DB for type
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
