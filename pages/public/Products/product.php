@@ -10,6 +10,9 @@
             <form action="#" method="post">
                 <div class="container">
                     <?php
+                        $_SESSION['Basket'] = array(
+                            array()
+                        );
                         $passVal = $_GET['prodID'];
                         //echo $passVal;
                         $sql = 'SELECT * FROM Product WHERE ProductID="'.$passVal.'"';
@@ -22,11 +25,15 @@
                                 echo '<div class="row">';
                                 echo '<div class="col-md-6">';
                                 echo '<div class="card">';
-                                echo '<img class="card-img-top" src="../../../img/products/test.jpg" alt="Card image cap">'; //Will take path of image per product
+                                echo '<img class="card-img-top" src="'.$row['ImagePath'].'" alt="Card image cap">'; //Will take path of image per product
                                 echo '<div class="card-body">';
                                 echo '</div>';
                                 echo '<div class="card-footer">';
+                                
                                 echo '<div class="btn btn-secondary float-right">Buy</div>';
+                                //Put thing here
+                                echo '<input class="float-right" type="number" id="replyNumber" min="0" data-bind="value:replyNumber" style="width: 35px" value="1"/>';
+
                                 echo '<div class="float-left">';
                                 echo '' . $row["CurrentPrice"] . '';
                                 echo '<medium class="text-muted"> £ </medium>';
@@ -34,7 +41,6 @@
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</div>';
-
                                 echo '<div class="col-md-6">';
                                 echo '<div class="card">';
                                 echo '<div class="card-body">';
@@ -47,6 +53,12 @@
                                 echo '</div>';
                             }
                         }
+                    ?>
+                    <?php
+                        //if(isset()){
+
+
+                        //}
                     ?>
             </form>
         </div>
