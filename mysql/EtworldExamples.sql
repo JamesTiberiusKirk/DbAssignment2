@@ -59,8 +59,10 @@ LOCK TABLES `Account` WRITE;
 /*!40000 ALTER TABLE `Account` DISABLE KEYS */;
 INSERT INTO `Account`(`AccountType`,`Username`,`Password`)  
 VALUES
-('Buyer','JOhny1','something'),
-('Supplier','BASELTD','something');
+('customer','customer','etworldcustomer'),
+('Supplier','BASELTD','something'),
+('Staff' , 'Staff' , 'something'), 
+('Staff','Admin','etworldadmin' );
 /*!40000 ALTER TABLE `Account` ENABLE KEYS */;
 UNLOCK TABLES;
 
