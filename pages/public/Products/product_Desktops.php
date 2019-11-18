@@ -12,11 +12,8 @@
                     <div class="row">
                         <?php
                             $count = 1;
-<<<<<<< HEAD
-                            $sql = "SELECT * FROM Product WHERE Type='Desktop"; //Change for new DB for type
-=======
-                            $sql = "SELECT * FROM Product WHERE ProductID BETWEEN 1 AND 10000"; //Change for new DB for type
->>>>>>> master
+                            $sql = "SELECT * FROM Product WHERE Type='Desktop' "; //Change for new DB for type
+
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
