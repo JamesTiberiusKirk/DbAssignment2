@@ -67,7 +67,7 @@ session_start();
 
                         if (get_type($conn, $_SESSION['AccountID']) == "customer") {
                             echo '<li class="nav-item">
-                                    <a class="nav-link" href="/pages/customer/cart.php">
+                                    <a class="nav-link" href="/pages/customer/basket.php">
                                         <img src="/img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
                                     </a>
                                 </li>';

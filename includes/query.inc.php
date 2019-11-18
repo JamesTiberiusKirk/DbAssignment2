@@ -1,31 +1,32 @@
 <?php
 
 
-function bind_query($conn, $sql, $bind_str, array $bind_vars) {
+function bind_query($conn, $sql, $bind_str, array $bind_vars)
+{
     if ($stmt = mysqli_prepare($conn, $sql)) {
         mysqli_stmt_bind_param($stmt, $bind_str, ...$bind_vars);
-        mysqli_stmt_execute($stmt) or die ("dberr:".mysqli_error($conn));
+        mysqli_stmt_execute($stmt) or die("dberr:" . mysqli_error($conn));
         mysqli_stmt_store_result($stmt);
-    }
-    else
+    } else
         echo mysqli_error($conn);
-    
+
     return $stmt;
 }
 
-function fetch_query($conn, $sql) {
+function fetch_query($conn, $sql)
+{
     if ($stmt = mysqli_prepare($conn, $sql)) {
-        mysqli_stmt_execute($stmt) or die ("dberr:".mysqli_error($conn));
+        mysqli_stmt_execute($stmt) or die("dberr:" . mysqli_error($conn));
         mysqli_stmt_store_result($stmt);
-    }
-    else
+    } else
         echo mysqli_error($conn);
     return $stmt;
 }
 
-function get_type($conn, $AccountID){
+function get_type($conn, $AccountID)
+{
     $sql = 'SELECT `AccountType` FROM `Account` WHERE `AccountID`=?';
-    $stmt = bind_query($conn,$sql,"i",array($AccountID));
+    $stmt = bind_query($conn, $sql, "i", array($AccountID));
     mysqli_stmt_bind_result($stmt, $AccountType);
     $acc_type = '';
     while (mysqli_stmt_fetch($stmt)) {
@@ -35,18 +36,22 @@ function get_type($conn, $AccountID){
     return $acc_type;
 }
 
-function get_product($conn, $ProdID){
-    $sql = 'SELECT `ProductID`,`Name`,`Type`,`Description`,`CurrentPrice` 
-    `BranchID`,`ImagePath` FROM `Product` WHERE `ProductID`=?';
-    $stmt = bind_query($conn,$sql,"i",array($ProdID));
+function get_product($conn, $ProdID)
+{
 
-    mysqli_stmt_bind_result($stmt, $ProductID, $Name, $Type, $Description,
-    $CurrentPrice, $BranchID, $ImagePath);
-    $Result = array();
-    while (mysqli_stmt_fetch($stmt)) {
-        $Result = $ProductID;
+    $sql = 'SELECT * FROM `Product` WHERE `ProductID`=?';
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        return 'error';
+    } else {
+        mysqli_stmt_bind_param($stmt, 's', $ProdID);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
     }
-    echo mysqli_stmt_error($stmt);
-    return $Result;
+    $rtn='';
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rtn = $row;
+    }
+    return $rtn;
 }
-?>
