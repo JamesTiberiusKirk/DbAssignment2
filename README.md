@@ -12,19 +12,18 @@
  - [x] staff_create_schedule.php
  - [x] staff_create.php
  - [x] staff_manager.php
- - [ ]
  
  # Customer
  ## Public
   - [ ] product_Desktops.php
-    - [ ]buy button
-    - [ ]path to img
+    - [ ] buy button
+    - [ ] path to img
   - [ ] product_Laptops.php
-    - [ ]buy button
-    - [ ]path to img
+    - [ ] buy button
+    - [ ] path to img
   - [ ] product_Peripherals.php
-    - [ ]buy button
-    - [ ]path to img
+    - [ ] buy button
+    - [ ] path to img
   - [ ] shopping_cart.php
   
   - [ ] account_view_information.php
