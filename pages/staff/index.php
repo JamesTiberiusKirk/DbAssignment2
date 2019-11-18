@@ -20,7 +20,7 @@
         <div class="card">
             <div class="card-body text-center">
                 <h3 class="card-title">Edit Account Information</h3>
-                <a href="view_schedule.php" class="btn btn-primary stretched-link">Edit</a>
+                <a href="../public/edit_account_info.php" class="btn btn-primary stretched-link">Edit</a>
             </div>
         </div>
     </div>

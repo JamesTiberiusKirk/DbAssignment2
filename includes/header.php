@@ -28,7 +28,7 @@ session_start();
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-                <a class="navbar-brand nav-link" href="/index.php">ETWORLD<img src="/img/logo/Logo.png" alt="logo" width="80" height="80"></a>           
+                <a class="navbar-brand nav-link" href="/index.php">ETWORLD<img src="/img/Logo/Logo.png" alt="logo" width="80" height="80"></a>           
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
