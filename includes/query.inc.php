@@ -34,4 +34,19 @@ function get_type($conn, $AccountID){
     echo mysqli_stmt_error($stmt);
     return $acc_type;
 }
+
+function get_product($conn, $ProdID){
+    $sql = 'SELECT `ProductID`,`Name`,`Type`,`Description`,`CurrentPrice` 
+    `BranchID`,`ImagePath` FROM `Product` WHERE `ProductID`=?';
+    $stmt = bind_query($conn,$sql,"i",array($ProdID));
+
+    mysqli_stmt_bind_result($stmt, $ProductID, $Name, $Type, $Description,
+    $CurrentPrice, $BranchID, $ImagePath);
+    $Result = array();
+    while (mysqli_stmt_fetch($stmt)) {
+        $Result = $ProductID;
+    }
+    echo mysqli_stmt_error($stmt);
+    return $Result;
+}
 ?>
