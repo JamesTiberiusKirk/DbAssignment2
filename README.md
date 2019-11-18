@@ -25,8 +25,6 @@
     - [ ] buy button
     - [ ] path to img
   
-  - [ ] account_view_information.php
-  
   - [x] about.php
   - [ ] contactform.php
   - [ ] contacts.inc.php
@@ -36,6 +34,7 @@
     - [ ] slideshow / row of products
   
  ## Member
+ - [X] account_view_information.php
  - [ ] shopping_cart.php
  # TODO
  - [ ] Port to silva
@@ -56,3 +55,6 @@
  - [x] about.php
  - [X] login.php
  - [X] signup.php
+ 
+ ### Member
+ - [X] account_view_information.php
