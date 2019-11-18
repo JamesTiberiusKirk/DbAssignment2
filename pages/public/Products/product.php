@@ -1,3 +1,4 @@
+<?php ob_start() ?>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
 <?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
 <!--- Put php code here to check if login is admin then add button in order to insert products --->
@@ -7,12 +8,12 @@
 <div class="jumbotron">
     <div class="row">
         
-            <form action="#" method="post">
+            <form action="#">
                 <div class="container">
                     <?php
-                        $_SESSION['Basket'] = array(
-                            array()
-                        );
+                        
+
+                        $temp = 1;
                         $passVal = $_GET['prodID'];
                         //echo $passVal;
                         $sql = 'SELECT * FROM Product WHERE ProductID="'.$passVal.'"';
@@ -29,10 +30,13 @@
                                 echo '<div class="card-body">';
                                 echo '</div>';
                                 echo '<div class="card-footer">';
+                                //HERE
+                                echo '<form method="post">';
+                                echo '<input class="float-right" type="number" name="replyNumber" id="replyNumber" min="0" data-bind="value:replyNumber" style="width: 35px" value="2"/>';
+                                echo '<button name="buyBtn" id="buyBtn" class="btn btn-secondary float-right">Buy</button>';
+                                echo '</form>';
+                                //END
                                 
-                                echo '<div class="btn btn-secondary float-right">Buy</div>';
-                                //Put thing here
-                                echo '<input class="float-right" type="number" id="replyNumber" min="0" data-bind="value:replyNumber" style="width: 35px" value="1"/>';
 
                                 echo '<div class="float-left">';
                                 echo '' . $row["CurrentPrice"] . '';
@@ -51,19 +55,27 @@
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</div>';
+
+                                //$temp = htmlentities($_GET['replyNumber']);
                             }
                         }
                     ?>
-                    <?php
-                        //if(isset()){
-
-
-                        //}
+                    <!--- ITS NOT FUCKING WORKING FUCK, HELP MEEEEE---->
+                    <?php 
+                        if(isset($_POST['buyBtn'])){
+                            echo "hello hava a nice day";
+                            array_push($_SESSION['Basket'],array(1,1));
+                            array_push($_SESSION['Basket'],array(1,1));
+                            header('Location: /pages/public/Products/product.php');
+                        }
+                        print_r($_SESSION['Basket']);
                     ?>
             </form>
         </div>
         <div class="col"></div>
     </div>
 </div>
+
+<?php ob_flush() ?>
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php' ?>

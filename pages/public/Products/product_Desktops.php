@@ -20,10 +20,10 @@
                                 while($row = $result->fetch_assoc()) {
                                     echo '<div class="col-md-3">';
                                     echo '<div class="card">';
-                                    echo '<img class="card-img-top" src=" ' . $row['ImagePath'] . '" alt="Card image cap">'; //Will take path of image per product
+                                    echo '<img class="card-img-top" src="' . $row['ImagePath'] . '" alt="Card image cap">'; //Will take path of image per product
                                     echo '<div class="card-body">';
                                     echo '<h5 class="card-title">';
-                                    echo '<a href="product.php?prodID= '. $row['ProductID'] .'" class="text-dark">' . $row["Name"] . '</a>';
+                                    echo '<a href="product.php?prodID='. $row['ProductID'] .'" class="text-dark">' . $row["Name"] . '</a>';
                                     echo '</h5>';
                                     echo '</div>';
                                     echo '<div class="card-footer">';
