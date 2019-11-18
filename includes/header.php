@@ -78,29 +78,6 @@ session_start();
                     </li>
 
                     <?php
-                    
-                    // function set_account_view($acc_role) {
-                    //     if (isset($_SESSION['AccountID'])) {
-                    //         include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-                    //         $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountRole` ='.$acc_role;
-                    //         $stmt = mysqli_stmt_init($conn);
-                    //         if (mysqli_stmt_prepare($stmt, $role_sql)) {
-                    //             mysqli_stmt_bind_param($stmt, "s", $_SESSION['AccountID']);
-                    //             mysqli_stmt_execute($stmt);
-                    //             mysqli_stmt_store_result($stmt);
-                    //             $role_res = mysqli_stmt_num_rows($stmt);
-                    //             if ($role_res == 1) {
-                    //                 echo '<li class="nav-item">';
-                    //                 echo '<a class="nav-link" href="/pages/"'.$acc_role.'"/index.php">Admin</a>';
-                    //                 echo '</li>';
-                    //             }
-                    //         }
-                    //     }
-                    // }
-
-                    // set_account_view('admin');
-                    // set_account_view('staff');
-                    // set_account_view('customer');
                     if (isset($_SESSION['AccountID'])) {
                         include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
                         $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountType` = "admin"';
@@ -117,7 +94,10 @@ session_start();
                             }
                         }
                     }
-
+                    
+                    if (isset($_SESSION['AccountID'])) {
+                        
+                    }
                     if (isset($_SESSION['AccountID'])) {
                         include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
                         $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountType` = "staff"';
@@ -132,7 +112,51 @@ session_start();
                                 echo '<a class="nav-link" href="/pages/staff/index.php">Staff Portal</a>';
                                 echo '</li>';
                             }
+                            //mysqli_free_result($stmt);
                         }
+                        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/query.inc.php');
+                        $sql = 'DROP VIEW IF EXISTS `StaffInformation`';
+                        $result = mysqli_query($conn, $sql);
+                        //$result->free_result();
+
+                        $sql = 'SELECT * FROM Staff WHERE AccountID="'.$_SESSION['AccountID'].'"';
+                        $result = mysqli_query($conn, $sql);
+                        $staff_id = '';
+                        $branch_id = '';
+                        while ($row = $result->fetch_assoc()) {
+                            $staff_id = $row['StaffID'];
+                            $branch_id = $row['BranchID'];
+                        }
+                
+                        $sql = 'CREATE VIEW `StaffInformation` AS SELECT
+                        Sta.AccountID,
+                        Sta.StaffID,
+                        Sta.FullName,
+                        Salary,
+                        Role,
+                        Address,
+                        Phone,
+                        PayrollID,
+                        Deductions,
+                        GrossPay,
+                        NetPay,
+                        Ni,
+                        Sta.BranchID,
+                        BranchType,
+                        BranchAddress,
+                        ContactNumber
+                        FROM Staff AS Sta, Branch AS Bran, Payroll AS Pay
+                        WHERE Sta.StaffID = Pay.StaffID and Sta.StaffID = "'.$staff_id.'" and (Sta.BranchID = Bran.BranchID and Sta.BranchID = "'.$branch_id.'"'.')';
+                        $result = mysqli_query($conn, $sql);
+                        echo mysqli_error($conn);
+
+                        $sql = 'SELECT * FROM StaffInformation WHERE StaffID = 583';
+                        $result = mysqli_query($conn, $sql);
+                        
+                        mysqli_free_result($result);
+                        
+                        
+                        //$stmt = bind_query($conn, $sql, 'i', array($_SESSION['AccountID']));
                     }
                     if (isset($_SESSION['AccountID'])) {
                         include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
@@ -148,6 +172,34 @@ session_start();
                                 echo '<a class="nav-link" href="/pages/customer/index.php">Customer Portal</a>';
                                 echo '</li>';
                             }
+                        }
+
+                        $sql = 'CREATE VIEW `CustomerInformation` AS SELECT
+                        A.AccountID, 
+                        CustomerID, 
+                        CustomerFirstName,
+                        CustomerLastName,
+                        CustomerAddress,
+                        Phone,
+                        BankAccountID,
+                        CardNUmber,
+                        CVC,
+                        AccountNUmber,
+                        SortCode,
+                        ExpiryDate,
+                        FullName,
+                        CardType
+                        FROM Customer AS A , BankAccount AS B
+                        WHERE A.AccountID = B.AccountiD and A.AccountID = ?';
+
+                        $result = mysqli_query($conn, $sql);
+                        $sql = 'SELECT * FROM CustomerInformation WHERE AccountID = "'.$_SESSION['AccountID'].'"';
+                        echo $result;
+                        //mysqli_free_result($result);
+
+                        $result = mysqli_query($conn, $sql);
+                        while ($row = $result->fetch_assoc()) {
+                            echo $row['AccountID'];
                         }
                     }
                     ?>

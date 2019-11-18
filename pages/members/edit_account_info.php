@@ -3,7 +3,6 @@ ob_start();
 ?>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php'?>
 <?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
-<?php include $_SERVER['DOCUMENT_ROOT']."/includes/query.inc.php"?>
 
 <div class="jumbotron">
     <form method="post">
@@ -19,6 +18,7 @@ ob_start();
         <button class="btn btn-outline-secondary" name="cancel_btn">Cancel</button>
     </form>
     <?php
+    include_once $_SERVER['DOCUMENT_ROOT']."/includes/query.inc.php";
     $acc_id = $_SESSION['AccountID'];
     $sql = 'SELECT AccountType FROM Account WHERE AccountID =?';
     $stmt = bind_query($conn, $sql, 'i', array($acc_id));
@@ -49,15 +49,17 @@ ob_start();
                     $sql = 'SELECT * FROM Customer WHERE AccountID = ?';
                     $stmt = bind_query($conn, $sql, 'i', array($acc_id));
                     if (mysqli_stmt_num_rows($stmt)) {
+                        mysqli_stmt_free_result($stmt);
                         $sql = 'UPDATE Customer SET CustomerFirstName = ?, CustomerLastName = ?, CustomerAddress = ?, Phone = ? WHERE AccountID = ?';
                         $stmt = bind_query($conn, $sql, 'sssii', array($_POST['fname_inp'], $_POST['lname_inp'], $_POST['addr_inp'], $_POST['phone_inp'],$acc_id));
                         mysqli_stmt_free_result($stmt);
                         header('Location: ../customer/index.php?success');
                     }
                     else {
-                        $sql = 'INSERT INTO Customer(AccountID, CustomerFirstName, CustomerLastName, CustomerAddress, Phone) VALUES (? ? ? ?)';
+                        $sql = 'INSERT INTO Customer(AccountID, CustomerFirstName, CustomerLastName, CustomerAddress, Phone) VALUES (?, ?, ?, ?, ?)';
                         $stmt = bind_query($conn, $sql, 'isssi', array($acc_id, $_POST['fname_inp'], $_POST['lname_inp'], $_POST['addr_inp'], $_POST['phone_inp']));
                         mysqli_stmt_free_result($stmt);
+                        echo  mysqli_stmt_error($stmt);
                         header('Location: ../customer/index.php?success');
                     }
                 }
@@ -68,6 +70,7 @@ ob_start();
         }
         else
             echo "Account not found";
+
     }
 
     if (isset($_POST['cancel_btn'])) {
