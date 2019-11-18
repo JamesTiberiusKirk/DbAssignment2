@@ -4,7 +4,7 @@
  <p 
   style="font-size:200%;">Contact Us
  </p>
- <form action="contactform.php" method="post">
+ <form action="/includes/contact.inc.php".php" method="post">
  <div class="form-group">
   <label for="name">Your Name: </label>
   <input type="text" class="form-control" id="name" name="customer_name" placeholder="John Smith" pattern=[A-Z\sa-z]{3,20} required>
