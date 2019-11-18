@@ -26,9 +26,9 @@
                                 echo '<div class="card-body">';
                                 echo '</div>';
                                 echo '<div class="card-footer">';
-                                echo '<div class="badge badge-secondary float-right">30%</div>';
+                                echo '<div class="btn btn-secondary float-right">Buy</div>';
                                 echo '<div class="float-left">';
-                                echo '<a href="#" class="text-danger">' . $row["CurrentPrice"] . '</a>';
+                                echo '' . $row["CurrentPrice"] . '';
                                 echo '<medium class="text-muted"> £ </medium>';
                                 echo '</div>';
                                 echo '</div>';
