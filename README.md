@@ -42,4 +42,18 @@
  - [ ] Port to silva
  - [ ] Port to views
  
+ # Tested
  
+ ## Admin
+ - [x] product_edit.php (add and edit products)
+ - [x] product_view.php
+ - [x] users.php
+ - [x] staff_create_schedule.php
+ - [x] staff_create.php
+ - [x] staff_manager.php
+ 
+ ## Customer
+ ### Public
+ - [x] about.php
+ - [X] login.php
+ - [X] signup.php
