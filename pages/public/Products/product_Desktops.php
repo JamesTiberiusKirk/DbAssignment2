@@ -20,16 +20,16 @@
                                 while($row = $result->fetch_assoc()) {
                                     echo '<div class="col-md-3">';
                                     echo '<div class="card">';
-                                    echo '<img class="card-img-top" src="../../../img/products/test.jpg" alt="Card image cap">'; //Will take path of image per product
+                                    echo '<img class="card-img-top" src=" ' . $row['ImagePath'] . '" alt="Card image cap">'; //Will take path of image per product
                                     echo '<div class="card-body">';
                                     echo '<h5 class="card-title">';
                                     echo '<a href="#" class="text-dark">' . $row["Name"] . '</a>';
                                     echo '</h5>';
                                     echo '</div>';
                                     echo '<div class="card-footer">';
-                                    echo '<div class="badge badge-secondary float-right">30%</div>';
+                                    echo '<div class="btn btn-secondary float-right">Buy</div>';
                                     echo '<div class="float-left">';
-                                    echo '<a href="#" class="text-danger">' . $row["CurrentPrice"] . '</a>';
+                                    echo '' . $row["CurrentPrice"] . '';
                                     echo '<medium class="text-muted"> £ </medium>';
                                     echo '</div>';
                                     echo '</div>';

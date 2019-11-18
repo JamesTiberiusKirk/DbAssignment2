@@ -12,7 +12,7 @@
                     <div class="row">
                         <?php
                             $count = 1;
-                            $sql = "SELECT * FROM Product WHERE Type='Laptop' ";//Change for new DB for type
+                            $sql = "SELECT * FROM Product WHERE Type='Laptop'";//Change for new DB for type
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
@@ -27,9 +27,9 @@
                                     echo '</h5>';
                                     echo '</div>';
                                     echo '<div class="card-footer">';
-                                    echo '<div class="badge badge-secondary float-right">30%</div>';
+                                    echo '<div class="btn btn-secondary float-right">Buy</div>';
                                     echo '<div class="float-left">';
-                                    echo '<a href="#" class="text-danger">' . $row["CurrentPrice"] . '</a>';
+                                    echo '' . $row["CurrentPrice"] . '';
                                     echo '<medium class="text-muted"> £ </medium>';
                                     echo '</div>';
                                     echo '</div>';
