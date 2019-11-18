@@ -38,7 +38,7 @@ CREATE TABLE `Customer` (
     `CustomerFirstName` VARCHAR(10) DEFAULT NULL,
     `CustomerLastName` VARCHAR(10) DEFAULT NULL,
     `CustomerAddress` VARCHAR(50) DEFAULT NULL,
-    `Phone` VARCHAR(12) DEFAULT NULL,
+    `Phone` int(11) DEFAULT NULL,
     PRIMARY KEY (`CustomerID`),
     KEY `fk_Customer_Account` (`AccountID`),
     CONSTRAINT `fk_Customer_Account` FOREIGN KEY (`AccountID`)

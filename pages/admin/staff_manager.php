@@ -47,17 +47,17 @@
 
                 $sql = 'UPDATE Account SET AccountType=? WHERE AccountID=?';
                 $vars = array($new_role, $id);
-                bind_query($conn, $sql, 'si', $vars);
+                $stmt = bind_query($conn, $sql, 'si', $vars);
                 mysqli_stmt_close($stmt);
 
                 $sql = 'DELETE FROM Staff WHERE AccountID=?';
                 $vars = array($id);
-                bind_query($conn, $sql ,'i', $vars);
+                $stmt = bind_query($conn, $sql ,'i', $vars);
                 mysqli_stmt_close($stmt);
                 
                 $sql = 'DELETE FROM StaffSchedule WHERE StaffID=?';
                 $vars = array($_GET['staff_id']);
-                bind_query($conn ,$sql ,'i', $vars);
+                $stmt = bind_query($conn ,$sql ,'i', $vars);
                 mysqli_stmt_close($stmt);
 
                 header('Location: /pages/admin/staff_manager.php?success');

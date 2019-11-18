@@ -2,7 +2,7 @@
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php'?>
 
 <?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
-
+<?php include_once $_SERVER['DOCUMENT_ROOT'].'/includes/query.inc.php'?>
 <div class="jumbotron">
     <form method="post">
         <label for="fni">Full name</label>
@@ -17,6 +17,7 @@
         <select class="mdb-select md-form" name='branch_id_inp' id='bii'>
             <option value="" >Choose branch ID</option>
                 <?php
+
                 $sql = 'SELECT * FROM Branch';
                 $result = mysqli_query($conn, $sql);
                 while ($row = $result->fetch_assoc()) {
@@ -30,33 +31,39 @@
     </form>
 
     <?php
-    include_once $_SERVER['DOCUMENT_ROOT'].'/includes/query.inc.php';
+    
     //mysqli_next_result($conn);
     if (isset($_POST['add_staff_btn'])) {
         if (!empty($_POST['full_name_inp']) && !empty($_POST['acc_id_inp']) 
             && !empty($_POST['branch_id_inp']) && !empty($_POST['job_title_inp'])) {
             
-            $sql = 'SELECT * FROM Account WHERE AccountID="'.$_POST['acc_id_inp'].'"';
-            $result = mysqli_query($conn, $sql) or die("dberr:".mysqli_error());
+            $sql = 'SELECT AccountType FROM Account WHERE AccountID=?';
             $acc_type = '';
-            if ($result->num_rows) {
-                while ($row = $result->fetch_assoc()) {
-                    $acc_type = $row['AccountType'];
+            $stmt = bind_query($conn, $sql, 'i', array($_POST['acc_id_inp']));
+            mysqli_stmt_bind_result($stmt, $AccountType);
+
+            if (mysqli_stmt_num_rows($stmt) == 1) {
+                while (mysqli_stmt_fetch($stmt)) {
+                    $acc_type = $AccountType;
                 }
-                mysqli_free_result($result);
+                mysqli_stmt_free_result($stmt);
+                mysqli_stmt_close($stmt);
+
                 if ($acc_type === 'customer') {
-                    $sql = 'UPDATE Account SET AccountType="staff" WHERE AccountID="'.$_POST['acc_id_inp'].'"';
-                    $result = mysqli_query($conn, $sql);
-                    mysqli_free_result($result);
+                    $sql = 'UPDATE Account SET AccountType="staff" WHERE AccountID=?';
+                    $stmt = bind_query($conn, $sql, 'i', array($_POST['acc_id_inp']));
+                    mysqli_stmt_free_result($stmt);
+                    mysqli_stmt_close($stmt);
                     create_staff($conn);
                     //create_payroll($conn);
                     header('Location: /pages/admin/staff_manager.php?success');
                 }
                 else if ($acc_type === 'staff') {
-                    $sql = 'SELECT * FROM Staff WHERE AccountID="'.$_POST['acc_id_inp'].'"';
-                    $result = mysqli_query($conn, $sql);
-                    if ($result->num_rows == 0) {
-                        mysqli_free_result($result);
+                    $sql = 'SELECT * FROM Staff WHERE AccountID=?';
+                    $stmt = bind_query($conn, $sql, 'i', array($_POST['acc_id_inp']));
+                    if (mysqli_stmt_num_rows($stmt) === 0) {
+                        mysqli_stmt_free_result($stmt);
+                        mysqli_stmt_close($stmt);
                         create_staff($conn);
                         //create_payroll($conn);
                         header('Location: /pages/admin/staff_manager.php?success');
@@ -79,23 +86,13 @@
     }
 
     function create_staff($conn) {
-
         $sql = 'INSERT INTO Staff (FullName, AccountID, BranchID, Role, Salary)
         VALUES (?, ?, ?, ?, ?)';
+        $stmt = bind_query($conn, $sql, 'siisd', array($_POST['full_name_inp'], $_POST['acc_id_inp'],
+            $_POST['branch_id_inp'], $_POST['job_title_inp'], $_POST['salary_inp']));
 
-        $stmt = mysqli_stmt_init($conn);
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
-        die("dberr:".mysqli_error($conn));
-        }
-        else {
-            mysqli_stmt_bind_param($stmt, 'siisd', $_POST['full_name_inp'], $_POST['acc_id_inp'],
-            $_POST['branch_id_inp'], $_POST['job_title_inp'], $_POST['salary_inp']);
-            mysqli_stmt_execute($stmt) or die("dberr:".mysqli_error($conn));
-            mysqli_stmt_store_result($stmt);
-            mysqli_stmt_get_result($stmt);
-            mysqli_stmt_free_result($stmt);    
-            mysqli_stmt_close($stmt);
-        }
+        mysqli_stmt_free_result($stmt);
+        mysqli_stmt_close($stmt);
     }
 
     // function create_payroll($conn) {

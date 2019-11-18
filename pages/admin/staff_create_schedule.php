@@ -3,6 +3,7 @@ ob_start();
 ?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php' ?>
 <?php include_once $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php'?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'].'/includes/query.inc.php'?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
@@ -35,24 +36,20 @@ ob_start();
     <?php
     $date = date_create($_POST['schdl_date_inp']);
     $sql = 'INSERT INTO StaffSchedule(StaffID, Date, Start_at, Finish_at) VALUES (?, ?, ? ,?)';
-    $stmt = mysqli_stmt_init($conn);
-    echo $_POST['schdl_date_inp'];
+
     if (isset($_POST['schdl_submit'])) {
         if (!empty($_POST['schdl_date_inp']) && !empty($_POST['schdl_ts_inp']) && !empty($_POST['schdl_te_inp'])) {
-            if (!mysqli_stmt_prepare($stmt, $sql)) {
-                die("dberr:".mysqli_error($conn));
-            }
-            else {
-                mysqli_stmt_bind_param($stmt, 'isss' ,$staff_id, date_format($date, 'y-m-d'), 
-                $_POST['schdl_ts_inp'], $_POST['schdl_te_inp']);
-                mysqli_stmt_execute($stmt) or die("dberr:".mysqli_stmt_error($stmt));
-                mysqli_store_result($conn);
-                mysqli_stmt_close($stmt);
-                header('Location: /pages/admin/staff_manager.php?schedule%success');
-            }            
+            $stmt = bind_query($conn, $sql, 'isss', array($staff_id, date_format($date, 'y-m-d'), 
+                $_POST['schdl_ts_inp'], $_POST['schdl_te_inp']));
+                
+            mysqli_stmt_free_result($stmt);
+            mysqli_stmt_close($stmt);
+            header('Location: /pages/admin/staff_manager.php?schedule%successful');
+            exit();         
         }
         else {
             header('Location: /pages/admin/staff_manager.php?schedule%unsuccessful');
+            exit();
         }
     }
 
