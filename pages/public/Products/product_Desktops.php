@@ -59,7 +59,6 @@
                                 $_SESSION['Basket'][$tempCount]['prodid'] = $passVal;
                                 $_SESSION['Basket'][$tempCount]['qty'] = 1;
                             }
-                        print_r($_SESSION['Basket']);
                         ?>
                 </div>
         </div>
