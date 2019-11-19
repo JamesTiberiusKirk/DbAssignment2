@@ -1,6 +1,5 @@
 <?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'. '/includes/header.php'?>
 
-
 <div id="demo" class="carousel slide" data-ride="carousel">
 
   <!-- Indicators -->
@@ -13,13 +12,13 @@
   <!-- The slideshow -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="la.jpg" alt="Los Angeles">
+      <img class="d-block img-fluid" src="/img/products/DesktopIMG/desktop-1.jpg" alt="Desktop">
     </div>
     <div class="carousel-item">
-      <img src="chicago.jpg" alt="Chicago">
+      <img class="d-block img-fluid" src="/img/products/LaptopIMG/laptop-1.jpg" alt="Laptop">
     </div>
     <div class="carousel-item">
-      <img src="ny.jpg" alt="New York">
+      <img class="d-block img-fluid" src="/img/products/PeripheralsIMG/monitor-1.jpg" alt="Periph">
     </div>
   </div>
 
@@ -30,34 +29,10 @@
   <a class="carousel-control-next" href="#demo" data-slide="next">
     <span class="carousel-control-next-icon"></span>
   </a>
-
 </div>
+
 <div class="jumbotron">
-    <?php
-
-    if(isset($_SESSION['AccountID'])){
-        echo "<br>Logged in<br>";
-    } else {
-        echo "<br>Logged out<br>";
-    }
-    
-    ?>
-   
-    
-
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-        <img src="/img/products/DesktopIMG/desktop-1.jpg" alt="Desktop">
-    </div>
-    <div class="carousel-item">
-        <img src="/img/products/LaptopIMG/laptop-1.jpg" alt="Laptop">
-    </div>
-    <div class="carousel-item">
-    <img src="/img/products/PeripheralsIMG/monitor-1.jpg" alt="Periph">
-    </div>
-  </div>
-</div>
+<h3><center> "Tech Out of This World"</center></h3> 
 </div>
 
 <?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/footer.php' ?>
