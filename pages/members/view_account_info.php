@@ -6,6 +6,7 @@ ob_start();
 ?>
 <div class="jumbotron">
     <?php
+
     $sql = 'SELECT * FROM Account WHERE AccountID="'.$_SESSION['AccountID'].'"';
     $result = mysqli_query($conn, $sql);
     $acc_type = '';
@@ -17,7 +18,7 @@ ob_start();
     <table class="table">
             <?php
             if ($acc_type === 'customer') {
-                $sql = 'SELECT * FROM `CustomerInformation` WHERE `AccountID` ="'.$_SESSION['AccountID'].'"';
+                $sql = 'SELECT * FROM Customer WHERE AccountID ="'.$_SESSION['AccountID'].'"';
                 $result = mysqli_query($conn, $sql);
                 $result_arr = array();
                 echo mysqli_error($conn);
@@ -26,14 +27,13 @@ ob_start();
                    $result_arr[1] = $row["CustomerLastName"];
                    $result_arr[2] = $row["CustomerAddress"];
                    $result_arr[3] = $row["Phone"];
-                   $result_arr[4] = $row["AccountNUmber"];
-                   $result_arr[5] = $row["CardType"];
                 }
             }
             else if ($acc_type === 'staff') {
-                $sql = 'SELECT * FROM StaffInformation WHERE AccountID ="'.$_SESSION['AccountID'].'"';
+                $sql = 'SELECT * FROM Staff WHERE AccountID ="'.$_SESSION['AccountID'].'"';
                 $result = mysqli_query($conn, $sql);
                 $result_arr = array(); 
+                echo mysqli_error($conn);
                 while($row = $result->fetch_assoc()) {
                    $result_arr[0] = $row["FullName"];
                    $result_arr[1] = $row["Address"];
@@ -78,18 +78,6 @@ ob_start();
     <?php
     
     ?>
-    <table class="table">
-        <?php
-        if ($acc_type === 'customer') {
-            echo '<h2>Saved Cards</h2>';
-            echo ' <tr>
-                    <td>'.'Account ending in: '.substr($result_arr[4], 12, 16).'</td>
-                    <td>'.'card type: '.$result_arr[5].'</td>
-                </tr>';
-        }
-        ?>
-       
-    </table>
 </div>
 <?php
 ob_end_flush();
