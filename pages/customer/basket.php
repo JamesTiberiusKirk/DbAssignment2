@@ -23,22 +23,25 @@
             echo '<h2>Cart empty</h2>';
             echo '<br>';
             exit();
-        } else {
-            $basket = $_SESSION['Basket'];
-            
-            for ($i = 0; $i = count($basket); $i++) { 
-                $product = get_product($conn, $basket[i]['ProdID']);
-                
-                echo '<tr>';
-                echo '<td>' . $product['ImagePath'] . ' ' . $product['Name'] . '</td>';
-                echo '<td>' . $product['CurrentPrice'] . '</td>';
-                echo '<td>' . $basket[i]['Qty'] . '</td>';
-                echo '</tr>';
-
-                // add to $order_total
-                // $order_total += $product['CurrentPrice'] but needs be cast to an int
+        } else{
+            $tempCount = 0;
+            foreach($_SESSION['Basket'] as $basket){
+                //product = get_product($conn, $basket[$tempCount]['ProdID']);
+                $sql = 'SELECT * FROM Product WHERE ProductID="' . $basket[$tempCount]['prodid'] . '"';
+                $result = $conn->query($sql);
+                if($result->num_rows > 0){
+                    while($row = $result->fetch_assoc()){
+                        echo '<tr>';
+                        echo '<td> '. $row['Name'] . ' </td>';
+                        //echo '<td>' . $product['ImagePath'] . ' ' . $product['Name'] . '</td>';
+                        //echo '<td>' . $product['CurrentPrice'] . '</td>';
+                        //echo '<td>' . $_SESSION['Basket']['i']['Qty'] . '</td>';
+                        echo '</tr>';
+                    }
+                }
                 
             }
+            
 
         }
     }
