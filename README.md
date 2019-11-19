@@ -24,9 +24,6 @@
   - [ ] product_Peripherals.php
     - [ ] buy button
     - [ ] path to img
-  - [ ] shopping_cart.php
-  
-  - [ ] account_view_information.php
   
   - [x] about.php
   - [ ] contactform.php
@@ -37,9 +34,27 @@
     - [ ] slideshow / row of products
   
  ## Member
- 
+ - [X] account_view_information.php
+ - [ ] shopping_cart.php
  # TODO
  - [ ] Port to silva
  - [ ] Port to views
  
+ # Tested
  
+ ## Admin
+ - [x] product_edit.php (add and edit products)
+ - [x] product_view.php
+ - [x] users.php
+ - [x] staff_create_schedule.php
+ - [x] staff_create.php
+ - [x] staff_manager.php
+ 
+ ## Customer
+ ### Public
+ - [x] about.php
+ - [X] login.php
+ - [X] signup.php
+ 
+ ### Member
+ - [X] account_view_information.php

@@ -3,8 +3,25 @@ ob_start();
 ?>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php'?>
 <?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
-<?php include $_SERVER['DOCUMENT_ROOT']."/includes/query.inc.php"?>
+<?php
+include_once $_SERVER['DOCUMENT_ROOT']."/includes/query.inc.php";
+$acc_id = $_SESSION['AccountID'];
+$sql = 'SELECT AccountType FROM Account WHERE AccountID =?';
+$stmt = bind_query($conn, $sql, 'i', array($acc_id));
+$acc_type = '';
+$staff_id = '';
+mysqli_stmt_bind_result($stmt, $AccountType);
+while (mysqli_stmt_fetch($stmt)) {
+    $acc_type = $AccountType;
+}
+//mysqli_stmt_free_result($stmt);
 
+$sql = 'SELECT StaffID FROM StaffInformation';
+$result = mysqli_query($conn, $sql);
+while ($row = $result->fetch_assoc()) {
+    $staff_id = $row['StaffID'];
+}
+?>
 <div class="jumbotron">
     <form method="post">
         <label for="fn"> First Name </label>
@@ -14,21 +31,19 @@ ob_start();
         <label for="addr"> Full Address </label>
         <input class="form-control" name="addr_inp" id="addr" type="text">
         <label for="phone"> Phone </label>
-        <th> <input class="form-control" name="phone_inp" id="phone" type="text"> </th>
+        <input class="form-control" name="phone_inp" id="phone" type="text">
+        <?php
+        if ($acc_type === 'staff') {
+            echo ' <label for="ni"> National Insurance Number</label>
+            <input class="form-control" name="ni_inp" id="ni" type="text">';
+        }
+        ?>
         <button class="btn btn-outline-secondary" name="save_btn" type="submit">Save</button>
         <button class="btn btn-outline-secondary" name="cancel_btn">Cancel</button>
     </form>
     <?php
-    $acc_id = $_SESSION['AccountID'];
-    $sql = 'SELECT AccountType FROM Account WHERE AccountID =?';
-    $stmt = bind_query($conn, $sql, 'i', array($acc_id));
-    $acc_type = '';
-    mysqli_stmt_bind_result($stmt, $AccountType);
     if (isset($_POST['save_btn'])) {
         if (mysqli_stmt_num_rows($stmt)) {
-            while (mysqli_stmt_fetch($stmt)) {
-                $acc_type = $AccountType;
-            }
             mysqli_stmt_free_result($stmt);
     
             if ($acc_type === 'staff') {
@@ -37,6 +52,10 @@ ob_start();
                     
                     $sql = 'UPDATE Staff SET FullName = ?, Address = ?, Phone = ? WHERE AccountID = ?';
                     $stmt = bind_query($conn, $sql, 'ssii', array($_POST['fname_inp']." ".$_POST['lname_inp'], $_POST['addr_inp'], $_POST['phone_inp'], $acc_id));
+                    mysqli_stmt_free_result($stmt);
+
+                    $sql = 'UPDATE Payroll SET Ni=?, StafID=? WHERE AccountID = ?';
+                    $stmt = bind_query($conn, $sql, 'sii', array($_POST['ni_inp'], $staff_id, $acc_id));
                     mysqli_stmt_free_result($stmt);
                     header('Location: ../customer/index.php?success');
                 }
@@ -49,15 +68,19 @@ ob_start();
                     $sql = 'SELECT * FROM Customer WHERE AccountID = ?';
                     $stmt = bind_query($conn, $sql, 'i', array($acc_id));
                     if (mysqli_stmt_num_rows($stmt)) {
+                        mysqli_stmt_free_result($stmt);
                         $sql = 'UPDATE Customer SET CustomerFirstName = ?, CustomerLastName = ?, CustomerAddress = ?, Phone = ? WHERE AccountID = ?';
                         $stmt = bind_query($conn, $sql, 'sssii', array($_POST['fname_inp'], $_POST['lname_inp'], $_POST['addr_inp'], $_POST['phone_inp'],$acc_id));
                         mysqli_stmt_free_result($stmt);
                         header('Location: ../customer/index.php?success');
+
+                        
                     }
                     else {
-                        $sql = 'INSERT INTO Customer(AccountID, CustomerFirstName, CustomerLastName, CustomerAddress, Phone) VALUES (? ? ? ?)';
+                        $sql = 'INSERT INTO Customer(AccountID, CustomerFirstName, CustomerLastName, CustomerAddress, Phone) VALUES (?, ?, ?, ?, ?)';
                         $stmt = bind_query($conn, $sql, 'isssi', array($acc_id, $_POST['fname_inp'], $_POST['lname_inp'], $_POST['addr_inp'], $_POST['phone_inp']));
                         mysqli_stmt_free_result($stmt);
+                        
                         header('Location: ../customer/index.php?success');
                     }
                 }
@@ -68,6 +91,7 @@ ob_start();
         }
         else
             echo "Account not found";
+
     }
 
     if (isset($_POST['cancel_btn'])) {
