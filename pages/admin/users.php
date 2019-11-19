@@ -20,7 +20,7 @@ ob_start();
         $table_inp = $_POST['table_inp'];
         $search_btn = $_POST['search_btn'];
         $show_table = $_POST['show_tbl'];
-        $sql = 'SELECT * FROM Account WHERE Username = "'.$table_inp.'"';
+        $sql = 'SELECT * FROM Account WHERE Username = "'.$_POST['table_inp'].'"';
         // when a search is made show only 1 result
         if (isset($_POST['search_btn'])) {
             $search_result = mysqli_query($conn, $sql) or die("dberr:". mysqli_error($conn));
