@@ -14,7 +14,7 @@ if (isset($_POST['prod_submit'])) {
     $prod_img_location;
 
     if (empty($prod_name) || empty($prod_price) || empty($prod_description)) {
-        header('Location: /pages/admin/product_edit.php?error=EmptyFields&' . $rtn_vars);
+        header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=EmptyFields&' . $rtn_vars);
         exit();
     }
 
@@ -44,25 +44,25 @@ if (isset($_POST['prod_submit'])) {
         if ($file_error == 0) {
             if ($file_size < 1.9*1048576) {
                 $new_file_name = uniqid('', true) . '.' . $file_ext;
-                $serv_file_path = $_SERVER['DOCUMENT_ROOT'] . $img_folder . $new_file_name;
+                $serv_file_path = $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' ] . '/2019-ac32006/team2' . $img_folder . $new_file_name;
                 $prod_img_location = $img_folder . $new_file_name;
                 move_uploaded_file($file_tmp_name, $serv_file_path);
                 $rtn_vars .= '&prod_img_path=' . $prod_img_location;
             } else {
-                header('Location: /pages/admin/product_edit.php?error=FileTooBig&' . $rtn_vars);
+                header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=FileTooBig&' . $rtn_vars);
                 exit();
             }
         } else {
-            header('Location: /pages/admin/product_edit.php?error=UploadError&'  . 'file=' . $_FILE['name'] . '&' . $rtn_vars);
+            header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=UploadError&'  . 'file=' . $_FILE['name'] . '&' . $rtn_vars);
             exit();
         }
     } else if (!empty($file_type) && !in_array($file_ext, $allowed)) {
-        header('Location: /pages/admin/product_edit.php?error=WrongFileType&' . 'file=' . $file_type . '&' . $rtn_vars);
+        header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=WrongFileType&' . 'file=' . $file_type . '&' . $rtn_vars);
         exit();
     }
 
     //Db stuff
-    include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
+    include_once $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' ] . '/2019-ac32006/team2' . '/includes/db.inc.php';
 
     if (isset($_GET['prodid']) && empty($prod_img_location)) {
         // In case the user did not update the image
@@ -73,7 +73,7 @@ if (isset($_POST['prod_submit'])) {
         $stmt = mysqli_stmt_init($conn);
 
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header('Location: /pages/admin/product_edit.php?error=SQLErr&' . $rtn_vars);
+            header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=SQLErr&' . $rtn_vars);
             exit();
         } else {
             mysqli_stmt_bind_param(
@@ -86,7 +86,7 @@ if (isset($_POST['prod_submit'])) {
                 $_GET['prodid']
             );
             mysqli_stmt_execute($stmt);
-            header('Location: /pages/admin/product_view.php?message=succsess');
+            header('Location:/2019-ac32006/team2/pages/admin/product_view.php?message=succsess');
         }
     } else if (isset($_GET['prodid'])) {
         // In case the user updated the image
@@ -97,7 +97,7 @@ if (isset($_POST['prod_submit'])) {
         $stmt = mysqli_stmt_init($conn);
 
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header('Location: /pages/admin/product_edit.php?error=SQLErr&' . $rtn_vars);
+            header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=SQLErr&' . $rtn_vars);
             exit();
         } else {
             mysqli_stmt_bind_param(
@@ -111,7 +111,7 @@ if (isset($_POST['prod_submit'])) {
                 $_GET['prodid']
             );
             mysqli_stmt_execute($stmt);
-            header('Location: /pages/admin/product_view.php?message=succsess');
+            header('Location:/2019-ac32006/team2/pages/admin/product_view.php?message=succsess');
         }
     } else {
         // In case the user is adding a new record
@@ -122,7 +122,7 @@ if (isset($_POST['prod_submit'])) {
         $stmt = mysqli_stmt_init($conn);
 
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header('Location: /pages/admin/product_edit.php?error=SQLErr&' . $rtn_vars);
+            header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=SQLErr&' . $rtn_vars);
             exit();
         } else {
             mysqli_stmt_bind_param(
@@ -135,9 +135,9 @@ if (isset($_POST['prod_submit'])) {
                 $prod_img_location
             );
             mysqli_stmt_execute($stmt);
-            header('Location: /pages/admin/product_view.php?message=succsess');
+            header('Location:/2019-ac32006/team2/pages/admin/product_view.php?message=succsess');
         }
     }
 } else {
-    header('Location: /pages/admin/product_edit.php?error=ProdSubmitNotSet');
+    header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=ProdSubmitNotSet');
 }

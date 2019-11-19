@@ -1,7 +1,7 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/header.php' ?>
 
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
+include_once $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/db.inc.php';
 
 $prod_id = '';
 $prod_name = '';
@@ -62,11 +62,11 @@ if (isset($_GET['prodid']) && isset($_GET['prod_name'])) {
 
     <?php
     if (isset($_GET['prodid'])) {
-        echo '<form action="/includes/products_edit.inc.php?prodid=' . $prod_id . '" method="post" enctype="multipart/form-data">';
+        echo '<form action= "/2019-ac32006/team2/includes/products_edit.inc.php?prodid=' . $prod_id . '" method="post" enctype="multipart/form-data">';
         echo '<h1>Edit Products</h1> <br>';
         echo  '<h3> Product ID: ' . $prod_id . '</h3>';
     } else {
-        echo '<form action="/includes/products_edit.inc.php" method="post" enctype="multipart/form-data">';
+        echo '<form action= "/2019-ac32006/team2/includes/products_edit.inc.php" method="post" enctype="multipart/form-data">';
         echo '<h1>New Prduct</h1>';
     }
     ?>
@@ -141,4 +141,4 @@ if (isset($_GET['prodid']) && isset($_GET['prod_name'])) {
 </script>
 
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/footer.php' ?>

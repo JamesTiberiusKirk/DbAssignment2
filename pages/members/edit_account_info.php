@@ -1,10 +1,10 @@
 <?php
 ob_start();
 ?>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php'?>
-<?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/header.php'?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'."/includes/db.inc.php"?>
 <?php
-include_once $_SERVER['DOCUMENT_ROOT']."/includes/query.inc.php";
+include_once $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'."/includes/query.inc.php";
 $acc_id = $_SESSION['AccountID'];
 $sql = 'SELECT AccountType FROM Account WHERE AccountID =?';
 $stmt = bind_query($conn, $sql, 'i', array($acc_id));
@@ -100,7 +100,7 @@ while ($row = $result->fetch_assoc()) {
     ?>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php'?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/footer.php'?>
 <?php
 ob_end_flush();
 ?>

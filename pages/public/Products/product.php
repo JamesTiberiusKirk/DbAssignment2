@@ -1,8 +1,11 @@
+
 <?php
 ob_start();
 ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php' ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/db.inc.php" ?>
+
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/header.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'."/includes/db.inc.php"?>
+
 <!--- Put php code here to check if login is admin then add button in order to insert products --->
 
 
@@ -71,6 +74,7 @@ ob_start();
     </div>
 </div>
 
-<?php ob_flush() ?>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php' ?>
+<?php ob_flush() ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/footer.php' ?>
+

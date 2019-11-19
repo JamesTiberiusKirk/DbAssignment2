@@ -27,8 +27,8 @@ session_start();
 
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand nav-link" href= "/2019-ac32006/team2/index.php">ETWORLD<img src="/2019-ac32006/team2/img/Logo/Logo.png" alt="logo" width="80" height="80"></a>           
 
-                <a class="navbar-brand nav-link" href="/index.php">ETWORLD<img src="/img/Logo/Logo.png" alt="logo" width="80" height="80"></a>           
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,10 +36,10 @@ session_start();
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/index.php">Home</a>
+                        <a class="nav-link" href= "/2019-ac32006/team2/index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pages/public/about.php">About</a>
+                        <a class="nav-link" href= "/2019-ac32006/team2/pages/public/about.php">About</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
@@ -47,10 +47,10 @@ session_start();
                         </a>
                         <div class="dropdown-menu">
 
-                            <a class="dropdown-item" href="/pages/public/Products/product_Desktops.php">Desktops</a>
-                            <a class="dropdown-item" href="/pages/public/Products/product_Laptops.php">Laptops</a>
+                            <a class="dropdown-item" href= "/2019-ac32006/team2/pages/public/Products/product_Desktops.php">Desktops</a>
+                            <a class="dropdown-item" href= "/2019-ac32006/team2/pages/public/Products/product_Laptops.php">Laptops</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href=" /pages/public/Products/product_Peripherals.php">Peripherals</a>
+                            <a class="dropdown-item" href="/2019-ac32006/team2/pages/public/Products/product_Peripherals.php">Peripherals</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -59,27 +59,35 @@ session_start();
 
                     <?php
                     if (isset($_SESSION['AccountID'])) {
-                        echo '<li class="nav-item">
-                                  <a class="nav-link" href="#">Cart
-                                    <img src="/img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
-                                  </a>
-                              </li>';
+
+                        include_once($_SERVER['DOCUMENT_ROOT'].'/2019-ac32006/team2/'. '/includes/db.inc.php');
+                        include_once($_SERVER['DOCUMENT_ROOT'].'/2019-ac32006/team2/'. '/includes/query.inc.php');
+                        // query for account role
+                        // if role != customer, do not display
+
+                        if (get_type($conn, $_SESSION['AccountID']) == "customer") {
+                            echo '<li class="nav-item">
+                                    <a class="nav-link" href="/2019-ac32006/team2/pages/customer/basket.php">
+                                        <img src="/2019-ac32006/team2/img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
+                                    </a>
+                                </li>';
+                        }
                     }
                     ?>
 
                     <li class="nav-item">
                         <?php
                         if (isset($_SESSION['AccountID'])) {
-                            echo '<a class="nav-link" href="/includes/logout.inc.php">Logout</a>';
+                            echo '<a class="nav-link" href= "/2019-ac32006/team2/includes/logout.inc.php">Logout</a>';
                         } else {
-                            echo '<a class="nav-link" href="/pages/public/login.php">Login</a>';
+                            echo '<a class="nav-link" href= "/2019-ac32006/team2/pages/public/login.php">Login</a>';
                         }
                         ?>
                     </li>
 
                     <?php
                     if (isset($_SESSION['AccountID'])) {
-                        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
+                        include_once($_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/db.inc.php');
                         $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountType` = "admin"';
                         $stmt = mysqli_stmt_init($conn);
                         if (mysqli_stmt_prepare($stmt, $role_sql)) {
@@ -89,7 +97,7 @@ session_start();
                             $role_res = mysqli_stmt_num_rows($stmt);
                             if ($role_res == 1) {
                                 echo '<li class="nav-item">';
-                                echo '<a class="nav-link" href="/pages/admin/index.php">Admin Portal</a>';
+                                echo '<a class="nav-link" href= "/2019-ac32006/team2/pages/admin/index.php">Admin Portal</a>';
                                 echo '</li>';
                             }
                         }
@@ -99,7 +107,7 @@ session_start();
                         
                     }
                     if (isset($_SESSION['AccountID'])) {
-                        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
+                        include_once($_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/db.inc.php');
                         $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountType` = "staff"';
                         $stmt = mysqli_stmt_init($conn);
                         if (mysqli_stmt_prepare($stmt, $role_sql)) {
@@ -109,12 +117,12 @@ session_start();
                             $role_res = mysqli_stmt_num_rows($stmt);
                             if ($role_res == 1) {
                                 echo '<li class="nav-item">';
-                                echo '<a class="nav-link" href="/pages/staff/index.php">Staff Portal</a>';
+                                echo '<a class="nav-link" href= "/2019-ac32006/team2/pages/staff/index.php">Staff Portal</a>';
                                 echo '</li>';
                             }
                             //mysqli_free_result($stmt);
                         }
-                        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/query.inc.php');
+                        include_once($_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/query.inc.php');
                         $sql = 'DROP VIEW IF EXISTS `StaffInformation`';
                         $result = mysqli_query($conn, $sql);
                         //$result->free_result();
@@ -149,17 +157,12 @@ session_start();
                         WHERE Sta.StaffID = Pay.StaffID and Sta.StaffID = "'.$staff_id.'" and (Sta.BranchID = Bran.BranchID and Sta.BranchID = "'.$branch_id.'"'.')';
                         $result = mysqli_query($conn, $sql);
                         echo mysqli_error($conn);
-
-                        $sql = 'SELECT * FROM StaffInformation WHERE StaffID = 583';
-                        $result = mysqli_query($conn, $sql);
-                        
-                        mysqli_free_result($result);
                         
                         
                         //$stmt = bind_query($conn, $sql, 'i', array($_SESSION['AccountID']));
                     }
                     if (isset($_SESSION['AccountID'])) {
-                        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
+                        include_once($_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/db.inc.php');
                         $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountType` = "customer"';
                         $stmt = mysqli_stmt_init($conn);
                         if (mysqli_stmt_prepare($stmt, $role_sql)) {
@@ -169,7 +172,7 @@ session_start();
                             $role_res = mysqli_stmt_num_rows($stmt);
                             if ($role_res == 1) {
                                 echo '<li class="nav-item">';
-                                echo '<a class="nav-link" href="/pages/customer/index.php">Customer Portal</a>';
+                                echo '<a class="nav-link" href= "/2019-ac32006/team2/pages/customer/index.php">Customer Portal</a>';
                                 echo '</li>';
                             }
                         }
@@ -193,14 +196,6 @@ session_start();
                         WHERE A.AccountID = B.AccountiD and A.AccountID = ?';
 
                         $result = mysqli_query($conn, $sql);
-                        $sql = 'SELECT * FROM CustomerInformation WHERE AccountID = "'.$_SESSION['AccountID'].'"';
-                        echo $result;
-                        //mysqli_free_result($result);
-
-                        $result = mysqli_query($conn, $sql);
-                        while ($row = $result->fetch_assoc()) {
-                            echo $row['AccountID'];
-                        }
                     }
 
                     if(isset($_SESSION['Basket'])){

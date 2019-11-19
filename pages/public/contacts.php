@@ -1,10 +1,10 @@
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/header.php' ?>
 <div class="jumbotron">
  <p 
   style="font-size:200%;">Contact Us
  </p>
- <form action="/includes/contact.inc.php".php" method="post">
+ <form action= "/2019-ac32006/team2/includes/contact.inc.php".php" method="post">
  <div class="form-group">
   <label for="name">Your Name: </label>
   <input type="text" class="form-control" id="name" name="customer_name" placeholder="John Smith" pattern=[A-Z\sa-z]{3,20} required>
@@ -34,4 +34,4 @@
  </form>
 </div>
 </div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/footer.php' ?>

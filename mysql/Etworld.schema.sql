@@ -1,8 +1,4 @@
-DROP DATABASE IF EXISTS `ETWorld`;
-
-CREATE DATABASE `ETWorld`;
-
-USE `ETWorld`;
+USE `19ac3d02`;
 
 # Dump of table SUPPLIER
 # ------------------------------------------------------------
@@ -17,7 +13,7 @@ CREATE TABLE `Supplier` (
 
 ALTER TABLE `Supplier` AUTO_INCREMENT = 50;
 
-DROP TABLE IF EXISTS `ETWorld`.`Account`;
+DROP TABLE IF EXISTS `Account`;
 
 CREATE TABLE `Account`(
 `AccountID` int(15) NOT NULL AUTO_INCREMENT,
@@ -194,11 +190,3 @@ CREATE TABLE `Payroll` (
 )  ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
 ALTER TABLE `Payroll` AUTO_INCREMENT = 4000;
-
-
-
-
-
-
-
-
