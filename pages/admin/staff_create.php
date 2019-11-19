@@ -104,12 +104,11 @@
     //             $staff_id = $row['staff_id'];
     //         }
     //     }
-    //     mysqli_free_result($result);
-    //     $stmt = mysqli_stmt_init($conn);
+
     //     $sql = 'INSERT INTO Payroll (FullName, StaffID) VALUES (?, ?)';
-    //     $_stmt = bind_query($conn, $stmt, $sql, 'si', array($_POST['full_name_inp'], $staff_id));
-    //     mysqli_stmt_free_result($_stmt);
-    //     mysqli_stmt_close($_stmt);
+    //     $stmt = bind_query($conn, $sql, 'si', array($_POST['full_name_inp'], $staff_id));
+    //     mysqli_stmt_free_result($stmt);
+    //     mysqli_stmt_close($stmt);
     // }
     ?>
 </div>
