@@ -1,5 +1,5 @@
 <?php include "../../includes/header.php" ?>
-<?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'."/includes/db.inc.php"?>
 
 <div class="jumbotron">
     <div class="col">
@@ -85,4 +85,4 @@
 </div>
 
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/footer.php' ?>

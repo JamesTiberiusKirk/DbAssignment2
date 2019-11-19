@@ -1,5 +1,5 @@
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
-<?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/header.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'."/includes/db.inc.php"?>
 <!--- Put php code here to check if login is admin then add button in order to insert products --->
 
 
@@ -20,7 +20,7 @@
                                 while($row = $result->fetch_assoc()) {
                                     echo '<div class="col-md-3">';
                                     echo '<div class="card">';
-                                    echo '<img class="card-img-top" src="../../../img/products/test.jpg" alt="Card image cap">'; //Will take path of image per product
+                                    echo '<img class="card-img-top" src="'.$row['ImagePath'].'" alt="Card image cap">'; //Will take path of image per product
                                     echo '<div class="card-body">';
                                     echo '<h5 class="card-title">';
                                     echo '<a href="#" class="text-dark">' . $row["Name"] . '</a>';
@@ -57,4 +57,4 @@
     </div>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/footer.php' ?>

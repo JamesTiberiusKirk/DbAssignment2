@@ -1,8 +1,4 @@
-DROP DATABASE IF EXISTS `ETWorld`;
-
-CREATE DATABASE `ETWorld`;
-
-USE `ETWorld`;
+USE `19ac3d02`;
 
 # Dump of table SUPPLIER
 # ------------------------------------------------------------
@@ -184,6 +180,8 @@ CREATE TABLE `Payroll` (
     `GrossPay` FLOAT(10) DEFAULT NULL,
     `NetPay` FLOAT(10) DEFAULT NULL,
     `Ni` VARCHAR(10) DEFAULT NULL,
+    `PayrollDate` DATE NOT NULL,
+    `PayrollTime` TIME(0) NOT NULL,
     KEY `fk_Payroll_Staff` (`StaffID`),
     CONSTRAINT `fk_Payroll_Staff` FOREIGN KEY (`StaffID`)
         REFERENCES `Staff` (`StaffID`)
@@ -192,10 +190,3 @@ CREATE TABLE `Payroll` (
 )  ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
 ALTER TABLE `Payroll` AUTO_INCREMENT = 4000;
-
-
-
-
-
-
-

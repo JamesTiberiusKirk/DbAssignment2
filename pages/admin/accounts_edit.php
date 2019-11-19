@@ -1,9 +1,9 @@
 <?php
 ob_start();
 ?>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php'?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/header.php'?>
 
-<?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'."/includes/db.inc.php"?>
 
 <div class="jumbotron">
     <?php
@@ -57,7 +57,7 @@ ob_start();
                 $sql = 'UPDATE Account SET Username=? WHERE AccountID=?';
                 $result = _execute_query($sql, $conn, 'si', $new_usrn_inp, $_GET['edit_btn']);
             }
-            header('Location: /pages/admin/users.php');  
+            header('Location:/2019-ac32006/team2/pages/admin/users.php');  
         }
         
         if (isset($cancel_btn)) {
@@ -67,7 +67,7 @@ ob_start();
     ?>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php'?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/footer.php'?>
 <?php
 ob_end_flush();
 ?>
