@@ -191,12 +191,6 @@ session_start();
                         CardType
                         FROM Customer AS A , BankAccount AS B
                         WHERE A.AccountID = B.AccountiD and A.AccountID = "'.$_SESSION['AccountID'].'"';
-
-                        $result = mysqli_query($conn, $sql);
-                        $sql = 'SELECT * FROM CustomerInformation WHERE AccountID = "'.$_SESSION['AccountID'].'"';
-                        echo $result;
-                        //mysqli_free_result($result);
-
                         $result = mysqli_query($conn, $sql);
                     }
                     ?>
