@@ -10,7 +10,7 @@ if (isset($_GET['error'])) {
     <div class="row">
         <div class="col"></div>
         <div class="col-sm">
-            <form action="/includes/login.inc.php" method="post">
+            <form action= "/2019-ac32006/team2/includes/login.inc.php" method="post">
                 <h1>Log in</h1>
                 <div class="form-group">
                     <label for="uname">User Name</label>
