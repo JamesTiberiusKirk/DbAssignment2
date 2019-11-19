@@ -27,7 +27,7 @@ session_start();
 
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand nav-link" href= "/2019-ac32006/team2/index.php">ETWORLD<img src="/img/Logo/Logo.png" alt="logo" width="80" height="80"></a>           
+                <a class="navbar-brand nav-link" href= "/2019-ac32006/team2/index.php">ETWORLD<img src="/2019-ac32006/team2/img/Logo/Logo.png" alt="logo" width="80" height="80"></a>           
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
@@ -50,7 +50,7 @@ session_start();
                             <a class="dropdown-item" href= "/2019-ac32006/team2/pages/public/Products/product_Desktops.php">Desktops</a>
                             <a class="dropdown-item" href= "/2019-ac32006/team2/pages/public/Products/product_Laptops.php">Laptops</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href=" /pages/public/Products/product_Peripherals.php">Peripherals</a>
+                            <a class="dropdown-item" href="/2019-ac32006/team2/pages/public/Products/product_Peripherals.php">Peripherals</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -67,8 +67,8 @@ session_start();
 
                         if (get_type($conn, $_SESSION['AccountID']) == "customer") {
                             echo '<li class="nav-item">
-                                    <a class="nav-link" href="/pages/customer/basket.php">
-                                        <img src="/img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
+                                    <a class="nav-link" href="/2019-ac32006/team2/pages/customer/basket.php">
+                                        <img src="/2019-ac32006/team2/img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
                                     </a>
                                 </li>';
                         }
