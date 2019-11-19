@@ -38,7 +38,7 @@ CREATE TABLE `Customer` (
     `CustomerFirstName` VARCHAR(10) DEFAULT NULL,
     `CustomerLastName` VARCHAR(10) DEFAULT NULL,
     `CustomerAddress` VARCHAR(50) DEFAULT NULL,
-    `Phone` VARCHAR(12) DEFAULT NULL,
+    `Phone` int(11) DEFAULT NULL,
     PRIMARY KEY (`CustomerID`),
     KEY `fk_Customer_Account` (`AccountID`),
     CONSTRAINT `fk_Customer_Account` FOREIGN KEY (`AccountID`)
@@ -94,8 +94,8 @@ DROP TABLE IF EXISTS `Product`;
 
 CREATE TABLE `Product` (
     `ProductID` INT(12) NOT NULL AUTO_INCREMENT,
-    `Name` VARCHAR(20) DEFAULT NULL,
-    `Type` VARCHAR(20) DEFAULT NULL,
+    `Name` VARCHAR(25) DEFAULT NULL,
+    `Type` VARCHAR(25) DEFAULT NULL,
     `Description` VARCHAR(10000) DEFAULT NULL,
     `CurrentPrice` INT(10) DEFAULT NULL,
     `BranchID` INT(15) DEFAULT NULL,

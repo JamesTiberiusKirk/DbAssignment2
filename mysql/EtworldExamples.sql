@@ -85,16 +85,16 @@ VALUES
 ('ETlight2','Laptop','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper',1500,'C://home/image4'),
 
 /*20000-DesktopPc*/
-('ETtank1','DesktopPc','Desktop  dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi',1000,'C://home/image1'),
-('ETtank1','DesktopPc','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit,',1350,'C://home/image1'),
+('ETtank1','Desktop','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi',1000,'C://home/image1'),
+('ETtank1','Desktop','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit,',1350,'C://home/image1'),
 
 /*30000-GammingLp*/
-('ETgen1','GammingLp','Laptopr sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar',2350,'C://home/image1'),
-('ET Monitor NTZ3000','Peripherals','Laptop ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar',2750,'C://home/image1'),
+('ETgen1','Laptop','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar',2350,'C://home/image1'),
+('ET Monitor NTZ3000','Peripherals/Accessories','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar',2750,'C://home/image1'),
 
 /*40000-GamingDp*/
-('Gaming Headset TX1500','Peripherals','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar quam posuere eget. Fusce ',1800,'C://home/image1'),
-('Gaming Mouse ZX2000','Peripherals','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, ',2200,'C://home/image1');
+('Gaming Headset TX1500','Peripherals/Accessories','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar quam posuere eget. Fusce ',1800,'C://home/image1'),
+('Gaming Mouse ZX2000','Peripherals/Accessories','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, ',2200,'C://home/image1');
 /*!40000 ALTER TABLE `Product` ENABLE KEYS */;
 UNLOCK TABLES;
 

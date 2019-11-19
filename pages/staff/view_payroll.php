@@ -1,19 +1,44 @@
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php' ?>
 <div class="jumbotron">
-<?php 
-echo '<h2>Staff ID: '.$_SESSION['uID'].'</h2>';
+<?php
+//include_once $_SERVER['DOCUMENT_ROOT'].'/includes/query.inc.php';
+$sql = 'SELECT * FROM StaffInformation WHERE AccountID="'.$_SESSION['AccountID'].'"';
+$result = mysqli_query($conn, $sql);
+$staff_id = '';
+while ($row = $result->fetch_assoc()) {
+    $staff_id = $row['StaffID'];
+}
+echo '<h2>Staff ID: '.$staff_id.'</h2>';
 ?>
     <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Time</th>
-                <th scope="col">Payroll ID</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
+            <?php
+                $sql = 'SELECT * FROM StaffInformation WHERE AccountID="'.$_SESSION['AccountID'].'"';
+                $result = mysqli_query($conn, $sql);
+                while ($row = $result->fetch_assoc()) {
+                    echo'<tr>    
+                            <th>Payroll ID</th>
+                            <th>'.$row['PayrollID'].'
+                        </tr>
+                        <tr>    
+                            <th>Deductions</th>
+                            <th>'.$row['Deductions'].'
+                        </tr>
+                        <tr>    
+                            <th>Gross Pay</th>
+                            <th>'.$row['GrossPay'].'
+                        </tr>
+                        <tr>    
+                            <th>Net Pay</th>
+                            <th>'.$row['NetPay'].'
+                        </tr>
+                        <tr>    
+                            <th>NI</th>
+                            <th>'.$row['Ni'].'
+                        </tr>';
+                }
+            
+            ?>
     </table>
 </div>
 
