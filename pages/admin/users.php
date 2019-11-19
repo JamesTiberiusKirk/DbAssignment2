@@ -18,9 +18,9 @@ ob_start();
         -->
         <?php
         
-        $sql = 'SELECT * FROM Account WHERE Username = "'.$_POST['table_inp'].'"';
         // when a search is made show only 1 result
         if (isset($_POST['search_btn'])) {
+            $sql = 'SELECT * FROM Account WHERE Username LIKE "%'.$_POST['table_inp'].'%"';
             $search_result = mysqli_query($conn, $sql) or die("dberr:". mysqli_error($conn));
             $row = $search_result->num_rows;
             if ($row) {
