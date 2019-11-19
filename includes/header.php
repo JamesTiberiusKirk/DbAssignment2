@@ -195,6 +195,27 @@ session_start();
                         FROM Customer AS A , BankAccount AS B
                         WHERE A.AccountID = B.AccountiD and A.AccountID = "'.$_SESSION['AccountID'].'"';
                         $result = mysqli_query($conn, $sql);
+
+                        $sql = 'DROP VIEW IF EXISTS `CustomerOrderInformation`';
+                        $result = mysqli_query($conn, $sql);
+
+                        $sql = 'SELECT * FROM Customer WHERE AccountID="'.$_SESSION['AccountID'].'"';
+                        $result = mysqli_query($conn, $sql);
+                        $customer_id = '';
+                        while ($row = $result->fetch_assoc()) {
+                            $customer_id = $row['CustomerID'];
+                        }
+
+                        $sql = 'CREATE VIEW `CustomerOrderInformation` AS SELECT
+                        Cus.CustomerID,
+                        Quantity,
+                        OrderPrice,
+                        DeliveryAddress,
+                        Time
+                        FROM Customer AS Cus , CustomerOrder AS CusOrder
+                        WHERE Cus.CustomerID = CusOrder.CustomerID and Cus.CustomerID = "'.$customer_id.'"';
+                        $result = mysqli_query($conn, $sql);
+                        
                     }
 
                     ?>

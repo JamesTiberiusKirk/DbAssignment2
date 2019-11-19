@@ -37,3 +37,14 @@ BranchAddress,
 ContactNumber
 FROM Staff AS Sta, Branch AS Bran, Payroll AS Pay
 WHERE (Sta.StaffID = Pay.StaffID and Sta.StaffID = 583) and (Sta.BranchID = Bran.BranchID and Sta.BranchID = 103);
+
+
+DROP VIEW IF EXISTS `CustomerOrderInformation`;
+$sql = CREATE VIEW `CustomerOrderInformation` AS SELECT
+Cus.CustomerID,
+Quantity,
+OrderPrice,
+DeliveryAddress,
+Time
+FROM Customer AS Cus , CustomerOrder AS CusOrder
+WHERE Cus.CustomerID = CusOrder.CustomerID and Cus.CustomerID = ?;

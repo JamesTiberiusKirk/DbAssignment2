@@ -6,19 +6,25 @@
         <div class="card">
             <div class="card-body text-center">
                 <h3 class="card-title">View/Edit Users</h3>
-                <a href="users.php" class="btn btn-primary stretched-link">View</a>
+                <a href="users.php" class="btn btn-primary stretched-link">View/Edit</a>
             </div>
         </div>
         <div class="card">
             <div class="card-body text-center">
                 <h3 class="card-title">View/Edit Products</h3>
-                <a href="product_view.php" class="btn btn-primary stretched-link">View</a>
+                <a href="product_view.php" class="btn btn-primary stretched-link">View/Edit</a>
             </div>
         </div>
         <div class="card">
             <div class="card-body text-center">
                 <h3 class="card-title">Staff Manager</h3>
-                <a href="staff_manager.php" class="btn btn-primary stretched-link">View</a>
+                <a href="staff_manager.php" class="btn btn-primary stretched-link">View/Edit</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
+                <h3 class="card-title">View Customer Orders</h3>
+                <a href="order_view.php" class="btn btn-primary stretched-link">View</a>
             </div>
         </div>
         

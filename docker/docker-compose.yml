@@ -2,7 +2,7 @@ version: '3'
 services:
     php-apache:
         build: 
-            context: ./php-apache
+            context: ./docker/php-apache
         ports:
             - 80:80
         volumes:
@@ -13,7 +13,7 @@ services:
     mariadb:
       image: mariadb:10.1
       volumes:
-        - ./mariadb:/var/lib/mysql
+        - ./docker/mariadb:/var/lib/mysql
       ports:
         - 3306:3306
       environment:
