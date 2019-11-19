@@ -59,8 +59,10 @@ LOCK TABLES `Account` WRITE;
 /*!40000 ALTER TABLE `Account` DISABLE KEYS */;
 INSERT INTO `Account`(`AccountType`,`Username`,`Password`)  
 VALUES
-('Buyer','JOhny1','something'),
-('Supplier','BASELTD','something');
+('customer','customer','etworldcustomer'),
+('Supplier','BASELTD','something'),
+('Staff' , 'Staff' , 'something'), 
+('Staff','Admin','etworldadmin' );
 /*!40000 ALTER TABLE `Account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,9 +111,9 @@ UNLOCK TABLES;
 LOCK TABLES `Payroll` WRITE;
 
 /*!40000 ALTER TABLE `Payroll` DISABLE KEYS */;
-INSERT INTO `Payroll`(`FullName`,`Deductions`,`GrossPay`,`NetPay`,`Ni`)
+INSERT INTO `Payroll`(`FullName`,`Deductions`,`GrossPay`,`NetPay`,`Ni`,`PayrollDate`, `PayrollTime`)
 VALUES
-("Simon STill","-something","Some ammount wihtout taxes","After taxes", "SB6548746D");
+("Simon STill","-something","Some ammount wihtout taxes","After taxes", "SB6548746D",'2019-08-23','09:10:00');
 /*!40000 ALTER TABLE `Payroll` ENABLE KEYS */;
 UNLOCK TABLES;
 
