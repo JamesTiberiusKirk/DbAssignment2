@@ -13,12 +13,11 @@
                     <button type="button" class="btn btn-outline-secondary">Add</button>
                 </form> 
                 <?php 
-                        $table_inp = $_POST['table_inp'];
-                        $search_btn = $_POST['search_btn'];
-                        $show_table = $_POST['show_tbl'];
+                        
 
-                        if(isset($search_btn)){
-                            $sql = "SELECT * FROM testapp.products WHERE Name='$table_inp'";
+                        if(isset($_POST['search_btn'])){
+                            $table_inp = $_POST['table_inp'];
+                            $sql = "SELECT * FROM Product WHERE Name='$table_inp'";
                             $result = $conn->query($sql);
                             if($result->num_rows > 0){
                                 echo "Product Found, " . $result->num_rows . " results:";
@@ -26,12 +25,12 @@
                                 echo "No products found!";
                             }
                         } else {
-                            $sql = "SELECT * FROM testapp.products";
+                            $sql = "SELECT * FROM Product";
                             $result = $conn->query($sql);
                         }
                         
-                        if(isset($show_table)){
-                            $sql = "SELECT * FROM testapp.products";
+                        if(isset($_POST['show_tbl'])){
+                            $sql = "SELECT * FROM Product";
                             $result = $conn->query($sql);
                         }
 

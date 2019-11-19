@@ -12,7 +12,7 @@
                     <div class="row">
                         <?php
                             $count = 1;
-                            $sql = "SELECT * FROM Product WHERE Type='Peripheral' ";//Change for new DB for type
+                            $sql = "SELECT * FROM Product WHERE Type='Peripheral'";//Change for new DB for type
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
@@ -20,16 +20,18 @@
                                 while($row = $result->fetch_assoc()) {
                                     echo '<div class="col-md-3">';
                                     echo '<div class="card">';
-                                    echo '<img class="card-img-top" src="../../../img/products/test.jpg" alt="Card image cap">'; //Will take path of image per product
+                                    echo '<img class="card-img-top" src=" ' . $row['ImagePath'] . '" alt="Card image cap">'; //Will take path of image per product
                                     echo '<div class="card-body">';
                                     echo '<h5 class="card-title">';
-                                    echo '<a href="#" class="text-dark">' . $row["Name"] . '</a>';
+                                    echo '<a href="product.php?prodID= '. $row['ProductID'] .'" class="text-dark">' . $row["Name"] . '</a>';
                                     echo '</h5>';
                                     echo '</div>';
                                     echo '<div class="card-footer">';
-                                    echo '<div class="badge badge-secondary float-right">30%</div>';
+                                    echo '<form method="get">';
+                                    echo '<a href="product_Peripherals.php?prodID='. $row['ProductID'] .'" name="buy_btn" class="btn btn-secondary float-right">Buy</a>';
+                                    echo '</form>';
                                     echo '<div class="float-left">';
-                                    echo '<a href="#" class="text-danger">' . $row["CurrentPrice"] . '</a>';
+                                    echo '' . $row["CurrentPrice"] . '';
                                     echo '<medium class="text-muted"> £ </medium>';
                                     echo '</div>';
                                     echo '</div>';
@@ -52,6 +54,16 @@
                             $conn->close();
                         ?>
                         
+                        <?php
+                            //$_SESSION['Basket'] = array();
+                            if (isset($_GET['prodID'])) {
+                                $passVal = $_GET['prodID'];
+                                $tempCount = count($_SESSION['Basket']);
+                                $_SESSION['Basket'][$tempCount]['prodid'] = $passVal;
+                                $_SESSION['Basket'][$tempCount]['qty'] = 1;
+                            }
+                        print_r($_SESSION['Basket']);
+                        ?>
                 </div>
             </form>
         </div>

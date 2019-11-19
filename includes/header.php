@@ -202,6 +202,11 @@ session_start();
                             echo $row['AccountID'];
                         }
                     }
+
+                    if(isset($_SESSION['Basket'])){
+                        
+
+                    }
                     ?>
                 </ul>
             </div>
