@@ -1,4 +1,4 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/header.php' ?>
 
 <?php
 if (isset($_GET['error'])) {
@@ -10,7 +10,7 @@ if (isset($_GET['error'])) {
     <div class="row">
         <div class="col"></div>
         <div class="col-sm">
-            <form action="/includes/login.inc.php" method="post">
+            <form action= "/2019-ac32006/team2/includes/login.inc.php" method="post">
                 <h1>Log in</h1>
                 <div class="form-group">
                     <label for="uname">User Name</label>
@@ -39,4 +39,4 @@ if (isset($_GET['error'])) {
     </div>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/footer.php' ?>

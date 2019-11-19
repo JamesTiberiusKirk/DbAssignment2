@@ -1,5 +1,4 @@
-<?php include './includes/header.php'?>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'. '/includes/header.php'?>
 
 
 <div id="demo" class="carousel slide" data-ride="carousel">
@@ -60,3 +59,5 @@
   </div>
 </div>
 </div>
+
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/footer.php' ?>

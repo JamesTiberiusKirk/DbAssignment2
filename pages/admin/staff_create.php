@@ -1,8 +1,8 @@
 <?php ob_start()?>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php'?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/header.php'?>
 
-<?php include $_SERVER['DOCUMENT_ROOT']."/includes/db.inc.php"?>
-<?php include_once $_SERVER['DOCUMENT_ROOT'].'/includes/query.inc.php'?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'."/includes/db.inc.php"?>
+<?php include_once $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/query.inc.php'?>
 <div class="jumbotron">
     <form method="post">
         <label for="fni">Full name</label>
@@ -56,7 +56,7 @@
                     mysqli_stmt_close($stmt);
                     create_staff($conn);
                     //create_payroll($conn);
-                    header('Location: /pages/admin/staff_manager.php?success');
+                    header('Location:/2019-ac32006/team2/pages/admin/staff_manager.php?success');
                 }
                 else if ($acc_type === 'staff') {
                     $sql = 'SELECT * FROM Staff WHERE AccountID=?';
@@ -66,7 +66,7 @@
                         mysqli_stmt_close($stmt);
                         create_staff($conn);
                         //create_payroll($conn);
-                        header('Location: /pages/admin/staff_manager.php?success');
+                        header('Location:/2019-ac32006/team2/pages/admin/staff_manager.php?success');
                     }
                     else
                         echo "account is already a staff";
@@ -77,12 +77,12 @@
                     
             }
             else
-                header('Location: /pages/admin/staff_create.php?error=no%such%user');  
+                header('Location:/2019-ac32006/team2/pages/admin/staff_create.php?error=no%such%user');  
         }
     }
 
     if(isset($_POST['cancel_btn'])) {
-        header('Location: /pages/admin/staff_manager.php?canceled%staff%create');
+        header('Location:/2019-ac32006/team2/pages/admin/staff_manager.php?canceled%staff%create');
     }
 
     function create_staff($conn) {
@@ -114,4 +114,4 @@
 </div>
 
 <?php ob_end_flush()?>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php'?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/footer.php'?>
