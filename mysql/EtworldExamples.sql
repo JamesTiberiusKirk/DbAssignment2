@@ -85,12 +85,12 @@ VALUES
 ('ETlight2','Laptop','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper',1500,'C://home/image4'),
 
 /*20000-DesktopPc*/
-('ETtank1','DesktopPc','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi',1000,'C://home/image1'),
+('ETtank1','DesktopPc','Desktop  dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi',1000,'C://home/image1'),
 ('ETtank1','DesktopPc','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit,',1350,'C://home/image1'),
 
 /*30000-GammingLp*/
-('ETgen1','GammingLp','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar',2350,'C://home/image1'),
-('ET Monitor NTZ3000','Peripherals','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar',2750,'C://home/image1'),
+('ETgen1','GammingLp','Laptopr sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar',2350,'C://home/image1'),
+('ET Monitor NTZ3000','Peripherals','Laptop ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar',2750,'C://home/image1'),
 
 /*40000-GamingDp*/
 ('Gaming Headset TX1500','Peripherals','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar quam posuere eget. Fusce ',1800,'C://home/image1'),
@@ -111,9 +111,9 @@ UNLOCK TABLES;
 LOCK TABLES `Payroll` WRITE;
 
 /*!40000 ALTER TABLE `Payroll` DISABLE KEYS */;
-INSERT INTO `Payroll`(`FullName`,`Deductions`,`GrossPay`,`NetPay`,`Ni`)
+INSERT INTO `Payroll`(`FullName`,`Deductions`,`GrossPay`,`NetPay`,`Ni`,`PayrollDate`, `PayrollTime`)
 VALUES
-("Simon STill","-something","Some ammount wihtout taxes","After taxes", "SB6548746D");
+("Simon STill","-something","Some ammount wihtout taxes","After taxes", "SB6548746D",'2019-08-23','09:10:00');
 /*!40000 ALTER TABLE `Payroll` ENABLE KEYS */;
 UNLOCK TABLES;
 
