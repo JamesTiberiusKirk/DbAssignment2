@@ -135,28 +135,28 @@ session_start();
                             $staff_id = $row['StaffID'];
                             $branch_id = $row['BranchID'];
                         }
-                
-                        $sql = 'CREATE VIEW `StaffInformation` AS SELECT
-                        Sta.AccountID,
-                        Sta.StaffID,
-                        Sta.FullName,
-                        Salary,
-                        Role,
-                        Address,
-                        Phone,
-                        PayrollID,
-                        Deductions,
-                        GrossPay,
-                        NetPay,
-                        Ni,
-                        Sta.BranchID,
-                        BranchType,
-                        BranchAddress,
-                        ContactNumber
-                        FROM Staff AS Sta, Branch AS Bran, Payroll AS Pay
-                        WHERE Sta.StaffID = Pay.StaffID and Sta.StaffID = "'.$staff_id.'" and (Sta.BranchID = Bran.BranchID and Sta.BranchID = "'.$branch_id.'"'.')';
-                        $result = mysqli_query($conn, $sql);
-                        echo mysqli_error($conn);
+                        
+                        // $sql = 'CREATE VIEW `StaffInformation` AS SELECT
+                        // Sta.AccountID,
+                        // Sta.StaffID,
+                        // Sta.FullName,
+                        // Salary,
+                        // Role,
+                        // Address,
+                        // Phone,
+                        // PayrollID,
+                        // Deductions,
+                        // GrossPay,
+                        // NetPay,
+                        // Ni,
+                        // Sta.BranchID,
+                        // BranchType,
+                        // BranchAddress,
+                        // ContactNumber
+                        // FROM Staff AS Sta, Branch AS Bran, Payroll AS Pay
+                        // WHERE Sta.StaffID = Pay.StaffID and Sta.StaffID = "'.$staff_id.'" and (Sta.BranchID = Bran.BranchID and Sta.BranchID = "'.$branch_id.'"'.')';
+                        // $result = mysqli_query($conn, $sql);
+                        // echo mysqli_error($conn);
                         
                         
                         //$stmt = bind_query($conn, $sql, 'i', array($_SESSION['AccountID']));
@@ -177,34 +177,34 @@ session_start();
                             }
                         }
 
-                        $sql = 'CREATE VIEW `CustomerInformation` AS SELECT
-                        A.AccountID, 
-                        CustomerID, 
-                        CustomerFirstName,
-                        CustomerLastName,
-                        CustomerAddress,
-                        Phone,
-                        BankAccountID,
-                        CardNUmber,
-                        CVC,
-                        AccountNUmber,
-                        SortCode,
-                        ExpiryDate,
-                        FullName,
-                        CardType
-                        FROM Customer AS A , BankAccount AS B
-                        WHERE A.AccountID = B.AccountiD and A.AccountID = "'.$_SESSION['AccountID'].'"';
-                        $result = mysqli_query($conn, $sql);
+                        // $sql = 'CREATE VIEW `CustomerInformation` AS SELECT
+                        // A.AccountID, 
+                        // CustomerID, 
+                        // CustomerFirstName,
+                        // CustomerLastName,
+                        // CustomerAddress,
+                        // Phone,
+                        // BankAccountID,
+                        // CardNUmber,
+                        // CVC,
+                        // AccountNUmber,
+                        // SortCode,
+                        // ExpiryDate,
+                        // FullName,
+                        // CardType
+                        // FROM Customer AS A , BankAccount AS B
+                        // WHERE A.AccountID = B.AccountiD and A.AccountID = "'.$_SESSION['AccountID'].'"';
+                        // $result = mysqli_query($conn, $sql);
 
-                        $sql = 'DROP VIEW IF EXISTS `CustomerOrderInformation`';
-                        $result = mysqli_query($conn, $sql);
+                        // $sql = 'DROP VIEW IF EXISTS `CustomerOrderInformation`';
+                        // $result = mysqli_query($conn, $sql);
 
-                        $sql = 'SELECT * FROM Customer WHERE AccountID="'.$_SESSION['AccountID'].'"';
-                        $result = mysqli_query($conn, $sql);
-                        $customer_id = '';
-                        while ($row = $result->fetch_assoc()) {
-                            $customer_id = $row['CustomerID'];
-                        }
+                        // $sql = 'SELECT * FROM Customer WHERE AccountID="'.$_SESSION['AccountID'].'"';
+                        // $result = mysqli_query($conn, $sql);
+                        // $customer_id = '';
+                        // while ($row = $result->fetch_assoc()) {
+                        //     $customer_id = $row['CustomerID'];
+                        // }
 
                         $sql = 'CREATE VIEW `CustomerOrderInformation` AS SELECT
                         Cus.CustomerID,
@@ -217,7 +217,6 @@ session_start();
                         $result = mysqli_query($conn, $sql);
                         
                     }
-
                     ?>
                 </ul>
             </div>

@@ -16,7 +16,7 @@ while (mysqli_stmt_fetch($stmt)) {
 }
 //mysqli_stmt_free_result($stmt);
 
-$sql = 'SELECT StaffID FROM StaffInformation';
+$sql = 'SELECT StaffID FROM Staff';
 $result = mysqli_query($conn, $sql);
 while ($row = $result->fetch_assoc()) {
     $staff_id = $row['StaffID'];
@@ -57,7 +57,7 @@ while ($row = $result->fetch_assoc()) {
                     $sql = 'UPDATE Payroll SET Ni=?, StafID=? WHERE AccountID = ?';
                     $stmt = bind_query($conn, $sql, 'sii', array($_POST['ni_inp'], $staff_id, $acc_id));
                     mysqli_stmt_free_result($stmt);
-                    header('Location: ../customer/index.php?success');
+                    header('Location: ../staff/index.php?success');
                 }
                 echo "Cannot have blank fields";
             }
