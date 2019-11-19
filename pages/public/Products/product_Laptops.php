@@ -12,7 +12,7 @@
                     <div class="row">
                         <?php
                             $count = 1;
-                            $sql = "SELECT * FROM Product WHERE ProductID BETWEEN 1 AND 10000";//Change for new DB for type
+                            $sql = "SELECT * FROM Product WHERE Type='Laptop' ";//Change for new DB for type
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
@@ -23,7 +23,7 @@
                                     echo '<img class="card-img-top" src="../../../img/products/test.jpg" alt="Card image cap">'; //Will take path of image per product
                                     echo '<div class="card-body">';
                                     echo '<h5 class="card-title">';
-                                    echo '<a href="#" class="text-dark">' . $row["Name"] . '</a>';
+                                    echo '<a href="product.php?prodID='.$row['ProductID'].'" class="text-dark">' . $row["Name"] . '</a>';
                                     echo '</h5>';
                                     echo '</div>';
                                     echo '<div class="card-footer">';

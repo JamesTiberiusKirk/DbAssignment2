@@ -17,7 +17,7 @@ CREATE TABLE `Supplier` (
 
 ALTER TABLE `Supplier` AUTO_INCREMENT = 50;
 
-DROP TABLE IF EXISTS `Account`;
+DROP TABLE IF EXISTS `ETWorld`.`Account`;
 
 CREATE TABLE `Account`(
 `AccountID` int(15) NOT NULL AUTO_INCREMENT,
@@ -184,6 +184,8 @@ CREATE TABLE `Payroll` (
     `GrossPay` FLOAT(10) DEFAULT NULL,
     `NetPay` FLOAT(10) DEFAULT NULL,
     `Ni` VARCHAR(10) DEFAULT NULL,
+    `PayrollDate` DATE NOT NULL,
+    `PayrollTime` TIME(0) NOT NULL,
     KEY `fk_Payroll_Staff` (`StaffID`),
     CONSTRAINT `fk_Payroll_Staff` FOREIGN KEY (`StaffID`)
         REFERENCES `Staff` (`StaffID`)
@@ -192,6 +194,7 @@ CREATE TABLE `Payroll` (
 )  ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
 ALTER TABLE `Payroll` AUTO_INCREMENT = 4000;
+
 
 
 
