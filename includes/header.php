@@ -149,11 +149,6 @@ session_start();
                         WHERE Sta.StaffID = Pay.StaffID and Sta.StaffID = "'.$staff_id.'" and (Sta.BranchID = Bran.BranchID and Sta.BranchID = "'.$branch_id.'"'.')';
                         $result = mysqli_query($conn, $sql);
                         echo mysqli_error($conn);
-
-                        $sql = 'SELECT * FROM StaffInformation WHERE StaffID = 583';
-                        $result = mysqli_query($conn, $sql);
-                        
-                        mysqli_free_result($result);
                         
                         
                         //$stmt = bind_query($conn, $sql, 'i', array($_SESSION['AccountID']));
@@ -190,17 +185,9 @@ session_start();
                         FullName,
                         CardType
                         FROM Customer AS A , BankAccount AS B
-                        WHERE A.AccountID = B.AccountiD and A.AccountID = ?';
+                        WHERE A.AccountID = B.AccountiD and A.AccountID = "'.$_SESSION['AccountID'].'"';
 
                         $result = mysqli_query($conn, $sql);
-                        $sql = 'SELECT * FROM CustomerInformation WHERE AccountID = "'.$_SESSION['AccountID'].'"';
-                        echo $result;
-                        //mysqli_free_result($result);
-
-                        $result = mysqli_query($conn, $sql);
-                        while ($row = $result->fetch_assoc()) {
-                            echo $row['AccountID'];
-                        }
                     }
 
                     if(isset($_SESSION['Basket'])){
