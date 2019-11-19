@@ -197,10 +197,6 @@ session_start();
                         $result = mysqli_query($conn, $sql);
                     }
 
-                    if(isset($_SESSION['Basket'])){
-                        
-
-                    }
                     ?>
                 </ul>
             </div>
