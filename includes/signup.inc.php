@@ -8,7 +8,7 @@ if (isset($_POST['signup-submit'])){
 
   //Validation
   if(empty($uname) /*|| empty($email) */||  empty($upass) || empty($upass_repeat)){
-    header('Location:/pages/public/signup.php?error=emptyFileds&uname='.$uname.'&uemail='.$email);
+    header('Location:/2019-ac32006/team2/pages/public/signup.php?error=emptyFileds&uname='.$uname.'&uemail='.$email);
     exit();
   /* email validation
   } else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -16,10 +16,10 @@ if (isset($_POST['signup-submit'])){
     exit();
   */
   } else if(!preg_match("/^[a-zA-Z0-9]*$/", $uname)){
-    header('Location:/pages/public/signup.php?error=invalidUsername');
+    header('Location:/2019-ac32006/team2/pages/public/signup.php?error=invalidUsername');
     exit();
   } else if($upass !== $upass_repeat){
-    header('Location: /pages/public/signup.php?error=invalidUsername&uname='.$uname);
+    header('Location:/2019-ac32006/team2/pages/public/signup.php?error=invalidUsername&uname='.$uname);
     exit();
   }
  
@@ -29,7 +29,7 @@ if (isset($_POST['signup-submit'])){
   $stmt = mysqli_stmt_init($conn);
 
   if(!mysqli_stmt_prepare($stmt, $sql)){
-    header('Location: /pages/public/signup.php?error=sqlError&uname='.$uname);
+    header('Location:/2019-ac32006/team2/pages/public/signup.php?error=sqlError&uname='.$uname);
     exit();   
   } else {
     mysqli_stmt_bind_param($stmt,'s',$uname);
@@ -37,7 +37,7 @@ if (isset($_POST['signup-submit'])){
     mysqli_stmt_store_result($stmt);
     $resultCheck = mysqli_stmt_num_rows($stmt);
     if($resultCheck>0){
-      header('Location: /pages/public/signup.php?error=userTaken&uname='.$uname);
+      header('Location:/2019-ac32006/team2/pages/public/signup.php?error=userTaken&uname='.$uname);
       exit();   
     } else {
       //Inserting into the database
@@ -45,20 +45,20 @@ if (isset($_POST['signup-submit'])){
       $stmt = mysqli_stmt_init($conn);
 
       if(!mysqli_stmt_prepare($stmt, $sql)){
-        header('Location: /pages/public/signup.php?error=sqlError2&uname='.$uname);
+        header('Location:/2019-ac32006/team2/pages/public/signup.php?error=sqlError2&uname='.$uname);
         exit();   
       } else {
         $hashedpwd = password_hash($upass, PASSWORD_BCRYPT); //this uses bcrypt to hash it
         mysqli_stmt_bind_param($stmt,"ss",$uname,$hashedpwd);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_store_result($stmt);
-        header('Location: /pages/public/signup.php?signup=success');
+        header('Location:/2019-ac32006/team2/pages/public/signup.php?signup=success');
   	}
   }
 }
   mysqli_stmt_close($stmt);
   mysqli_close($conn);
 } else {
-	header('Location: /pages/public/signup.php?error=someError');
+	header('Location:/2019-ac32006/team2/pages/public/signup.php?error=someError');
   exit();  
 }

@@ -44,17 +44,17 @@ ob_start();
                 
             mysqli_stmt_free_result($stmt);
             mysqli_stmt_close($stmt);
-            header('Location: /pages/admin/staff_manager.php?schedule%successful');
+            header('Location:/2019-ac32006/team2/pages/admin/staff_manager.php?schedule%successful');
             exit();         
         }
         else {
-            header('Location: /pages/admin/staff_manager.php?schedule%unsuccessful');
+            header('Location:/2019-ac32006/team2/pages/admin/staff_manager.php?schedule%unsuccessful');
             exit();
         }
     }
 
     if (isset($_POST['schdl_cancel'])) {
-        header('Location: /pages/admin/staff_manager.php');
+        header('Location:/2019-ac32006/team2/pages/admin/staff_manager.php');
     }
     ?>
 </div>

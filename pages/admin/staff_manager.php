@@ -60,12 +60,12 @@
                 $stmt = bind_query($conn ,$sql ,'i', $vars);
                 mysqli_stmt_close($stmt);
 
-                header('Location: /pages/admin/staff_manager.php?success');
+                header('Location:/2019-ac32006/team2/pages/admin/staff_manager.php?success');
                 
             }
             
             if (isset($_POST['create_staff'])) {
-                header('Location: /pages/admin/staff_create.php');
+                header('Location:/2019-ac32006/team2/pages/admin/staff_create.php');
             }
             ?>
         </tbody>

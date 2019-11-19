@@ -77,7 +77,7 @@ ob_start();
                 mysqli_stmt_execute($stmt);
                 mysqli_stmt_store_result($Stmt);
 
-                header('Location: /pages/admin/users.php?delete%success');
+                header('Location:/2019-ac32006/team2/pages/admin/users.php?delete%success');
             }
         }
     ?>

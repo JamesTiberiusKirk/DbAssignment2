@@ -57,7 +57,7 @@ ob_start();
                 $sql = 'UPDATE Account SET Username=? WHERE AccountID=?';
                 $result = _execute_query($sql, $conn, 'si', $new_usrn_inp, $_GET['edit_btn']);
             }
-            header('Location: /pages/admin/users.php');  
+            header('Location:/2019-ac32006/team2/pages/admin/users.php');  
         }
         
         if (isset($cancel_btn)) {

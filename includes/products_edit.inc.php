@@ -14,7 +14,7 @@ if (isset($_POST['prod_submit'])) {
     $prod_img_location;
 
     if (empty($prod_name) || empty($prod_price) || empty($prod_description)) {
-        header('Location: /pages/admin/product_edit.php?error=EmptyFields&' . $rtn_vars);
+        header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=EmptyFields&' . $rtn_vars);
         exit();
     }
 
@@ -49,15 +49,15 @@ if (isset($_POST['prod_submit'])) {
                 move_uploaded_file($file_tmp_name, $serv_file_path);
                 $rtn_vars .= '&prod_img_path=' . $prod_img_location;
             } else {
-                header('Location: /pages/admin/product_edit.php?error=FileTooBig&' . $rtn_vars);
+                header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=FileTooBig&' . $rtn_vars);
                 exit();
             }
         } else {
-            header('Location: /pages/admin/product_edit.php?error=UploadError&'  . 'file=' . $_FILE['name'] . '&' . $rtn_vars);
+            header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=UploadError&'  . 'file=' . $_FILE['name'] . '&' . $rtn_vars);
             exit();
         }
     } else if (!empty($file_type) && !in_array($file_ext, $allowed)) {
-        header('Location: /pages/admin/product_edit.php?error=WrongFileType&' . 'file=' . $file_type . '&' . $rtn_vars);
+        header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=WrongFileType&' . 'file=' . $file_type . '&' . $rtn_vars);
         exit();
     }
 
@@ -73,7 +73,7 @@ if (isset($_POST['prod_submit'])) {
         $stmt = mysqli_stmt_init($conn);
 
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header('Location: /pages/admin/product_edit.php?error=SQLErr&' . $rtn_vars);
+            header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=SQLErr&' . $rtn_vars);
             exit();
         } else {
             mysqli_stmt_bind_param(
@@ -86,7 +86,7 @@ if (isset($_POST['prod_submit'])) {
                 $_GET['prodid']
             );
             mysqli_stmt_execute($stmt);
-            header('Location: /pages/admin/product_view.php?message=succsess');
+            header('Location:/2019-ac32006/team2/pages/admin/product_view.php?message=succsess');
         }
     } else if (isset($_GET['prodid'])) {
         // In case the user updated the image
@@ -97,7 +97,7 @@ if (isset($_POST['prod_submit'])) {
         $stmt = mysqli_stmt_init($conn);
 
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header('Location: /pages/admin/product_edit.php?error=SQLErr&' . $rtn_vars);
+            header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=SQLErr&' . $rtn_vars);
             exit();
         } else {
             mysqli_stmt_bind_param(
@@ -111,7 +111,7 @@ if (isset($_POST['prod_submit'])) {
                 $_GET['prodid']
             );
             mysqli_stmt_execute($stmt);
-            header('Location: /pages/admin/product_view.php?message=succsess');
+            header('Location:/2019-ac32006/team2/pages/admin/product_view.php?message=succsess');
         }
     } else {
         // In case the user is adding a new record
@@ -122,7 +122,7 @@ if (isset($_POST['prod_submit'])) {
         $stmt = mysqli_stmt_init($conn);
 
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header('Location: /pages/admin/product_edit.php?error=SQLErr&' . $rtn_vars);
+            header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=SQLErr&' . $rtn_vars);
             exit();
         } else {
             mysqli_stmt_bind_param(
@@ -135,9 +135,9 @@ if (isset($_POST['prod_submit'])) {
                 $prod_img_location
             );
             mysqli_stmt_execute($stmt);
-            header('Location: /pages/admin/product_view.php?message=succsess');
+            header('Location:/2019-ac32006/team2/pages/admin/product_view.php?message=succsess');
         }
     }
 } else {
-    header('Location: /pages/admin/product_edit.php?error=ProdSubmitNotSet');
+    header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=ProdSubmitNotSet');
 }
