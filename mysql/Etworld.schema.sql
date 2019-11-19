@@ -35,8 +35,8 @@ DROP TABLE IF EXISTS `Customer`;
 CREATE TABLE `Customer` (
     `AccountID` INT(15) DEFAULT NULL,
     `CustomerID` INT(10) NOT NULL AUTO_INCREMENT,
-    `CustomerFirstName` VARCHAR(10) DEFAULT NULL,
-    `CustomerLastName` VARCHAR(10) DEFAULT NULL,
+    `CustomerFirstName` VARCHAR(30) DEFAULT NULL,
+    `CustomerLastName` VARCHAR(30) DEFAULT NULL,
     `CustomerAddress` VARCHAR(50) DEFAULT NULL,
     `Phone` int(11) DEFAULT NULL,
     PRIMARY KEY (`CustomerID`),
@@ -95,7 +95,7 @@ DROP TABLE IF EXISTS `Product`;
 CREATE TABLE `Product` (
     `ProductID` INT(12) NOT NULL AUTO_INCREMENT,
     `Name` VARCHAR(25) DEFAULT NULL,
-    `Type` VARCHAR(25) DEFAULT NULL,
+    `Type` VARCHAR(30) DEFAULT NULL,
     `Description` VARCHAR(10000) DEFAULT NULL,
     `CurrentPrice` INT(10) DEFAULT NULL,
     `BranchID` INT(15) DEFAULT NULL,
