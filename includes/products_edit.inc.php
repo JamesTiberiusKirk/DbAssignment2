@@ -44,7 +44,7 @@ if (isset($_POST['prod_submit'])) {
         if ($file_error == 0) {
             if ($file_size < 1.9*1048576) {
                 $new_file_name = uniqid('', true) . '.' . $file_ext;
-                $serv_file_path = $_SERVER['DOCUMENT_ROOT'] . $img_folder . $new_file_name;
+                $serv_file_path = $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' ] . '/2019-ac32006/team2' . $img_folder . $new_file_name;
                 $prod_img_location = $img_folder . $new_file_name;
                 move_uploaded_file($file_tmp_name, $serv_file_path);
                 $rtn_vars .= '&prod_img_path=' . $prod_img_location;
@@ -62,7 +62,7 @@ if (isset($_POST['prod_submit'])) {
     }
 
     //Db stuff
-    include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
+    include_once $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' ] . '/2019-ac32006/team2' . '/includes/db.inc.php';
 
     if (isset($_GET['prodid']) && empty($prod_img_location)) {
         // In case the user did not update the image

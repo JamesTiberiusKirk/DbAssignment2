@@ -1,7 +1,7 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/header.php' ?>
 
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
+include_once $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/db.inc.php';
 
 $prod_id = '';
 $prod_name = '';
@@ -141,4 +141,4 @@ if (isset($_GET['prodid']) && isset($_GET['prod_name'])) {
 </script>
 
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/footer.php' ?>

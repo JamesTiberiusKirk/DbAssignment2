@@ -1,4 +1,4 @@
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/header.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/header.php' ?>
 
 <?php
 if (isset($_GET['error'])) {
@@ -50,4 +50,4 @@ if (isset($_GET['error'])) {
     </div>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/footer.php' ?>

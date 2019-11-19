@@ -23,7 +23,7 @@ if (isset($_POST['signup-submit'])){
     exit();
   }
  
-  require $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php';
+  require $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/db.inc.php';
   //Checking for existing user
   $sql = 'SELECT `Username` FROM `Account` WHERE `Username`=?';
   $stmt = mysqli_stmt_init($conn);

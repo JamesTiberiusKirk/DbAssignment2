@@ -79,7 +79,7 @@ session_start();
 
                     <?php
                     if (isset($_SESSION['AccountID'])) {
-                        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
+                        include_once($_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/db.inc.php');
                         $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountType` = "admin"';
                         $stmt = mysqli_stmt_init($conn);
                         if (mysqli_stmt_prepare($stmt, $role_sql)) {
@@ -99,7 +99,7 @@ session_start();
                         
                     }
                     if (isset($_SESSION['AccountID'])) {
-                        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
+                        include_once($_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/db.inc.php');
                         $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountType` = "staff"';
                         $stmt = mysqli_stmt_init($conn);
                         if (mysqli_stmt_prepare($stmt, $role_sql)) {
@@ -114,7 +114,7 @@ session_start();
                             }
                             //mysqli_free_result($stmt);
                         }
-                        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/query.inc.php');
+                        include_once($_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/query.inc.php');
                         $sql = 'DROP VIEW IF EXISTS `StaffInformation`';
                         $result = mysqli_query($conn, $sql);
                         //$result->free_result();
@@ -159,7 +159,7 @@ session_start();
                         //$stmt = bind_query($conn, $sql, 'i', array($_SESSION['AccountID']));
                     }
                     if (isset($_SESSION['AccountID'])) {
-                        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
+                        include_once($_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/db.inc.php');
                         $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountType` = "customer"';
                         $stmt = mysqli_stmt_init($conn);
                         if (mysqli_stmt_prepare($stmt, $role_sql)) {

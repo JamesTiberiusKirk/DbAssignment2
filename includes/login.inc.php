@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST['login-submit'])){
-  require $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php';
+  require $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/db.inc.php';
   $uname = $_POST['uname'];
   $upass = $_POST['upass'];
 

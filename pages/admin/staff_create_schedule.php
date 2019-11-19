@@ -1,9 +1,9 @@
 <?php
 ob_start();
 ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php' ?>
-<?php include_once $_SERVER['DOCUMENT_ROOT'].'/includes/db.inc.php'?>
-<?php include_once $_SERVER['DOCUMENT_ROOT'].'/includes/query.inc.php'?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/header.php' ?>
+<?php include_once $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/db.inc.php'?>
+<?php include_once $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/query.inc.php'?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
@@ -59,7 +59,7 @@ ob_start();
     ?>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php' ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/footer.php' ?>
 <?php
 ob_end_flush();
 ?>
