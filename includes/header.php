@@ -28,7 +28,7 @@ session_start();
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-                <a class="navbar-brand nav-link" href="/index.php">ETWORLD<img src="/img/Logo/Logo.png" alt="logo" width="80" height="80"></a>           
+            <a class="navbar-brand nav-link" href="/index.php">ETWORLD<img src="/img/Logo/Logo.png" alt="logo" width="80" height="80"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -59,11 +59,19 @@ session_start();
 
                     <?php
                     if (isset($_SESSION['AccountID'])) {
-                        echo '<li class="nav-item">
-                                  <a class="nav-link" href="#">Cart
-                                    <img src="/img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
-                                  </a>
-                              </li>';
+
+                        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
+                        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/query.inc.php');
+                        // query for account role
+                        // if role != customer, do not display
+
+                        if (get_type($conn, $_SESSION['AccountID']) == "customer") {
+                            echo '<li class="nav-item">
+                                    <a class="nav-link" href="/pages/customer/basket.php">
+                                        <img src="/img/ico/basket.svg" class="img-fluid" style="width: 1rem;" alt="">
+                                    </a>
+                                </li>';
+                        }
                     }
                     ?>
 
