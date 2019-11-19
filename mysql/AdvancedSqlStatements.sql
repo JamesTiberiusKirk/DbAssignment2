@@ -1,9 +1,11 @@
-SELECT * FROM Customer;  
+SELECT * FROM Customer; 
+ 
+SELECT * FROM Branch;  
 
 
 SELECT * FROM Account;
 
-SELECT * FROM Branch;
+SELECT * FROM Staff;
 #Prints products based on price and orders them by price from lowe to higher 
 SELECT COUNT(CurrentPrice), CurrentPrice, Type FROM Product 
 WHERE CurrentPrice > 20  GROUP BY Type ; 
@@ -11,9 +13,14 @@ WHERE CurrentPrice > 20  GROUP BY Type ;
 SELECT * FROM Product 
 WHERE  Type LIKE 'La%' ORDER BY CurrentPrice;
 
-SELECT Name FROM Customers WHERE EXISTS
-(SELECT OrderPrice FROM CustomerOrder
-WHERE IFNULL(CustomerOrderID) AND OrderPrice => 8000);
+SELECT PayrollTime FROM Payroll;
+
+SELECT StaffID, BranchID, Salary 
+FROM Staff, Branch
+WHERE BranchID IN (SELECT )
+
+
+
 
 
 SELECT Description  FROM Product; 
