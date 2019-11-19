@@ -7,7 +7,6 @@
 <div class="jumbotron">
     <div class="row">
         
-            <form action="#" method="post">
                 <div class="container">
                     <div class="row">
                         <?php
@@ -27,7 +26,9 @@
                                     echo '</h5>';
                                     echo '</div>';
                                     echo '<div class="card-footer">';
-                                    echo '<div class="btn btn-secondary float-right">Buy</div>';
+                                    echo '<form method="get">';
+                                    echo '<a href="product_Desktops.php?prodID=' . $row['ProductID'] . '" name="buy_btn" class="btn btn-secondary float-right">Buy</a>';
+                                    echo '</form>';
                                     echo '<div class="float-left">';
                                     echo '' . $row["CurrentPrice"] . '';
                                     echo '<medium class="text-muted"> £ </medium>';
@@ -50,8 +51,17 @@
                             $conn->close();
                         ?>
                         
+                        <?php
+                            //$_SESSION['Basket'] = array();
+                            if (isset($_GET['prodID'])) {
+                                $passVal = $_GET['prodID'];
+                                $tempCount = count($_SESSION['Basket']);
+                                $_SESSION['Basket'][$tempCount]['prodid'] = $passVal;
+                                $_SESSION['Basket'][$tempCount]['qty'] = 1;
+                            }
+                        print_r($_SESSION['Basket']);
+                        ?>
                 </div>
-            </form>
         </div>
         <div class="col"></div>
     </div>
