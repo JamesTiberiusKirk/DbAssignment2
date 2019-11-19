@@ -15,12 +15,8 @@
                     <a href="product_edit.php" class="btn btn-outline-secondary">Add</a>
                 </form> 
                 <?php 
-                        $table_inp = $_POST['table_inp'];
-                        $search_btn = $_POST['search_btn'];
-                        $show_table = $_POST['show_tbl'];
-                        $delete_val = $_GET['delete_val'];
-
                         if(isset($_POST['search_btn'])){
+                            $table_inp = $_POST['table_inp'];
                             $sql = "SELECT * FROM Product WHERE Name='$table_inp'";
                             $result = $conn->query($sql);
                             if($result->num_rows > 0){

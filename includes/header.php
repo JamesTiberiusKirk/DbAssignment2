@@ -218,10 +218,6 @@ session_start();
                         
                     }
 
-                    if(isset($_SESSION['Basket'])){
-                        
-
-                    }
                     ?>
                 </ul>
             </div>
