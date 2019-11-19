@@ -94,12 +94,7 @@ Gamers can feel every engine sound roaring past with the upgraded giant speakers
 Nahimic 3 Audio Technology delivering 360 degrees immersive audio experience
 Get ready to be amazed by the all new Nahimic 3 and live the gaming immersion like never before. With simple and intuitive new UI, the Nahimic 3 not only further enhances in game 3D surround sound, but also offers even more finite control over your music, movies, and conference calls.
 
-MSI APP PLAYER
-Developed under an exclusive partnership with Blue Stacks, the MSI APP Player brings seamless gaming experience between mobile games and PC platform, and leverages customized features as specific keyboard lighting and better graphics with multi-task works.
-
-Multi-task with up to 3 monitors
-Expand the vision for extreme gaming experience. ETlight1 innovative Matrix Display supports up to 2 external displays simultaneously through 1x HDMI port and 1x Mini DisplayPort 1.2. Multi-task is made possible even during competitive gameplays. 
-Connect the laptop to HDTV display, Matrix Display supports 4K output with a resolution up to 3840 x 2160. ETlight1 Matrix Display technology creates an ideal environment for extreme gaming experience and pleasant multimedia entertainment.',1100,'https://images-na.ssl-images-amazon.com/images/I/71-y89IOTRL._AC_SL1500_.jpg'),
+',1100,'https://images-na.ssl-images-amazon.com/images/I/71-y89IOTRL._AC_SL1500_.jpg'),
 
 
 ('ETlightRTX2005','Laptop','The ETlightRTX2005 15 is the worlds smallest NVIDIA GeForce RTX powered laptop and features the latest 9th Gen Intel Core i7 6 core processor, to deliver amazing power and portability. The 15.6" thin bezel 240Hz Full HD display provides an immersive and insanely fast visual experience for gaming and beyond. 
@@ -131,13 +126,17 @@ Discover unprecedented performance, power efficiency, and gaming experiences-dri
 ',1350,'https://images-na.ssl-images-amazon.com/images/I/61neCI%2BhWBL._AC_SL1062_.jpg'),
 
 /*30000-GammingLp*/
-('ETgen1','Peripherals','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at porta urna. Morbi ullamcorper tincidunt velit, in pulvinar',2350,'C://home/image1'),
-('ET Monitor NTZ3000','Enjoy high-quality, high-speed streaming - in style - with the ET Monitor NTZ3000  24 Monitor. Comfortable viewing is yours with a high contrast ratio and a 23.6-inch matte screen which minimizes reflection from indoor lighting. Improved thin bezels, a black piano finish and a robust stand combine for a modern look that goes with any home or home office. Thanks to the easy-access buttons on the bottom bezel, you can fine-tune the colours, brightness and contrast on your screen for just the right view. 
+('ETgen1','Peripherals','Bexcellent GM-6 Headset is a primary kind of gaming headset for PS4, Xbox one,PC, 
+Laptop and Mac Games which brings you vivid sound field, sound clarity and sound shock feeling, capable of various games like Star Wars Battlefront, EA Sports UFC, Overwatch, World of Warcraft Legion, etc. 
+Its super soft Over-ear pads is more comfortable for long time wear, and it is a great headphone especially perfect for gamer!',2350,'https://images-na.ssl-images-amazon.com/images/I/81eLIyio3qL._AC_SL1200_.jpg'),
+('ET Monitor NTZ3000','Peripherals','Enjoy high-quality, high-speed streaming - in style - with the ET Monitor NTZ3000  24 Monitor. Comfortable viewing is yours with a high contrast ratio and a 23.6-inch matte screen which minimizes reflection from indoor lighting. 
+Improved thin bezels, a black piano finish and a robust stand combine for a modern look that goes with any home or home office. Thanks to the easy-access buttons on the bottom bezel, you can fine-tune the colours, brightness and contrast on your screen for just the right view. 
 With ET Monitor NTZ3000, you can depend on the one monitor brand worldwide for the last four years. ',600,'https://images-na.ssl-images-amazon.com/images/I/A15HWd-sWHL._AC_SL1500_.jpg'),
 
 /*40000-GamingDp*/
-('Gaming Headset TX1500','Gaming Headset TX1500-USB Gaming Headset is a E-sports game of headset for PC, Laptops, MAC devices Communication which brings you vivid sound field, sound clarity and sound shock feeling, capable of various games and office business.',95,'https://images-na.ssl-images-amazon.com/images/I/61AhJkf3RdL._AC_SL1000_.jpg'),
-('Gaming Mouse ZX2000',' 8 Programmable Buttons + Rapid Fire
+('Gaming Headset TX1500','Peripherals','Gaming Headset TX1500-USB Gaming Headset is a E-sports game of headset for PC, Laptops, MAC devices 
+Communication which brings you vivid sound field, sound clarity and sound shock feeling, capable of various games and office business.',95,'https://images-na.ssl-images-amazon.com/images/I/61AhJkf3RdL._AC_SL1000_.jpg'),
+('Gaming Mouse ZX2000','Peripherals',' 8 Programmable Buttons + Rapid Fire
 
 Fully customizable via Software Suite, making it easy and convenient. Plus, the Rapid Fire button gives you the edge you need during those intensive FPS battles
 
