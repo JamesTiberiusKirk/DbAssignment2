@@ -1,6 +1,9 @@
 <?php
 session_start();
 ?>
+<?php
+ob_start();
+?>
 
 <!doctype html>
 <html lang="en">
@@ -104,9 +107,6 @@ session_start();
                     }
                     
                     if (isset($_SESSION['AccountID'])) {
-                        
-                    }
-                    if (isset($_SESSION['AccountID'])) {
                         include_once($_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/db.inc.php');
                         $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountType` = "staff"';
                         $stmt = mysqli_stmt_init($conn);
@@ -201,3 +201,6 @@ session_start();
                 </ul>
             </div>
         </nav>
+        <?php
+ob_end_flush();
+?>

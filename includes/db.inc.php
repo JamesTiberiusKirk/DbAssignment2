@@ -1,15 +1,15 @@
 <?php
 
-// $servername_db = "mariadb";
-// $username_db = "root";
-// $password_db = "rootpwd";
-// $name_db = "ETWorld";
+ $servername_db = "mariadb";
+ $username_db = "root";
+ $password_db = "rootpwd";
+ $name_db = "ETWorld";
 
 // for the uni database
-$servername_db = "silva.computing.dundee.ac.uk";
-$username_db = "19ac3u02";
-$password_db = "ac31b2";
-$name_db = "19ac3d02";
+//$servername_db = "silva.computing.dundee.ac.uk";
+//$username_db = "19ac3u02";
+//$password_db = "ac31b2";
+//$name_db = "19ac3d02";
 
 
 // Create connection
