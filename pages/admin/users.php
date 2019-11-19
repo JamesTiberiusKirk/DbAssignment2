@@ -17,7 +17,7 @@ ob_start();
         Setting up the querys
         -->
         <?php
-        
+
         // when a search is made show only 1 result
         if (isset($_POST['search_btn'])) {
             $sql = 'SELECT * FROM Account WHERE Username LIKE "%'.$_POST['table_inp'].'%"';

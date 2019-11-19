@@ -21,6 +21,7 @@ $result = mysqli_query($conn, $sql);
 while ($row = $result->fetch_assoc()) {
     $staff_id = $row['StaffID'];
 }
+echo $staff_id;
 ?>
 <div class="jumbotron">
     <form method="post">

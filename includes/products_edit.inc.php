@@ -21,6 +21,8 @@ if (isset($_POST['prod_submit'])) {
     $rtn_vars = 'prod_name=' . $prod_name . '&prod_price=' . $prod_price .
         '&prod_type=' . $prod_type . '&prod_description=' . $prod_description;
 
+
+
     if (isset($_GET['prodid'])) {
         $rtn_vars = 'prodid=' . $_GET['prodid'] . '&' . $rtn_vars;
     }

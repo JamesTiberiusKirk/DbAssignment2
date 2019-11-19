@@ -55,6 +55,17 @@ if (isset($_GET['prodid']) && isset($_GET['prod_name'])) {
         $prod_current_price = $row['CurrentPrice'];
         $prod_img_path = $row['ImagePath'];
     }
+
+    $s1='';
+    $s2='';
+    $s3='';
+    if ($prod_type == 'Desktop'){
+        $s1 = 'selected="selected" ';
+    } else if ($prod_type == 'Laptop'){
+        $s2 = 'selected="selected" ';
+    } else if ($prod_type == 'Peripheral'){
+        $s3 = 'selected="selected" ';
+    }
 }
 ?>
 
@@ -89,10 +100,10 @@ if (isset($_GET['prodid']) && isset($_GET['prod_name'])) {
 
             <div class="form-group">
                 <label for="prod_type_inp">Select type</label>
-                <select class="form-control" name="prod_type_inp" value="<?php echo $prod_type; ?>" id="prod_type_inp">
+                <select class="form-control" name="prod_type_inp" id="prod_type_inp">
                     <option value="Desktop">Desktop</option>
                     <option value="Laptop">Laptop</option>
-                    <option value="Peripheral/Accessory">Peripheral/Accessory</option>
+                    <option value="Peripheral">Peripheral</option>
                 </select>
             </div>
 

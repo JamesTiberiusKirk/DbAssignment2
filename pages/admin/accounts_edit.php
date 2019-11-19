@@ -39,14 +39,13 @@ ob_start();
             }
             return $result;
         }
-        $submit_btn = $_POST['submit_btn'];
-        $cancel_btn = $_POST['cancel_btn'];
-        $new_role_inp = $_POST['new_role_inp'];
-        $new_id_inp = $_POST['new_id_inp'];
-        $new_usrn_inp = $_POST['new_usrn_inp'];
+        
 
         
-        if (isset($submit_btn)) {
+        if (isset($_POST['submit_btn'])) {
+            $submit_btn = $_POST['submit_btn'];
+            $new_role_inp = $_POST['new_role_inp'];
+            $new_usrn_inp = $_POST['new_usrn_inp'];
             $result = '';
             if (!empty($new_role_inp)) {
                 $sql = 'UPDATE Account SET AccountType=? WHERE AccountID=?';
@@ -60,8 +59,8 @@ ob_start();
             header('Location:/2019-ac32006/team2/pages/admin/users.php');  
         }
         
-        if (isset($cancel_btn)) {
-            header("location: /pages/admin/users.php?");
+        if (isset($_POST['cancel_btn'])) {
+            header("Location:/2019-ac32006/team2/pages/admin/users.php?");
             exit();
         }
     ?>

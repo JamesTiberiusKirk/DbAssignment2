@@ -1,9 +1,9 @@
+
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/header.php' ?>
+<?php include_once $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/db.inc.php'?>
 <?php
 ob_start();
 ?>
-<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2' . '/includes/header.php' ?>
-<?php include_once $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/db.inc.php'?>
-
 <div class="jumbotron">
     <?php
     $sql = 'SELECT * FROM Account WHERE AccountID="'.$_SESSION['AccountID'].'"';
@@ -17,9 +17,10 @@ ob_start();
     <table class="table">
             <?php
             if ($acc_type === 'customer') {
-                $sql = 'SELECT * FROM CustomerInformation WHERE AccountID ="'.$_SESSION['AccountID'].'"';
+                $sql = 'SELECT * FROM `CustomerInformation` WHERE `AccountID` ="'.$_SESSION['AccountID'].'"';
                 $result = mysqli_query($conn, $sql);
-                $result_arr = array(); 
+                $result_arr = array();
+                echo mysqli_error($conn);
                 while($row = $result->fetch_assoc()) {
                    $result_arr[0] = $row["CustomerFirstName"];
                    $result_arr[1] = $row["CustomerLastName"];
@@ -90,8 +91,7 @@ ob_start();
        
     </table>
 </div>
-
-<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/footer.php'?>
 <?php
 ob_end_flush();
 ?>
+<?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/footer.php'?>

@@ -35,9 +35,10 @@
                         }
 
                         if(isset($_GET['delete_val'])){
-                            $deleteSQL = 'DELETE FROM Product WHERE ProductID="'.$delete_val.'"';
+                            $deleteSQL = 'DELETE FROM Product WHERE ProductID="'.$_GET['delete_val'].'"';
                             $deleteResult = $conn->query($deleteSQL);
-                            header("Location: /pages/admin/product_view.php?Success");
+
+                            header("Location: product_view.php?Success");
                         }
 
 

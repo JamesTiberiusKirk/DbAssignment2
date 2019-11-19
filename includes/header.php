@@ -157,8 +157,6 @@ session_start();
                         WHERE Sta.StaffID = Pay.StaffID and Sta.StaffID = "'.$staff_id.'" and (Sta.BranchID = Bran.BranchID and Sta.BranchID = "'.$branch_id.'"'.')';
                         $result = mysqli_query($conn, $sql);
                         echo mysqli_error($conn);
-                        
-                        
                         //$stmt = bind_query($conn, $sql, 'i', array($_SESSION['AccountID']));
                     }
                     if (isset($_SESSION['AccountID'])) {
@@ -176,7 +174,8 @@ session_start();
                                 echo '</li>';
                             }
                         }
-
+                        $sql = 'DROP VIEW IF EXISTS `CustomerInformation`';
+                        $result = mysqli_query($conn, $sql);
                         $sql = 'CREATE VIEW `CustomerInformation` AS SELECT
                         A.AccountID, 
                         CustomerID, 
