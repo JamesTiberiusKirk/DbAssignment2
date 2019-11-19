@@ -10,6 +10,7 @@ ob_start();
     <h1>Users Table</h1>
     <form class="input-group mb-3" method="post">
         <input class="form-control" name="table_inp" type="text" placeholder="Username" method="post">
+        <input class="form-control" IdSearch="num_inp" type="number" placeholder="Enter Staff ID" method="post">
         <button class="btn btn-outline-secondary" name="search_btn" type="submit">Search</button>
         <button class="btn btn-outline-secondary" name="show_tbl">Show Table</button>
     </form>
@@ -18,9 +19,12 @@ ob_start();
         -->
         <?php
         $table_inp = $_POST['table_inp'];
+        $num_inp = $_POST['num_inp'];
         $search_btn = $_POST['search_btn'];
         $show_table = $_POST['show_tbl'];
-        $sql = 'SELECT * FROM Account WHERE Username = "'.$table_inp.'"';
+        
+
+        $sql = 'SELECT * FROM Account WHERE Username = "'.$table_inp.'" OR AccountID ="'.$num_inp.'"';
         // when a search is made show only 1 result
         if (isset($search_btn)) {
             $search_result = mysqli_query($conn, $sql) or die("dberr:". mysqli_error($conn));

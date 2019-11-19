@@ -95,9 +95,7 @@ session_start();
                         }
                     }
                     
-                    if (isset($_SESSION['AccountID'])) {
-                        
-                    }
+
                     if (isset($_SESSION['AccountID'])) {
                         include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
                         $role_sql = 'SELECT * FROM `Account` WHERE `AccountID`=? AND `AccountType` = "staff"';
@@ -193,14 +191,6 @@ session_start();
                         WHERE A.AccountID = B.AccountiD and A.AccountID = ?';
 
                         $result = mysqli_query($conn, $sql);
-                        $sql = 'SELECT * FROM CustomerInformation WHERE AccountID = "'.$_SESSION['AccountID'].'"';
-                        echo $result;
-                        //mysqli_free_result($result);
-
-                        $result = mysqli_query($conn, $sql);
-                        while ($row = $result->fetch_assoc()) {
-                            echo $row['AccountID'];
-                        }
                     }
                     ?>
                 </ul>
