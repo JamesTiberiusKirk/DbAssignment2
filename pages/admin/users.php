@@ -22,7 +22,7 @@ ob_start();
         $show_table = $_POST['show_tbl'];
         $sql = 'SELECT * FROM Account WHERE Username = "'.$table_inp.'"';
         // when a search is made show only 1 result
-        if (isset($search_btn)) {
+        if (isset($_POST['search_btn'])) {
             $search_result = mysqli_query($conn, $sql) or die("dberr:". mysqli_error($conn));
             $row = $search_result->num_rows;
             if ($row) {
@@ -39,7 +39,7 @@ ob_start();
         }
         
         // when Show Table button is pressed show full table
-        if (isset($show_table)) {
+        if (isset( $_POST['show_tbl'])) {
             $sql = "SELECT * FROM Account";
             $search_result = mysqli_query($conn, $sql);
         }

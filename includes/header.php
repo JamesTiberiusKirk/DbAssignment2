@@ -193,8 +193,7 @@ session_start();
                         FullName,
                         CardType
                         FROM Customer AS A , BankAccount AS B
-                        WHERE A.AccountID = B.AccountiD and A.AccountID = ?';
-
+                        WHERE A.AccountID = B.AccountiD and A.AccountID = "'.$_SESSION['AccountID'].'"';
                         $result = mysqli_query($conn, $sql);
                     }
 

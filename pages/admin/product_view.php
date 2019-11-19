@@ -20,7 +20,7 @@
                         $show_table = $_POST['show_tbl'];
                         $delete_val = $_GET['delete_val'];
 
-                        if(isset($search_btn)){
+                        if(isset($_POST['search_btn'])){
                             $sql = "SELECT * FROM Product WHERE Name='$table_inp'";
                             $result = $conn->query($sql);
                             if($result->num_rows > 0){
@@ -33,12 +33,12 @@
                             $result = $conn->query($sql);
                         }
                         
-                        if(isset($show_table)){
+                        if(isset($_POST['show_tbl'])){
                             $sql = "SELECT * FROM Product";
                             $result = $conn->query($sql);
                         }
 
-                        if(isset($delete_val)){
+                        if(isset($_GET['delete_val'])){
                             $deleteSQL = 'DELETE FROM Product WHERE ProductID="'.$delete_val.'"';
                             $deleteResult = $conn->query($deleteSQL);
                             header("Location: /pages/admin/product_view.php?Success");

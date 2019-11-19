@@ -34,7 +34,6 @@ mysqli_free_result($result);
             echo '<td>'.$branch_id.'</td>';
             echo '</tr>';
         }
-        while ($row)
         ?>
         </tbody>
     </table>
