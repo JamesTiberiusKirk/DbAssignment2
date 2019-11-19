@@ -60,8 +60,8 @@ session_start();
                     <?php
                     if (isset($_SESSION['AccountID'])) {
 
-                        include_once($_SERVER['DOCUMENT_ROOT'] . '/2019-ac32006/team2' . '/includes/db.inc.php');
-                        include_once($_SERVER['DOCUMENT_ROOT'] . '/2019-ac32006/team2' . '/includes/query.inc.php');
+                        include_once($_SERVER['DOCUMENT_ROOT'].'/2019-ac32006/team2/'. '/includes/db.inc.php');
+                        include_once($_SERVER['DOCUMENT_ROOT'].'/2019-ac32006/team2/'. '/includes/query.inc.php');
                         // query for account role
                         // if role != customer, do not display
 

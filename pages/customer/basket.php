@@ -1,23 +1,23 @@
 <?php ob_start() ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php' ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/2019-ac32006/team2/'.'/includes/header.php' ?>
 
 <div class="jumbotron">
     <h1>Shopping Cart</h1>
     <?php
 
-    include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
-    include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/query.inc.php');
+    include_once($_SERVER['DOCUMENT_ROOT'].'/2019-ac32006/team2/'.'/includes/db.inc.php');
+    include_once($_SERVER['DOCUMENT_ROOT'].'/2019-ac32006/team2/'.'/includes/query.inc.php');
 
     if (!isset($_SESSION['AccountID']) || (get_type($conn, $_SESSION['AccountID']) == 'customer ')) {
-        header('Location: /index.php');
+        header('Location: /2019-ac32006/team2/index.php');
         exit();
     }
 
 
 
     function display_basket(){
-        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php');
-        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/query.inc.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].'/2019-ac32006/team2/'.'/includes/db.inc.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].'/2019-ac32006/team2/'.'/includes/query.inc.php');
 
         if (!isset($_SESSION['Basket']) || empty($_SESSION['Basket'])) {
             echo '<h2>Cart empty</h2>';
@@ -62,4 +62,4 @@
     </table>
 </div>
 <?php ob_end_flush() ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php' ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/2019-ac32006/team2/'.'/includes/footer.php' ?>
