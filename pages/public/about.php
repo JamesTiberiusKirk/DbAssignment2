@@ -1,7 +1,7 @@
 <?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/header.php' ?>
 <div class="jumbotron">
 	<p 
-  		style="font-size:200%;">Contact Us
+  		style="font-size:200%;">About Us
  	</p>
 	<?php
 	echo "<p> 
