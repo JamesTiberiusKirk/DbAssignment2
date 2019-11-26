@@ -31,8 +31,8 @@ DROP TABLE IF EXISTS `Customer`;
 CREATE TABLE `Customer` (
     `AccountID` INT(15) DEFAULT NULL,
     `CustomerID` INT(10) NOT NULL AUTO_INCREMENT,
-    `CustomerFirstName` VARCHAR(20) DEFAULT NULL,
-    `CustomerLastName` VARCHAR(20) DEFAULT NULL,
+    `CustomerFirstName` VARCHAR(25) DEFAULT NULL,
+    `CustomerLastName` VARCHAR(25) DEFAULT NULL,
     `CustomerAddress` VARCHAR(50) DEFAULT NULL,
     `Phone` int(11) DEFAULT NULL,
     PRIMARY KEY (`CustomerID`),
