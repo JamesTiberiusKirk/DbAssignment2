@@ -12,7 +12,7 @@
                     <div class="row">
                         <?php
                             $count = 1;
-                            $sql = "SELECT * FROM Product WHERE Type='Peripheral'";//Change for new DB for type
+                            $sql = "SELECT * FROM Product WHERE Type='Peripheral' ORDER BY CurrentPrice DESC";//Change for new DB for type
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
@@ -62,7 +62,6 @@
                                 $_SESSION['Basket'][$tempCount]['prodid'] = $passVal;
                                 $_SESSION['Basket'][$tempCount]['qty'] = 1;
                             }
-                        print_r($_SESSION['Basket']);
                         ?>
                 </div>
             </form>

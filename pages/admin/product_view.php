@@ -17,7 +17,7 @@
                 <?php 
                         if(isset($_POST['search_btn'])){
                             $table_inp = $_POST['table_inp'];
-                            $sql = "SELECT * FROM Product WHERE Name='$table_inp'";
+                            $sql = 'SELECT * FROM Product WHERE Type LIKE "%'.$table_inp.'%" ORDER BY CurrentPrice DESC';
                             $result = $conn->query($sql);
                             if($result->num_rows > 0){
                                 echo "Product Found, " . $result->num_rows . " results:";
@@ -53,7 +53,6 @@
                                     echo '<td>' . $row["Name"] . '</td>';
                                     echo '<td>' . $row["Type"] . '</td>';
                                     echo '<td>' . $row["CurrentPrice"] . '£' . '</td>';
-                                    echo '<td> # </td>';
                                     echo '<td> ';
                                     echo '<a href="product_edit.php?prodid='.$row['ProductID'].'" class="btn btn-secondary"> edit </a>';
                                     echo '<a href="product_view.php?delete_val=' . $row["ProductID"] . '" class="btn btn-secondary">delete</button>';
@@ -73,7 +72,6 @@
                             <th scope="col">ProductName</th>
                             <th scope="col">Type</th>
                             <th scope="col">CurrentPrice</th>
-                            <th scope="col">StockQuantity</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>

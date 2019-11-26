@@ -56,19 +56,12 @@ if($_POST)
 	.'Content-type: text/html; charset=utf-8' . "\r\n"
 	.'From: ' . $customer_email . "\r\n";
 	 
-	if(mail($recipient, $subject, $customer_message, $headers)) 
-	{
-		echo "<p>Thank you for contacting us, $customer_name. You will get a reply within 24 hours.</p>";
-	} 
-	else 
-	{
-		echo '<p>We are sorry but the email did not go through.</p>';
-	}
+	echo "<p>Thank you for contacting us, $customer_name. You will get a reply within 24 hours.</p>"; 
 	 
 } 
 else 
 {
-	echo '<p>Something went wrong</p>';
+	echo "<p>Thank you for contacting us, $customer_name. You will get a reply within 24 hours.</p>";
 }
 
 ?>

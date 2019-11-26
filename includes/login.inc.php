@@ -30,7 +30,7 @@ if(isset($_POST['login-submit'])){
           $_SESSION['AccountID'] = $row['AccountID'];
           $_SESSION['Username'] = $row['Username']; 
           $_SESSION['Basket'] = array();
-          header('Location:/2019-ac32006/team2/pages/members/welcome.php?login=success');
+          header('Location:/2019-ac32006/Team2/index.php?login=success');
           exit();
         }
       } else {

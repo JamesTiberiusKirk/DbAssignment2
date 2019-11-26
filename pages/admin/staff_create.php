@@ -3,19 +3,27 @@
 
 <?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'."/includes/db.inc.php"?>
 <?php include_once $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/query.inc.php'?>
+
+<?php
+if (isset($_GET['error'])) {
+    echo '<script type="text/javascript">alert("' . $_GET['error'] . '");</script>';
+}
+?>
+
 <div class="jumbotron">
     <form method="post">
         <label for="fni">Full name</label>
         <input class="form-control" id="fni" name="full_name_inp" type="text">
         <label for="aci">Account ID</label>
-        <input class="form-control" id="aci" name="acc_id_inp" type="text">
+        <input class="form-control" id="aci" name="acc_id_inp" type="number">
         <label for="jti">Job Title</label>
         <input class="form-control" id="jti" name="job_title_inp" type="text">
         <label for="si">Salary</label>
-        <input class="form-control" id="jti" name="salary_inp" type="text">
+        <input class="form-control" id="jti" name="salary_inp" type="number">
         <label for="bii">Branch ID</label>
-        <select class="mdb-select md-form" name='branch_id_inp' id='bii'>
+        <select class="mdb-select md-form" name='branch_id_inp' id='bii' type="number">
             <option value="" >Choose branch ID</option>
+                <!--<option value="100">100</option>-->
                 <?php
 
                 $sql = 'SELECT * FROM Branch';
@@ -37,6 +45,11 @@
         if (!empty($_POST['full_name_inp']) && !empty($_POST['acc_id_inp']) 
             && !empty($_POST['branch_id_inp']) && !empty($_POST['job_title_inp'])) {
             
+            //query account row based on username
+            // get account id, to be used as a foriegn key to be inserted later
+            // return get variable error if user isnt found
+
+
             $sql = 'SELECT AccountType FROM Account WHERE AccountID=?';
             $acc_type = '';
             $stmt = bind_query($conn, $sql, 'i', array($_POST['acc_id_inp']));
@@ -86,13 +99,30 @@
     }
 
     function create_staff($conn) {
-        $sql = 'INSERT INTO Staff (FullName, AccountID, BranchID, Role, Salary)
+        $sql = 'INSERT INTO Staff (FullName, AccountID, Role, Salary, BranchID)
         VALUES (?, ?, ?, ?, ?)';
-        $stmt = bind_query($conn, $sql, 'siisd', array($_POST['full_name_inp'], $_POST['acc_id_inp'],
-            $_POST['branch_id_inp'], $_POST['job_title_inp'], $_POST['salary_inp']));
+        $stmt = bind_query($conn, $sql, 'sisdi', array($_POST['full_name_inp'], $_POST['acc_id_inp'],
+            $_POST['job_title_inp'], $_POST['salary_inp'], $_POST['branch_id_inp']));
 
-        mysqli_stmt_free_result($stmt);
-        mysqli_stmt_close($stmt);
+        // create payroll
+        if (mysqli_stmt_affected_rows($stmt)) {
+            mysqli_stmt_free_result($stmt);
+
+            $sql = 'SELECT StaffID FROM Staff WHERE AccountID = ?';
+            $stmt = bind_query($conn, $sql, 'i', array($_POST['acc_id_inp']));
+            mysqli_stmt_bind_result($stmt, $staffid);
+            $staff_id = '';
+            while (mysqli_stmt_fetch($stmt)) {
+                $staff_id = $staffid;
+            }
+            mysqli_stmt_free_result($stmt);
+
+            $sql = 'INSERT INTO Payroll (FullName, StaffID) VALUES (?, ?)';
+            $stmt = bind_query($conn, $sql, 'si', array($_POST['full_name_inp'], $staff_id));
+            mysqli_stmt_free_result($stmt);
+            mysqli_stmt_close($stmt);
+
+        }
     }
 
     // function create_payroll($conn) {
@@ -110,6 +140,7 @@
     //     mysqli_stmt_free_result($stmt);
     //     mysqli_stmt_close($stmt);
     // }
+   
     ?>
 </div>
 

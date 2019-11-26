@@ -31,8 +31,8 @@ DROP TABLE IF EXISTS `Customer`;
 CREATE TABLE `Customer` (
     `AccountID` INT(15) DEFAULT NULL,
     `CustomerID` INT(10) NOT NULL AUTO_INCREMENT,
-    `CustomerFirstName` VARCHAR(10) DEFAULT NULL,
-    `CustomerLastName` VARCHAR(10) DEFAULT NULL,
+    `CustomerFirstName` VARCHAR(20) DEFAULT NULL,
+    `CustomerLastName` VARCHAR(20) DEFAULT NULL,
     `CustomerAddress` VARCHAR(50) DEFAULT NULL,
     `Phone` int(11) DEFAULT NULL,
     PRIMARY KEY (`CustomerID`),
@@ -51,7 +51,7 @@ CREATE TABLE `CustomerOrder` (
     `CustomerOrderID` INT(12) AUTO_INCREMENT NOT NULL,
     `Quantity` INT(3) DEFAULT NULL,
     `OrderPrice` INT(10) DEFAULT NULL,
-    `Delivery Address` VARCHAR(30) NOT NULL,
+    `DeliveryAddress` VARCHAR(30) NOT NULL,
     `Time` DATE DEFAULT NULL,
     `CustomerID` INT(10) DEFAULT NULL,
     PRIMARY KEY (`CustomerOrderID`),
@@ -180,8 +180,8 @@ CREATE TABLE `Payroll` (
     `GrossPay` FLOAT(10) DEFAULT NULL,
     `NetPay` FLOAT(10) DEFAULT NULL,
     `Ni` VARCHAR(10) DEFAULT NULL,
-    `PayrollDate` DATE NOT NULL,
-    `PayrollTime` TIME(0) NOT NULL,
+    `PayrollDate` DATE DEFAULT NULL,
+    `PayrollTime` TIME(0) DEFAULT NULL,
     KEY `fk_Payroll_Staff` (`StaffID`),
     CONSTRAINT `fk_Payroll_Staff` FOREIGN KEY (`StaffID`)
         REFERENCES `Staff` (`StaffID`)

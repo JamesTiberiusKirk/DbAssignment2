@@ -12,13 +12,13 @@
   <!-- The slideshow -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block img-fluid" src="/img/products/DesktopIMG/desktop-1.jpg" alt="Desktop">
+      <center> <img class="d-block img-fluid" src="https://www.cyberpowersystem.co.uk/images/cs/CMMB520/CS_CMMB520_400.png" alt="Desktop" style="width:50%;"> </center>
     </div>
     <div class="carousel-item">
-      <img class="d-block img-fluid" src="/img/products/LaptopIMG/laptop-1.jpg" alt="Laptop">
+      <center> <img class="d-block img-fluid" src="https://static-ecemea.acer.com/media/catalog/product/cache/10/image/9df78eab33525d08d6e5fb8d27136e95/A/c/Acer-Nitro-5-AN517-51-MAIN_47.png" alt="Laptop" style="width:50%;"> </center>
     </div>
     <div class="carousel-item">
-      <img class="d-block img-fluid" src="/img/products/PeripheralsIMG/monitor-1.jpg" alt="Periph">
+      <center> <img class="d-block img-fluid" src="https://media.steelseriescdn.com/thumbs/filer_public/9c/94/9c941697-51b9-41d9-8e1f-eda052e57b77/buyrender_arctis1_pc_001.png__1850x800_q100_crop-scale_optimize_subsampling-2.png" alt="Periph" style="width:50%;"> </center>
     </div>
   </div>
 

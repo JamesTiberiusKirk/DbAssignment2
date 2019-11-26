@@ -34,7 +34,8 @@ ob_start();
         <button class="btn btn-outline-danger" name="schdl_cancel">Cancel</button>
     </form>
     <?php
-    $date = date_create($_POST['schdl_date_inp']);
+    if (isset($_POST['schdl_date_inp']))
+        $date = date_create($_POST['schdl_date_inp']);
     $sql = 'INSERT INTO StaffSchedule(StaffID, Date, Start_at, Finish_at) VALUES (?, ?, ? ,?)';
 
     if (isset($_POST['schdl_submit'])) {

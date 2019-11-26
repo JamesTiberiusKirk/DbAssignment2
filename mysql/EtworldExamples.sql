@@ -61,8 +61,8 @@ INSERT INTO `Account`(`AccountType`,`Username`,`Password`)
 VALUES
 ('customer','customer','etworldcustomer'),
 ('Supplier','BASELTD','something'),
-('Staff' , 'Staff' , 'something'), 
-('Staff','Admin','etworldadmin' );
+('Staff' , 'Staff' , 'etworldstaff'), 
+('Staff','Admin','etworldadmin');
 /*!40000 ALTER TABLE `Account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,8 +102,8 @@ LOCK TABLES `Staff` WRITE;
 /*!40000 ALTER TABLE `Staff` DISABLE KEYS */;
 INSERT INTO `Staff` (`FullName`,`Salary`, `Role`,`Address`,`Phone`)
 VALUES 
-("Nikita Khrushchev",32223,"Sales"," Nethergate, Dundee",08854574),
-("Joseph Stalin",32223,"Manager"," Nethergate, Dundee",08854574);
+('Nikita Khrushchev',32223,"Sales"," Nethergate, Dundee",08854574),
+('Joseph Stalin',32223,"Manager"," Nethergate, Dundee",08854574);
 /*!40000 ALTER TABLE `Staff` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,7 +113,9 @@ LOCK TABLES `Payroll` WRITE;
 /*!40000 ALTER TABLE `Payroll` DISABLE KEYS */;
 INSERT INTO `Payroll`(`FullName`,`Deductions`,`GrossPay`,`NetPay`,`Ni`,`PayrollDate`, `PayrollTime`)
 VALUES
-("Simon STill","-something","Some ammount wihtout taxes","After taxes", "SB6548746D",'2019-08-23','09:10:00');
+('Simon STill','-something","Some ammount wihtout taxes','After taxes', 'SB6548746D','2019-08-23','09:10:00'), 
+('Rocky Bilboa', '-something1','Some ammount wihtout taxes','After taxes', 'SB5487897S','2019-05-03','09:20:00'),
+('Dwayne Ross', '-something1','Some ammount wihtout taxes','After taxes', 'SX6241897S','2019-10-03','09:45:00');
 /*!40000 ALTER TABLE `Payroll` ENABLE KEYS */;
 UNLOCK TABLES;
 

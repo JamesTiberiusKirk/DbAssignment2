@@ -16,23 +16,43 @@ while (mysqli_stmt_fetch($stmt)) {
 }
 //mysqli_stmt_free_result($stmt);
 
-$sql = 'SELECT StaffID FROM Staff';
-$result = mysqli_query($conn, $sql);
-while ($row = $result->fetch_assoc()) {
-    $staff_id = $row['StaffID'];
+$full_address = '';
+$phone = '';
+$full_name = '';
+
+if ($acc_type == 'staff') {
+    $sql = 'SELECT * FROM Staff';
+    $result = mysqli_query($conn, $sql);
+    while ($row = $result->fetch_assoc()) {
+        $staff_id = $row['StaffID'];
+        $full_name = $row['FullName'];
+        $full_address = $row['Address'];
+        $phone = $row['Phone'];
+    }
 }
-echo $staff_id;
+else if ($acc_type == 'customer') {
+    $sql = 'SELECT * FROM Customer';
+    $result = mysqli_query($conn, $sql);
+    while ($row = $result->fetch_assoc()) {
+        $full_name = $row['CustomerFirstName'].' '.$row['CustomerLastName'];
+        $full_address = $row['CustomerAddress'];
+        $phone = $row['Phone'];
+    }
+}
+
+list($first_name, $last_name) = explode(' ', $full_name);
+
 ?>
 <div class="jumbotron">
     <form method="post">
         <label for="fn"> First Name </label>
-        <input class="form-control" name="fname_inp" id="fn" type="text">
+        <input class="form-control" name="fname_inp" id="fn" type="text" value="<?php echo $first_name;?>">
         <label for="ln"> Last Name </label>
-        <input class="form-control" name="lname_inp" id="ln" type="text">
+        <input class="form-control" name="lname_inp" id="ln" type="text" value="<?php echo $last_name;?>">
         <label for="addr"> Full Address </label>
-        <input class="form-control" name="addr_inp" id="addr" type="text">
+        <input class="form-control" name="addr_inp" id="addr" type="text" value="<?php echo $full_address;?>">
         <label for="phone"> Phone </label>
-        <input class="form-control" name="phone_inp" id="phone" type="text">
+        <input class="form-control" name="phone_inp" id="phone" type="number" value="<?php echo $phone;?>">
         <?php
         if ($acc_type === 'staff') {
             echo ' <label for="ni"> National Insurance Number</label>

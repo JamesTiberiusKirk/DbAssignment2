@@ -5,20 +5,34 @@ ob_start();
 
 <?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'."/includes/db.inc.php"?>
 
+
+
 <div class="jumbotron">
     <?php
+    include_once $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'."/includes/query.inc.php";
+    
     $sql = 'SELECT * FROM Account WHERE AccountID="'.$_GET['edit_btn'].'"';
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
         echo '<h2>Editing User '.$row['Username'].'</h2>';
     }
-    $result->free_result()
+    $result->free_result();
+
+    $sql = 'SELECT Username, AccountType FROM Account WHERE AccountID = ?';
+    $stmt = bind_query($conn, $sql, 'i' ,array($_GET['edit_btn']));
+    mysqli_stmt_bind_result($stmt, $username, $account_type);
+    $usrn = '';
+    $acc_type = '';
+    while($row = mysqli_stmt_fetch($stmt)) {
+        $usrn = $username;
+        $acc_type = $account_type;
+    }
     ?>
     <form method="post">
         <label for="nui"> New Username </label>
-        <th> <input class="form-control" name="new_usrn_inp" id="nui" type="text"> </th>
+        <th> <input class="form-control" name="new_usrn_inp" id="nui" type="text" value="<?php echo $username; ?>"> </th>
         <label for="nri"> New Role </label>
-        <th> <input class="form-control" name="new_role_inp" id="nri" type="text"> </th>
+        <th> <input class="form-control" name="new_role_inp" id="nri" type="text" value="<?php echo $account_type; ?>"> </th>
         <button class="btn btn-outline-secondary" name="submit_btn" type="submit">Submit</button>
         <button class="btn btn-outline-secondary" name="cancel_btn">Cancel</button>
     </form>
@@ -39,7 +53,6 @@ ob_start();
             }
             return $result;
         }
-        
 
         
         if (isset($_POST['submit_btn'])) {

@@ -1,5 +1,8 @@
 <?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/header.php' ?>
 <div class="jumbotron">
+<p 
+  	style="font-size:200%;">About Us
+</p>
 	<?php
 	echo "<p> 
 			E.T world is a national computer technology company that focuses on producing high end laptops and desktops that are out of this world while still being affordable. In order to achieve that, we design the laptop through parts outsourced by different suppliers. The company receives high end parts from various popular suppliers(Such as AMD, Intel, Corsair etc) and we also get our raw materials from various suppliers all over the world. We have multiple branches all across Scotland and we currently have 2 warehouses located in Dundee and Edinburgh. 

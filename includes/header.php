@@ -54,7 +54,7 @@ session_start();
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href= "/2019-ac32006/team2/pages/public/contacts.php">Contact</a>
                     </li>
 
                     <?php
@@ -176,38 +176,6 @@ session_start();
                                 echo '</li>';
                             }
                         }
-<<<<<<< HEAD
-                        $sql = 'DROP VIEW IF EXISTS `CustomerInformation`';
-                        $result = mysqli_query($conn, $sql);
-                        $sql = 'CREATE VIEW `CustomerInformation` AS SELECT
-                        A.AccountID, 
-                        CustomerID, 
-                        CustomerFirstName,
-                        CustomerLastName,
-                        CustomerAddress,
-                        Phone,
-                        BankAccountID,
-                        CardNUmber,
-                        CVC,
-                        AccountNUmber,
-                        SortCode,
-                        ExpiryDate,
-                        FullName,
-                        CardType
-                        FROM Customer AS A , BankAccount AS B
-                        WHERE A.AccountID = B.AccountiD and A.AccountID = "'.$_SESSION['AccountID'].'"';
-                        $result = mysqli_query($conn, $sql);
-
-                        $sql = 'DROP VIEW IF EXISTS `CustomerOrderInformation`';
-                        $result = mysqli_query($conn, $sql);
-
-                        $sql = 'SELECT * FROM Customer WHERE AccountID="'.$_SESSION['AccountID'].'"';
-                        $result = mysqli_query($conn, $sql);
-                        $customer_id = '';
-                        while ($row = $result->fetch_assoc()) {
-                            $customer_id = $row['CustomerID'];
-                        }
-=======
 
                         // $sql = 'CREATE VIEW `CustomerInformation` AS SELECT
                         // A.AccountID, 
@@ -231,24 +199,13 @@ session_start();
                         // $sql = 'DROP VIEW IF EXISTS `CustomerOrderInformation`';
                         // $result = mysqli_query($conn, $sql);
 
-                        // $sql = 'SELECT * FROM Customer WHERE AccountID="'.$_SESSION['AccountID'].'"';
-                        // $result = mysqli_query($conn, $sql);
-                        // $customer_id = '';
-                        // while ($row = $result->fetch_assoc()) {
-                        //     $customer_id = $row['CustomerID'];
-                        // }
->>>>>>> 999b7d4cc76a2d8dda0b50058aaccfad0ed9b113
-
-                        $sql = 'CREATE VIEW `CustomerOrderInformation` AS SELECT
-                        Cus.CustomerID,
-                        Quantity,
-                        OrderPrice,
-                        DeliveryAddress,
-                        Time
-                        FROM Customer AS Cus , CustomerOrder AS CusOrder
-                        WHERE Cus.CustomerID = CusOrder.CustomerID and Cus.CustomerID = "'.$customer_id.'"';
+                        $sql = 'SELECT * FROM Customer WHERE AccountID="'.$_SESSION['AccountID'].'"';
                         $result = mysqli_query($conn, $sql);
-                        
+                        $customer_id = '';
+                        while ($row = $result->fetch_assoc()) {
+                            $customer_id = $row['CustomerID'];
+                        }
+
                     }
                     ?>
                 </ul>

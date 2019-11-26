@@ -1,22 +1,33 @@
 <?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/header.php' ?>
 <?php include $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/db.inc.php' ?>
 <div class="jumbotron">
-<?php
-//include_once $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/query.inc.php';
-$sql = 'SELECT * FROM StaffInformation WHERE AccountID="'.$_SESSION['AccountID'].'"';
-$result = mysqli_query($conn, $sql);
+
+<?php 
+include_once $_SERVER[ 'DOCUMENT_ROOT' ] . '/2019-ac32006/team2'.'/includes/query.inc.php';
+$sql = 'SELECT StaffID FROM Staff WHERE AccountID = ?';
+$stmt = bind_query($conn, $sql, 'i', array($_SESSION['AccountID']));
+mysqli_stmt_bind_result($stmt, $staffid);
+
 $staff_id = '';
-while ($row = $result->fetch_assoc()) {
-    $staff_id = $row['StaffID'];
+while(mysqli_stmt_fetch($stmt)) {
+    $staff_id = $staffid;
 }
+mysqli_stmt_free_result($stmt);
+?>
+
+<?php
 echo '<h2>Staff ID: '.$staff_id.'</h2>';
 ?>
     <table class="table">
             <?php
-                $sql = 'SELECT * FROM StaffInformation WHERE AccountID="'.$_SESSION['AccountID'].'"';
+                $sql = 'SELECT * FROM Payroll WHERE StaffID="'.$staff_id.'"';
                 $result = mysqli_query($conn, $sql);
                 while ($row = $result->fetch_assoc()) {
                     echo'<tr>    
+                            <th>Full Name</th>
+                            <th>'.$row['FullName'].'
+                        </tr>
+                        <tr>    
                             <th>Payroll ID</th>
                             <th>'.$row['PayrollID'].'
                         </tr>

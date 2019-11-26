@@ -12,14 +12,14 @@
                     <div class="row">
                         <?php
                             $count = 1;
-                            $sql = "SELECT * FROM Product WHERE Type='Laptop'";//Change for new DB for type
+                            $sql = "SELECT * FROM Product WHERE Type='Laptop' ORDER BY CurrentPrice DESC";//Change for new DB for type
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
                                 // output data of each row
                                 while($row = $result->fetch_assoc()) {
                                     echo '<div class="col-md-3">';
-                                    echo '<div class="card">';
+                                    echo '<div class="card" >';
                                     echo '<img class="card-img-top" src=" ' . $row['ImagePath'] . '" alt="Card image cap">'; //Will take path of image per product
                                     echo '<div class="card-body">';
                                     echo '<h5 class="card-title">';
@@ -62,7 +62,6 @@
                                 $_SESSION['Basket'][$tempCount]['prodid'] = $passVal;
                                 $_SESSION['Basket'][$tempCount]['qty'] = 1;
                             }
-                        print_r($_SESSION['Basket']);
                         ?>
                 </div>
             </form>

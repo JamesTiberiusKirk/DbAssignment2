@@ -17,7 +17,7 @@ ob_start();
                 </form> 
                 <?php 
                         if(isset($_POST['search_btn'])){
-                            $sql = 'SELECT * FROM CustomerOrderInformation WHERE CustomerOrderID="'.$_POST['table_inp'].'"';
+                            $sql = 'SELECT * FROM CustomerOrder WHERE CustomerOrderID="'.$_POST['table_inp'].'"';
                             $result = $conn->query($sql);
                             if($result->num_rows > 0){
                                 echo "Customer order found, " . $result->num_rows . " results:";
@@ -25,12 +25,12 @@ ob_start();
                                 echo "No products found!";
                             }
                         } else {
-                            $sql = "SELECT * FROM CustomerOrderInformation";
+                            $sql = "SELECT * FROM CustomerOrder";
                             $result = $conn->query($sql);
                         }
                         
                         if(isset($_POST['show_tbl'])){
-                            $sql = "SELECT * FROM CustomerOrderInformation";
+                            $sql = "SELECT * FROM CustomerOrder";
                             $result = $conn->query($sql);
                         }
 
@@ -40,6 +40,7 @@ ob_start();
                                     echo '<tr>';
                                     echo '<th scope="row">' . $row["CustomerOrderID"] . '</th>';
                                     echo '<td>' . $row["CustomerID"] . '</td>';
+                                    echo '<td>' . $row["ProductID"] . '</td>';
                                     echo '<td>' . $row["Quantity"] . '</td>';
                                     echo '<td>' . $row["OrderPrice"]  . '</td>';
                                     echo '<td>' . $row["DeliveryAddress"]  . '</td>';
@@ -58,7 +59,8 @@ ob_start();
                     <thead>
                         <tr>
                             <th scope="col">CustomerOrderID</th>
-                            <th scope="col">CustomerID</th>
+                            <th scope="col">CustomerID</th>     
+                            <th scope="col">ProductID</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">OrderPrice</th>
                             <th scope="col">DeliveryAddress</th>

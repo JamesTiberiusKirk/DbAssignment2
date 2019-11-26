@@ -12,12 +12,12 @@ $prod_img_path = 'https://via.placeholder.com/500x500?text=Product+Image';
 
 
 if (isset($_GET['prodid']) && isset($_GET['prod_name'])) {
-    $prod_id = $_GET['prodid'];
-    $prod_name = $_GET['prod_name'];
-    $prod_type =  $_GET['prod_type'];
-    $prod_description = $_GET['prod_description'];
-    $prod_current_price = $_GET['prod_price'];
-    $prod_img_path = $_GET['prod_img_path'];
+    $prod_id = urldecode($_GET['prodid']);
+    $prod_name = urldecode($_GET['prod_name']);
+    $prod_type =  urldecode($_GET['prod_type']);
+    $prod_description = urldecode($_GET['prod_description']);
+    $prod_current_price = urldecode($_GET['prod_price']);
+    // $prod_img_path = $_GET['prod_img_path'];
 
     if (!isset($_GET['prod_img_path'])) {
         $sql = 'SELECT `ImagePath` FROM `Product` WHERE `ProductID`=?';
@@ -55,17 +55,6 @@ if (isset($_GET['prodid']) && isset($_GET['prod_name'])) {
         $prod_current_price = $row['CurrentPrice'];
         $prod_img_path = $row['ImagePath'];
     }
-
-    $s1='';
-    $s2='';
-    $s3='';
-    if ($prod_type == 'Desktop'){
-        $s1 = 'selected="selected" ';
-    } else if ($prod_type == 'Laptop'){
-        $s2 = 'selected="selected" ';
-    } else if ($prod_type == 'Peripheral'){
-        $s3 = 'selected="selected" ';
-    }
 }
 ?>
 
@@ -94,18 +83,22 @@ if (isset($_GET['prodid']) && isset($_GET['prod_name'])) {
                 <div class="input-group-prepend">
                     <span class="input-group-text">£</span>
                 </div>
-                <input type="text" class="form-control" name="prod_price_inp" value="<?php echo $prod_current_price; ?>">
+                <input type="number" class="form-control" name="prod_price_inp" value="<?php echo $prod_current_price; ?>">
 
             </div>
 
             <div class="form-group">
-                <label for="prod_type_inp">Select type</label>
-                <select class="form-control" name="prod_type_inp" id="prod_type_inp">
-                    <option value="Desktop">Desktop</option>
-                    <option value="Laptop">Laptop</option>
-                    <option value="Peripheral">Peripheral</option>
+                <label for="prod_type_inp_id">Select type</label>
+                <select class="form-control" name="prod_type_inp" id="prod_type_inp_id">
+                    <option <?php if($prod_type=='Desktop') echo' selected ';?> value="Desktop">Desktop</option>
+                    <option <?php if($prod_type=='Laptop') echo' selected ';?> value="Laptop">Laptop</option>
+                    <option <?php if($prod_type=='Peripheral') echo' selected ';?> value="Peripheral">Peripheral</option>
                 </select>
             </div>
+            <!-- <div class="form-group">
+                <label for="prod_type_inp">Chose a type (Desktop/Laptop)</label>
+            </div> -->
+
 
             <div class="form-group">
                 <label for="prod_description_inp">Description</label>

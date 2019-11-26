@@ -33,7 +33,7 @@ ob_start();
                     echo '<div class="card-footer">';
                     //HERE
                     echo '<form method="POST">';
-                    echo '<input class="float-right" type="number" name="replyNumber" id="replyNumber" min="1"  style="width: 35px" value="2"/>';
+                    echo '<input class="float-right" type="number" name="replyNumber" id="replyNumber" min="1"  style="width: 35px" value="1"/>';
                     echo '<button type="submit" name="buy_btn" id="buyBtn" class="btn btn-secondary float-right">Buy</button>';
                     echo '</form>';
                     //END

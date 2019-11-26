@@ -36,9 +36,9 @@ ob_start();
                         }
 
                         if(isset($_GET['delete_val'])){
-                            $deleteSQL = 'DELETE FROM CustomerOrderInformation WHERE CustomerOrderID="'.$_GET['delete_val'].'"';
+                            $deleteSQL = 'DELETE FROM CustomerOrder WHERE CustomerOrderID="'.$_GET['delete_val'].'"';
                             $deleteResult = $conn->query($deleteSQL);
-                            header("Location: /pages/admin/order_view.php?Success");
+                            header("Location: order_view.php?Success");
                         }
 
                         function display_product($searchResult){
@@ -51,7 +51,6 @@ ob_start();
                                     echo '<td>' . $row["OrderPrice"]  . '</td>';
                                     echo '<td>' . $row["DeliveryAddress"]  . '</td>';
                                     echo '<td>' . $row["Time"]  . '</td>';
-                                    echo '<td> <a href="order_view.php?prodid='.$row['CustomerOrderID'].'" class="btn btn-secondary"> edit </a> </td>';
                                     echo '<td> <a href="order_view.php?delete_val=' . $row["CustomerOrderID"] . '" class="btn btn-secondary">delete</button> </td>';
                                     echo '</td>';
                                     echo '</tr>';

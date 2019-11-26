@@ -13,18 +13,16 @@ if (isset($_POST['prod_submit'])) {
     $prod_description = $_POST['prod_description_inp'];
     $prod_img_location;
 
-    if (empty($prod_name) || empty($prod_price) || empty($prod_description)) {
-        header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=EmptyFields&' . $rtn_vars);
-        exit();
-    }
-
-    $rtn_vars = 'prod_name=' . $prod_name . '&prod_price=' . $prod_price .
-        '&prod_type=' . $prod_type . '&prod_description=' . $prod_description;
-
-
+    $rtn_vars = 'prod_name=' . urlencode($prod_name) . '&prod_price=' . urlencode($prod_price) . 
+    '&prod_type=' . urlencode($prod_type) . '&prod_description=' . urlencode($prod_description);
 
     if (isset($_GET['prodid'])) {
         $rtn_vars = 'prodid=' . $_GET['prodid'] . '&' . $rtn_vars;
+    }
+
+    if (empty($prod_name) || empty($prod_price) || empty($prod_description)) {
+        header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=EmptyFields&' .$rtn_vars);
+        exit();
     }
 
     //File upload
@@ -69,25 +67,17 @@ if (isset($_POST['prod_submit'])) {
     if (isset($_GET['prodid']) && empty($prod_img_location)) {
         // In case the user did not update the image
 
-        $sql = 'UPDATE `Product` '
-            . 'SET `Name`=?, `Type`=?, `Description`=?, `CurrentPrice`=?'
-            . ' WHERE `ProductID`=?';
+        $sql = 'UPDATE `Product` SET `Name`=?, `Type`=?, `Description`=?, `CurrentPrice`=? WHERE `ProductID`=?';
         $stmt = mysqli_stmt_init($conn);
 
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             header('Location:/2019-ac32006/team2/pages/admin/product_edit.php?error=SQLErr&' . $rtn_vars);
             exit();
         } else {
-            mysqli_stmt_bind_param(
-                $stmt,
-                'ssssss',
-                $prod_name,
-                $prod_type,
-                $prod_description,
-                $prod_price,
-                $_GET['prodid']
-            );
-            mysqli_stmt_execute($stmt);
+            $int_prod_price = (int)$prod_price;
+            $int_prod_id = (int)$_GET['prodid'];
+            mysqli_stmt_bind_param($stmt,'sssii',$prod_name,$prod_type,$prod_description, $int_prod_price, $int_prod_id);
+            mysqli_stmt_execute($stmt) or die('dberror'.mysqli_stmt_error($stmt));
             header('Location:/2019-ac32006/team2/pages/admin/product_view.php?message=succsess');
         }
     } else if (isset($_GET['prodid'])) {
